@@ -340,10 +340,6 @@ footer #email a:hover {
         font-size: 1.2rem;
     }
 
-    #banner {
-        width: 100vw;
-    }
-
     .two_by_two, .two_column {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -378,9 +374,6 @@ footer #email a:hover {
 
     .two_by_two, .two_column {
         grid-template-columns: 1fr;
-    }
-    header #banner {
-        width: 100vw;
     }
 
     .header_logic {

@@ -380,7 +380,7 @@ footer #email a:hover {
         grid-template-columns: 1fr;
     }
     header #banner {
-        width: 100%;
+        width: 100vw;
     }
 
     .header_logic {
@@ -391,6 +391,7 @@ footer #email a:hover {
 
     header #headshot {
         max-width: 100px;
+        height: auto;
     }
 
     .logic_text {

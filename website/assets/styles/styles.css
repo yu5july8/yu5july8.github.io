@@ -198,6 +198,82 @@ p{
     font-size: 1.2rem;
 }
 
+/* Inquiry Section */
+#inquiry {
+    max-width: 1200px;
+    padding: 20px;
+}
+
+#inquiry h2 {
+    font-size: 1.8rem;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+#inquiry p {
+    font-size: 1.2rem;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between fields */
+    max-width: 600px;
+    margin: 0 auto; /* Center align */
+}
+
+form label {
+    font-weight: bold;
+    color: #333;
+    font-size: 1rem;
+}
+
+form input, form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: #007BFF; /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Styling */
+form button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #007BFF; /* Primary button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+form button:active {
+    transform: scale(0.98); /* Slight press effect */
+}
+
+/* Status Message */
+#statusMessage {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1rem;
+}
+
 footer {
     background-color: #000;
     color: #fff;

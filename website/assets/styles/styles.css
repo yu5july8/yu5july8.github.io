@@ -59,11 +59,12 @@ header #headshot {
 
 #banner {
     grid-area: 3 / 1 / 4 / 4;
-    width: 100%;
-    max-height: 400px;
-    height: auto;
-    object-fit: cover;
-    display: block;
+    width: 100vw; /* Full viewport width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures image covers the available space without distortion */
+    display: block; /* Removes inline gaps */
+    margin: 0; /* Removes any default margin */
+    padding: 0; /* Removes any default padding */
 }
 
 /* Main Content */

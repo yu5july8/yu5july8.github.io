@@ -387,11 +387,11 @@ footer #email a:hover {
         flex-direction: column;
         align-items: center;
         gap: 10px;
+        padding: 10px 10px 0px 10px;
     }
 
     header #headshot {
         max-width: 100px;
-        height: auto;
     }
 
     .logic_text {

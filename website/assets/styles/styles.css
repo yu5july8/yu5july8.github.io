@@ -16,7 +16,7 @@ p, a {
     line-height: 1.5;
 }
 
-img, iframe {
+img, iframe { 
     max-width: 100%;
     height: auto;
     display: block;
@@ -337,16 +337,16 @@ footer #email a:hover {
 
 @media (max-width: 768px) {
     #banner {
-        margin: -10px;
-        padding: -10px;
+        width: 100vw;
+        object-fit: cover;
     }
-    
+
     main {
         padding: 15px;
     }
 
     .logic_text {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .two_by_two, .two_column {
@@ -387,9 +387,7 @@ footer #email a:hover {
 
     .header_logic {
         flex-direction: column;
-        align-items: center;
         gap: 10px;
-        padding: 10px 10px 0px 10px;
     }
 
     header #headshot {

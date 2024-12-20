@@ -336,6 +336,11 @@ footer #email a:hover {
 }
 
 @media (max-width: 768px) {
+    #banner {
+        margin: -10px;
+        padding: -10px;
+    }
+    
     main {
         padding: 15px;
     }

@@ -131,7 +131,7 @@ p{
     text-decoration: none;
 }
 
-.inspire h3 a:hover {
+.inspire h3 a:hover, .a11y h3 a:hover {
     text-decoration: underline;
     font-size: 1.8rem;
     transition: ease 0.3s;

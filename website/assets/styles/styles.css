@@ -332,7 +332,7 @@ footer #email a:hover {
     }
 
     /* Individual Items in Grids */
-    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour {
+    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask {
         max-width: 820px;
         padding: 15px; /* Reduce padding for smaller screens */
     }
@@ -380,7 +380,7 @@ footer #email a:hover {
         gap: 15px;
     }
 
-    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour {
+    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask {
         padding: 10px; /* Reduce padding further */
         max-width: 100%; /* Ensure items fit screen width */
     }

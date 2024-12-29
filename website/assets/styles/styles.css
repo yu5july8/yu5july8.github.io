@@ -432,7 +432,7 @@ footer #email a:hover {
         gap: 10px;
     }
 
-    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour {
+    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask {
         max-width: 100%; /* Fit to screen */
         padding: 10px;
     }

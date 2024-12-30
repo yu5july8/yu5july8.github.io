@@ -9,12 +9,8 @@ const statusMessage = document.getElementById('statusMessage');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const formData = new FormData(form);
-    for (let [key, value] of formData.entries()) {
-        console.log(`${key}: ${value}`);
-    }
-
-    emailjs.send("service_0gz5i1o","template_8xlq9gz")
+    // Use sendForm to pass form data directly
+    emailjs.sendForm("service_0gz5i1o", "template_8xlq9gz", form)
         .then(() => {
             statusMessage.textContent = "Email sent successfully!";
             statusMessage.style.color = "green";

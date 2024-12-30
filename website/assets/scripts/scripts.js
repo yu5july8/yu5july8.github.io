@@ -10,7 +10,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // Use sendForm to pass form data directly
-    emailjs.sendForm("service_0gz5i1o", "template_8xlq9gz", form)
+    emailjs.sendForm("service_0gz5i1o", "template_8xlq9gz", emailForm)
         .then(() => {
             statusMessage.textContent = "Email sent successfully!";
             statusMessage.style.color = "green";

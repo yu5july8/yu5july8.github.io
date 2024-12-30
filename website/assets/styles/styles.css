@@ -27,15 +27,10 @@ a {
 }
 a:hover {
     color: #0056b3;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     text-decoration: underline;
 }
 
-img, iframe { 
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
 
 header {
     display: grid;
@@ -47,6 +42,7 @@ header {
     position: relative;
     z-index: 10;
     overflow: hidden;
+    justify-content: space-around;
 }
 
 header p {
@@ -79,13 +75,11 @@ header #headshot {
 }
 
 #banner {
-    grid-area: 3 / 1 / 4 / 4;
-    width: 100vw; /* Full viewport width */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensures image covers the available space without distortion */
-    display: block; /* Removes inline gaps */
-    margin: 0; /* Removes any default margin */
-    padding: 0; /* Removes any default padding */
+    grid-area: 3 / 1 / 4 / 5;
+    width: 100%;   
+    display: block; 
+    margin: 0; 
+    padding: 0; 
 }
 
 /* Main Content */
@@ -108,7 +102,6 @@ h2{
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
-    max-width: 1200px;
     width: 100%;
 }
 
@@ -126,6 +119,8 @@ p{
 .current_project h2 {
     padding-bottom: 10px;
 }
+
+
 .two_by_two {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -135,30 +130,30 @@ p{
     margin-bottom: 20px;
 }
 
-.inspire, .k-12, .a11y, .mll{
-    border: #333 solid 1px;
+.inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS , .caption_mask, .graduation, .recruitment{
+    border: #555 solid 1px;
     padding: 20px;
     background-color: lightblue;
     border-radius: 5px;
 }
 
-.inspire h3, .k-12 h3, .a11y h3, .mll h3 {
+.inspire h3, .k-12 h3, .a11y h3, .mll h3, .hci_web h3, .iSchool_tour h3, .TTS h3, .caption_mask h3, .graduation h3, .recruitment h3 {
     margin-bottom: 10px;
     font-size: 1.5rem;
 }
 
-.inspire h3 a, .a11y h3 a {
+.inspire h3 a, .a11y h3 a, .hci_web h3 a, .iSchool_tour h3 a, .TTS h3 a, .caption_mask h3 a, .graduation h3 a, .recruitment h3 a {
     color: #000;
     text-decoration: none;
 }
 
-.inspire h3 a:hover, .a11y h3 a:hover {
+.inspire h3 a:hover, .a11y h3 a:hover, .hci_web h3 a:hover, .iSchool_tour h3 a:hover {
     text-decoration: underline;
     font-size: 1.8rem;
     transition: ease 0.3s;
 }
 
-.inspire img, .k-12 img, .a11y img, .mll img{
+.inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img {
     max-width: 600px;
     max-height: 600px;
     border-radius: 5px;
@@ -174,35 +169,6 @@ p{
     justify-content: space-around;
     gap: 40px;
     margin-bottom: 20px;
-}
-
-.hci_web h3, .iSchool_tour h3, .TTS h3, .caption_mask h3, .graduation h3, .recruitment h3 {
-    margin-bottom: 10px;
-}
-
-.hci_web h3 a, .iSchool_tour h3 a, .TTS h3 a, .caption_mask h3 a, .graduation h3 a, .recruitment h3 a {
-    color: #000;
-    text-decoration: none;
-}
-
-.hci_web h3 a:hover, .iSchool_tour h3 a:hover {
-    font-size: 1.8rem;
-    text-decoration: underline;
-    transition: 0.3s ease;
-}
-.hci_web, .iSchool_tour, .TTS , .caption_mask, .graduation, .recruitment {
-    font-size: 1.2rem;
-    border: #333 solid 1px;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: lightblue;
-}
-
-.hci_web img, .TTS img, .recruitment img {
-    max-width: 600px;
-    width: 600px;
-    height: 400px;
-    border-radius: 5px;
 }
 
 iframe {
@@ -235,8 +201,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 15px; /* Space between fields */
-    max-width: 600px;
-    margin: 0 auto; /* Center align */
+    max-width: 900px;
 }
 
 form label {
@@ -297,6 +262,9 @@ footer {
     width: 100%;
 }
 
+footer p {
+    color: #fff;
+}
 footer ul {
     list-style: none;
     display: flex;
@@ -316,13 +284,14 @@ footer #email a:hover {
 @media (max-width: 1024px) {
     /* Main Container */
     main {
-        max-width: 850px;
+        max-width: 800px;
         padding: 20px;
     }
 
     /* About Section */
     #about {
-        padding-left: 0; /* Adjust padding for smaller screens */
+        padding-left: 20px; /* Adjust padding for smaller screens */
+        max-width: 760px;
     }
 
     /* Two Column Grids */
@@ -334,7 +303,8 @@ footer #email a:hover {
     /* Individual Items in Grids */
     .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask {
         max-width: 820px;
-        padding: 15px; /* Reduce padding for smaller screens */
+        padding: 15px; 
+        padding-left: 20px;
     }
 
     /* Header Adjustments */
@@ -344,23 +314,20 @@ footer #email a:hover {
         gap: 15px;
         padding: 10px;
     }
-
-    #banner {
-        height: auto; /* Ensure the banner resizes properly */
-    }
 }
 
 @media (max-width: 768px) {
     /* Main Container */
     main {
         padding: 15px;
+        max-width: 630px;
     }
 
     /* Header Adjustments */
     .header_logic {
-        left: 0;
+        left: 10px;
         bottom: 0;
-        width: 100%; /* Full width */
+        width: 500px;
         gap: 10px;
         padding: 10px;
     }
@@ -371,25 +338,39 @@ footer #email a:hover {
 
     .logic_text {
         font-size: 1rem;
-        text-align: center; /* Center-align text */
+        text-align: left;
     }
-
+    #about{
+        max-width: 620px;
+    }
     /* Grid Adjustments */
     .two_by_two, .two_column {
-        grid-template-columns: 1fr; /* Single-column layout */
+        grid-template-columns: 1fr; 
         gap: 15px;
     }
 
     .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask {
         padding: 10px; /* Reduce padding further */
-        max-width: 100%; /* Ensure items fit screen width */
+        max-width: 600px; /* Ensure items fit screen width */
     }
 
-    iframe, img {
+    img {
         max-width: 100%;
         height: auto;
     }
 
+    iframe {
+        max-width: 100%;
+        height: 350px;
+    }
+
+    form {
+        max-width: 630px;
+    }
+    
+    form p {
+        max-width: 100%;
+    }
     footer {
         font-size: 0.8rem;
         padding: 10px;
@@ -400,12 +381,15 @@ footer #email a:hover {
     /* Main Container */
     main {
         padding: 10px;
+        max-width: 400px;
     }
 
     /* Header Adjustments */
     .header_logic {
         flex-direction: column; /* Stack elements vertically */
         gap: 8px;
+        padding-left: 10px;
+        max-width: 280px;
     }
 
     header #headshot {
@@ -414,7 +398,7 @@ footer #email a:hover {
 
     .logic_text {
         font-size: 0.9rem;
-        text-align: center;
+        text-align: left;
     }
 
     /* Section Adjustments */
@@ -423,9 +407,13 @@ footer #email a:hover {
     }
 
     #about {
-        max-width: 300px;
+        padding-left: 20px;
+        max-width: 330px;
     }
 
+    #about h2 {
+        padding-top: 10px;
+    }
     /* Grid Adjustments */
     .two_by_two, .two_column {
         grid-template-columns: 1fr; /* Single-column layout */
@@ -433,13 +421,17 @@ footer #email a:hover {
     }
 
     .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask {
-        max-width: 100%; /* Fit to screen */
+        max-width: 330px; 
         padding: 10px;
     }
+    .inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img {
+        max-width: 320px;
+        height: auto;
+    }
 
-    iframe, img {
-        max-width: 100%;
-        height: auto; /* Maintain aspect ratio */
+    iframe {
+        max-width: 320px;
+        height: 200px;
     }
 
     footer {

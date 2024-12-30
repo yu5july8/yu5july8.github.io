@@ -14,7 +14,7 @@ form.addEventListener('submit', (e) => {
         console.log(`${key}: ${value}`);
     }
 
-    emailjs.sendForm('your_service_id', 'your_template_id', form)
+    emailjs.send("service_0gz5i1o","template_8xlq9gz")
         .then(() => {
             statusMessage.textContent = "Email sent successfully!";
             statusMessage.style.color = "green";

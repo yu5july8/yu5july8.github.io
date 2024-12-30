@@ -1,5 +1,5 @@
 // Initialize EmailJS
-emailjs.init('service_0gz5i1o');
+emailjs.init('feG2tqK-ZVbP0UPDQ');
 
 // Form and status message references
 const form = document.getElementById('emailForm');

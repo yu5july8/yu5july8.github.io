@@ -202,6 +202,7 @@ form {
     flex-direction: column;
     gap: 15px; /* Space between fields */
     max-width: 900px;
+    align-item: center;
 }
 
 form label {

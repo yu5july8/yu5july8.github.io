@@ -147,30 +147,67 @@ li {
     margin-bottom: 20px;
 }
 
-.inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS , .caption_mask, .graduation, .recruitment{
+.inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS , .caption_mask, .graduation, .recruitment, .ICERI{
     border: #555 solid 1px;
     padding: 20px;
     background-color: lightblue;
     border-radius: 5px;
 }
 
-.inspire h3, .k-12 h3, .a11y h3, .mll h3, .hci_web h3, .iSchool_tour h3, .TTS h3, .caption_mask h3, .graduation h3, .recruitment h3 {
+.inspire h3, .k-12 h3, .a11y h3, .mll h3, .hci_web h3, .iSchool_tour h3, .TTS h3, .caption_mask h3, .ICERI h3, .graduation h3, .recruitment h3 {
     margin-bottom: 10px;
     font-size: 1.5rem;
 }
 
-.inspire h3 a, .a11y h3 a, .hci_web h3 a, .iSchool_tour h3 a, .TTS h3 a, .caption_mask h3 a, .graduation h3 a, .recruitment h3 a {
+.inspire h3 a, .a11y h3 a, .hci_web h3 a, .iSchool_tour h3 a, .TTS h3 a, .caption_mask h3 a, .graduation h3 a, .ICERI h3 a, .recruitment h3 a {
     color: #000;
     text-decoration: none;
 }
 
-.inspire h3 a:hover, .a11y h3 a:hover, .hci_web h3 a:hover, .iSchool_tour h3 a:hover {
+.inspire h3 a:hover, .a11y h3 a:hover, .hci_web h3 a:hover, .iSchool_tour h3 a:hover, .ICERI h3 a:hover {
     text-decoration: underline;
     font-size: 1.8rem;
     transition: ease 0.3s;
 }
 
-.inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img {
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Dim background */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img, .ICERI img {
     max-width: 600px;
     max-height: 600px;
     border-radius: 5px;

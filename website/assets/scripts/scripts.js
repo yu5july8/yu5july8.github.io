@@ -22,3 +22,47 @@ form.addEventListener('submit', (e) => {
             statusMessage.style.color = "red";
         });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Get modal elements
+    const resumeModal = document.getElementById("resumeModal");
+    const proposalModal = document.getElementById("proposalModal");
+
+    // Get open buttons
+    const resumeLink = document.getElementById("resumeLink");
+    const proposalLink = document.getElementById("proposalLink");
+
+    // Get close buttons
+    const closeBtns = document.querySelectorAll(".close-btn");
+
+    // Open Resume Modal
+    resumeLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        resumeModal.style.display = "block";
+    });
+
+    // Open Proposal Modal
+    proposalLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        proposalModal.style.display = "block";
+    });
+
+    // Close Modals
+    closeBtns.forEach((btn) =>
+        btn.addEventListener("click", () => {
+            resumeModal.style.display = "none";
+            proposalModal.style.display = "none";
+        })
+    );
+
+    // Close modal on outside click
+    window.addEventListener("click", (e) => {
+        if (e.target === resumeModal) {
+            resumeModal.style.display = "none";
+        }
+        if (e.target === proposalModal) {
+            proposalModal.style.display = "none";
+        }
+    });
+});

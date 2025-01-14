@@ -208,8 +208,7 @@ li {
 }
 
 .inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img, .ICERI img {
-    max-width: 600px;
-    max-height: 600px;
+    width: 100%;
     border-radius: 5px;
 }
 
@@ -227,8 +226,8 @@ li {
 
 iframe {
     max-width: 600px;
-    width: 600px;
-    height: 400px;
+    width: 100%;
+    height: 350px;
     border-radius: 5px;
 }
 

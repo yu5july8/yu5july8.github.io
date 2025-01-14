@@ -486,12 +486,12 @@ footer #email a:hover {
         padding: 10px;
     }
     .inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img, .ICERI img{
-        max-width: 320px;
+        max-width: 100%;
         height: auto;
     }
 
     iframe {
-        max-width: 320px;
+        max-width: 100%;
         height: 200px;
     }
 

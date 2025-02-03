@@ -237,8 +237,6 @@ iframe {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full viewport height */
-
     box-sizing: border-box; /* Ensures padding is included in height */
 }
 

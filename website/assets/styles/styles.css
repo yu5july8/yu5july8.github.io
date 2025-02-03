@@ -97,7 +97,7 @@ h2{
     font-size: 1.5rem;
 }
 
-#about {
+.about {
     padding-left: 20px;
     font-size: 1.2rem;
     display: flex;
@@ -147,24 +147,24 @@ li {
     margin-bottom: 20px;
 }
 
-.inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS , .caption_mask, .graduation, .recruitment, .ICERI{
+.inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS , .caption_mask, .graduation, .recruitment, .ICERI, .ISTE_646 {
     border: #555 solid 1px;
     padding: 20px;
     background-color: lightblue;
     border-radius: 5px;
 }
 
-.inspire h3, .k-12 h3, .a11y h3, .mll h3, .hci_web h3, .iSchool_tour h3, .TTS h3, .caption_mask h3, .ICERI h3, .graduation h3, .recruitment h3 {
+.inspire h3, .k-12 h3, .a11y h3, .mll h3, .hci_web h3, .iSchool_tour h3, .TTS h3, .caption_mask h3, .ISTE_646 h3, .ICERI h3, .graduation h3, .recruitment h3 {
     margin-bottom: 10px;
     font-size: 1.5rem;
 }
 
-.inspire h3 a, .a11y h3 a, .hci_web h3 a, .iSchool_tour h3 a, .TTS h3 a, .caption_mask h3 a, .graduation h3 a, .ICERI h3 a, .recruitment h3 a {
+.ISTE_646 h3 a, .inspire h3 a, .a11y h3 a, .hci_web h3 a, .iSchool_tour h3 a, .TTS h3 a, .caption_mask h3 a, .graduation h3 a, .ICERI h3 a, .recruitment h3 a {
     color: #000;
     text-decoration: none;
 }
 
-.inspire h3 a:hover, .a11y h3 a:hover, .hci_web h3 a:hover, .iSchool_tour h3 a:hover, .ICERI h3 a:hover {
+.inspire h3 a:hover, .a11y h3 a:hover, .hci_web h3 a:hover, .iSchool_tour h3 a:hover, .ICERI h3 a:hover, .ISTE_646 h3 a:hover {
     text-decoration: underline;
     font-size: 1.8rem;
     transition: ease 0.3s;
@@ -207,7 +207,7 @@ li {
     cursor: pointer;
 }
 
-.inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img, .ICERI img {
+.inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img, .ICERI img, .ISTE_646 img{
     width: 100%;
     border-radius: 5px;
 }

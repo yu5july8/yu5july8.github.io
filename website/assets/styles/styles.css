@@ -205,7 +205,7 @@ li {
     cursor: pointer;
 }
 
-.inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img, .ICERI img, .ISTE_646 img{
+.inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img, .ICERI img, .ISTE_646 img, .capstone img{
     width: 100%;
     border-radius: 5px;
 }

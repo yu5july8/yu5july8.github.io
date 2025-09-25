@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => {
             resumeModal.style.display = "none";
             proposalModal.style.display = "none";
+            capstoneModal.style.display = "none";
         })
     );
 

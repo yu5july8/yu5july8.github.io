@@ -140,7 +140,6 @@ li {
 .two_by_two {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     gap: 40px;
     justify-content: space-around;
     margin-bottom: 20px;

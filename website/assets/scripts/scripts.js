@@ -64,5 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === proposalModal) {
             proposalModal.style.display = "none";
         }
+        if (e.target === captionModal) {
+            captionModal.style.display = "none";
+        }
     });
 });

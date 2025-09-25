@@ -357,7 +357,7 @@ footer #email a:hover {
     }
 
     /* Individual Items in Grids */
-    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask, .ICERI, .ISTE_646 {
+    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask, .ICERI, .ISTE_646, .Website, .capstone {
         max-width: 820px;
         padding: 15px; 
         padding-left: 20px;
@@ -405,7 +405,7 @@ footer #email a:hover {
         gap: 15px;
     }
 
-    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask, .ICERI, .ISTE_646 {
+    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask, .ICERI, .ISTE_646 , .Website, .capstone{
         padding: 10px; /* Reduce padding further */
         max-width: 600px; /* Ensure items fit screen width */
     }

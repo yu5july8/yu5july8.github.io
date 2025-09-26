@@ -1,16 +1,11 @@
-// Initialize EmailJS
 emailjs.init('feG2tqK-ZVbP0UPDQ');
 
-// Form and status message references
 const form = document.getElementById('emailForm');
 const statusMessage = document.getElementById('statusMessage');
 
-// Form submission handler
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    // Use sendForm to pass form data directly
-    emailjs.sendForm("service_0gz5i1o", "template_8xlq9gz", emailForm)
+    emailjs.sendForm("service_0gz5i1o", "template_8xlq9gz", form)
         .then(() => {
             statusMessage.textContent = "Email sent successfully!";
             statusMessage.style.color = "green";
@@ -23,32 +18,37 @@ form.addEventListener('submit', (e) => {
         });
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
     // Get modal elements
     const resumeModal = document.getElementById("resumeModal");
     const proposalModal = document.getElementById("proposalModal");
+    const capstoneModal = document.getElementById("capstoneModal");
 
     // Get open buttons
-    const resumeLink = document.getElementById("resumeLink");
-    const proposalLink = document.getElementById("proposalLink");
+    const resumeLink = document.getElementById("openResume");
+    const proposalLink = document.getElementById("openProposal");
+    const capstoneLink = document.getElementById("openCapstone");
 
     // Get close buttons
     const closeBtns = document.querySelectorAll(".close-btn");
 
-    // Open Resume Modal
-    resumeLink.addEventListener("click", (e) => {
+    // Open modals
+    resumeLink?.addEventListener("click", (e) => {
         e.preventDefault();
         resumeModal.style.display = "block";
     });
 
-    // Open Proposal Modal
-    proposalLink.addEventListener("click", (e) => {
+    proposalLink?.addEventListener("click", (e) => {
         e.preventDefault();
         proposalModal.style.display = "block";
     });
 
-    // Close Modals
+    capstoneLink?.addEventListener("click", (e) => {
+        e.preventDefault();
+        capstoneModal.style.display = "block";
+    });
+
+    // Close all modals
     closeBtns.forEach((btn) =>
         btn.addEventListener("click", () => {
             resumeModal.style.display = "none";
@@ -57,16 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     );
 
-    // Close modal on outside click
+    // Close on outside click
     window.addEventListener("click", (e) => {
-        if (e.target === resumeModal) {
-            resumeModal.style.display = "none";
-        }
-        if (e.target === proposalModal) {
-            proposalModal.style.display = "none";
-        }
-        if (e.target === captionModal) {
-            captionModal.style.display = "none";
-        }
+        if (e.target === resumeModal) resumeModal.style.display = "none";
+        if (e.target === proposalModal) proposalModal.style.display = "none";
+        if (e.target === capstoneModal) capstoneModal.style.display = "none";
     });
 });

@@ -1,46 +1,42 @@
+// === EmailJS Initialization ===
 emailjs.init('feG2tqK-ZVbP0UPDQ');
 
-const form = document.getElementById('emailForm');
-const statusMessage = document.getElementById('statusMessage');
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    emailjs.sendForm("service_0gz5i1o", "template_8xlq9gz", form)
-        .then(() => {
-            statusMessage.textContent = "Email sent successfully!";
-            statusMessage.style.color = "green";
-            form.reset();
-        })
-        .catch((error) => {
-            console.error('EmailJS Error:', error);
-            statusMessage.textContent = "Failed to send email. Please try again.";
-            statusMessage.style.color = "red";
-        });
-});
-
+// === Form Submission ===
 document.addEventListener("DOMContentLoaded", () => {
-    // Get modal elements
+    const form = document.getElementById('emailForm');
+    const statusMessage = document.getElementById('statusMessage');
+
+    form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm("service_0gz5i1o", "template_8xlq9gz", form)
+            .then(() => {
+                statusMessage.textContent = "Email sent successfully!";
+                statusMessage.style.color = "green";
+                form.reset();
+            })
+            .catch((error) => {
+                console.error('EmailJS Error:', error);
+                statusMessage.textContent = "Failed to send email. Please try again.";
+                statusMessage.style.color = "red";
+            });
+    });
+
+    // === Modal Elements ===
     const resumeModal = document.getElementById("resumeModal");
-    const proposalModal = document.getElementById("proposalModal");
     const capstoneModal = document.getElementById("capstoneModal");
+    const proposalModal = document.getElementById("proposalModal");
 
-    // Get open buttons
     const resumeLink = document.getElementById("openResume");
-    const proposalLink = document.getElementById("openProposal");
     const capstoneLink = document.getElementById("openCapstone");
+    const proposalLink = document.getElementById("openProposal");
 
-    // Get close buttons
     const closeBtns = document.querySelectorAll(".close-btn");
 
-    // Open modals
+    // === Open Modal Handlers ===
     resumeLink?.addEventListener("click", (e) => {
         e.preventDefault();
         resumeModal.style.display = "block";
-    });
-
-    proposalLink?.addEventListener("click", (e) => {
-        e.preventDefault();
-        proposalModal.style.display = "block";
     });
 
     capstoneLink?.addEventListener("click", (e) => {
@@ -48,19 +44,24 @@ document.addEventListener("DOMContentLoaded", () => {
         capstoneModal.style.display = "block";
     });
 
-    // Close all modals
-    closeBtns.forEach((btn) =>
+    proposalLink?.addEventListener("click", (e) => {
+        e.preventDefault();
+        proposalModal.style.display = "block";
+    });
+
+    // === Close Modal (X button) ===
+    closeBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
             resumeModal.style.display = "none";
-            proposalModal.style.display = "none";
             capstoneModal.style.display = "none";
-        })
-    );
+            proposalModal.style.display = "none";
+        });
+    });
 
-    // Close on outside click
+    // === Close Modal on outside click ===
     window.addEventListener("click", (e) => {
         if (e.target === resumeModal) resumeModal.style.display = "none";
-        if (e.target === proposalModal) proposalModal.style.display = "none";
         if (e.target === capstoneModal) capstoneModal.style.display = "none";
+        if (e.target === proposalModal) proposalModal.style.display = "none";
     });
 });

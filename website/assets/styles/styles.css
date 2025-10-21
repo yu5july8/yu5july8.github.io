@@ -230,7 +230,7 @@ li {
 
 /* === PROJECT BOXES === */
 .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS,
-.caption_mask, .graduation, .recruitment, .ICERI, .ISTE_646,
+.caption_mask, .graduation, .recruitment, .ISTE_646,
 .capstone, .Website {
   border: 1px solid var(--primary);
   background-color: var(--secondary-bg);
@@ -241,16 +241,16 @@ li {
 
 .inspire:hover, .k-12:hover, .a11y:hover, .mll:hover, .hci_web:hover,
 .iSchool_tour:hover, .TTS:hover, .caption_mask:hover, .graduation:hover,
-.recruitment:hover, .ICERI:hover, .ISTE_646:hover, .capstone:hover, .Website:hover {
+.recruitment:hover, .ISTE_646:hover, .capstone:hover, .Website:hover {
   box-shadow: 0 4px 10px rgba(91, 42, 134, 0.2);
 }
 
-.inspire h3 a, .a11y h3 a, .hci_web h3 a, .iSchool_tour h3 a, .ICERI h3 a, .ISTE_646 h3 a {
+.inspire h3 a, .a11y h3 a, .hci_web h3 a, .iSchool_tour h3 a, .ISTE_646 h3 a {
   color: var(--primary);
 }
 
 .inspire h3 a:hover, .a11y h3 a:hover, .hci_web h3 a:hover,
-.iSchool_tour h3 a:hover, .ICERI h3 a:hover, .ISTE_646 h3 a:hover {
+.iSchool_tour h3 a:hover, .ISTE_646 h3 a:hover {
   text-decoration: underline;
   transition: ease 0.3s;
 }
@@ -293,7 +293,7 @@ li {
 
 /* === IMAGES & IFRAMES === */
 .inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img,
-.recruitment img, .ICERI img, .ISTE_646 img, .capstone img, .Website img {
+.recruitment img, .ISTE_646 img, .capstone img, .Website img {
   width: 100%;
   border-radius: 5px;
 }

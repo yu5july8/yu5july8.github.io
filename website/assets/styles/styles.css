@@ -203,7 +203,7 @@ p {
 #current_project,
 #completed,
 #completed_class,
-#ongoing_class, #publications {
+#ongoing_class, #publications, #visitors {
   padding: 20px;
   font-size: 1.1rem;
   margin-bottom: 20px;
@@ -346,18 +346,6 @@ iframe {
 
 
 /* === VISITORS SECTION === */
-#visitors {
-  padding: 40px 20px;
-  text-align: center;
-  background-color: var(--secondary-bg);
-}
-
-#visitors h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: var(--primary-strong);
-}
-
 #mapmyvisitors-widget {
   display: flex;
   justify-content: center;

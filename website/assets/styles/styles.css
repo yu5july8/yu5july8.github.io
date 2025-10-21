@@ -349,21 +349,6 @@ iframe {
 }
 
 
-/* === VISITORS SECTION === */
-#mapmyvisitors-widget {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-  max-width: 500px;
-}
-
-.visitor-note {
-  font-size: 1rem;
-  color: var(--muted);
-  margin-top: 10px;
-}
-
 /* === FOOTER === */
 footer {
   background-color: var(--primary-strong);

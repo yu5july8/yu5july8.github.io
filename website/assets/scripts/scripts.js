@@ -3,25 +3,6 @@ emailjs.init('feG2tqK-ZVbP0UPDQ');
 
 // === Form Submission ===
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById('emailForm');
-    const statusMessage = document.getElementById('statusMessage');
-
-    form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        emailjs.sendForm("service_0gz5i1o", "template_8xlq9gz", form)
-            .then(() => {
-                statusMessage.textContent = "Email sent successfully!";
-                statusMessage.style.color = "green";
-                form.reset();
-            })
-            .catch((error) => {
-                console.error('EmailJS Error:', error);
-                statusMessage.textContent = "Failed to send email. Please try again.";
-                statusMessage.style.color = "red";
-            });
-    });
-
     // === Modal Elements ===
     const resumeModal = document.getElementById("resumeModal");
     const capstoneModal = document.getElementById("capstoneModal");

@@ -229,41 +229,59 @@ iframe {
     border-radius: 5px;
 }
 
-/* Inquiry Section */
-#inquiry {
-    max-width: 1200px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box; /* Ensures padding is included in height */
+/* Publications Accordion (Grouped by Year) */
+#publications {
+  padding: 40px 20px;
+  background-color: #f9fafc;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between fields */
-    max-width: 600px;
-    width: 100%; /* Ensure it resizes */
-    margin: 0 auto; /* Center the form horizontally */
-    align-items: center; /* Center the form content */
-    justify-content: center; /* Vertically centers the content */
+#publications h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
 }
 
-form label {
-    width: 100%; /* Ensure labels span the full width */
-    text-align: left; /* Align labels to the left */
+.section-intro {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #333;
 }
 
-#inquiry h2 {
-    font-size: 1.8rem;
-    color: #000;
-    margin-bottom: 20px;
+.accordion-btn {
+  background-color: #007BFF;
+  color: #fff;
+  cursor: pointer;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
-#inquiry p {
-    font-size: 1.2rem;
-    color: #000;
-    margin-bottom: 20px;
+.accordion-btn:hover,
+.accordion-btn.active {
+  background-color: #0056b3;
+}
+
+.accordion-panel {
+  display: none;
+  padding: 15px 20px;
+  background-color: #fff;
+  border-left: 4px solid #007BFF;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.accordion-panel ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.accordion-panel li {
+  margin-bottom: 12px;
+  line-height: 1.6;
 }
 
 

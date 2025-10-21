@@ -39,6 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    const accBtns = document.querySelectorAll(".accordion-btn");
+    accBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+        const expanded = btn.getAttribute("aria-expanded") === "true" || false;
+        btn.setAttribute("aria-expanded", !expanded);
+        btn.classList.toggle("active");
+        const panel = btn.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+        });
+    });
+
     // === Close Modal on outside click ===
     window.addEventListener("click", (e) => {
         if (e.target === resumeModal) resumeModal.style.display = "none";

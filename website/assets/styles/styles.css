@@ -83,6 +83,37 @@ header #headshot {
     padding: 0; 
 }
 
+#top-nav {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  z-index: 100;
+}
+
+#top-nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 20px;
+}
+
+#top-nav a {
+  color: #007BFF;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#top-nav a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 /* Main Content */
 main {
     width: 100%;
@@ -251,12 +282,19 @@ iframe {
 
 .accordion-panel {
   display: none;
-  overflow: hidden;
   padding: 0 20px 15px 20px;
   background-color: #fff;
   border-left: 4px solid #007BFF;
   border-radius: 5px;
   margin-bottom: 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion-btn.active + .accordion-panel {
+  display: block;
+  max-height: 1000px; /* Large enough for content */
 }
 
 .accordion-panel ul {
@@ -286,7 +324,31 @@ iframe {
   color: #333;
 }
 
+#visitors {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9fafc;
+}
 
+#visitors h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+#mapmyvisitors-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.visitor-note {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 10px;
+}
 
 footer {
     background-color: #000;

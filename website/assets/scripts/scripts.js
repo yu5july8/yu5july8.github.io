@@ -42,11 +42,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const accBtns = document.querySelectorAll(".accordion-btn");
     accBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
-        const expanded = btn.getAttribute("aria-expanded") === "true" || false;
+        const expanded = btn.getAttribute("aria-expanded") === "true";
         btn.setAttribute("aria-expanded", !expanded);
         btn.classList.toggle("active");
+
         const panel = btn.nextElementSibling;
-        panel.style.display = panel.style.display === "block" ? "none" : "block";
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            // Close others (optional)
+            document.querySelectorAll(".accordion-panel").forEach(p => p.style.display = "none");
+            document.querySelectorAll(".accordion-btn").forEach(b => b.classList.remove("active"));
+            // Open current
+            panel.style.display = "block";
+            btn.classList.add("active");
+        }
         });
     });
 

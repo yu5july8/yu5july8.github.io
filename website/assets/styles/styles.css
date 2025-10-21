@@ -229,28 +229,12 @@ iframe {
     border-radius: 5px;
 }
 
-/* Publications Accordion (Grouped by Year) */
-#publications {
-  padding: 40px 20px;
-  background-color: #f9fafc;
-}
-
-#publications h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-}
-
-.section-intro {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  color: #333;
-}
-
+/* === Accordion by Year === */
 .accordion-btn {
   background-color: #007BFF;
   color: #fff;
   cursor: pointer;
-  padding: 15px;
+  padding: 15px 20px;
   width: 100%;
   text-align: left;
   border: none;
@@ -267,16 +251,18 @@ iframe {
 
 .accordion-panel {
   display: none;
-  padding: 15px 20px;
+  overflow: hidden;
+  padding: 0 20px 15px 20px;
   background-color: #fff;
   border-left: 4px solid #007BFF;
-  margin-bottom: 10px;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .accordion-panel ul {
   list-style-type: disc;
-  padding-left: 20px;
+  margin-left: 20px;
+  margin-top: 15px;
 }
 
 .accordion-panel li {
@@ -284,49 +270,23 @@ iframe {
   line-height: 1.6;
 }
 
-
-form input, form textarea {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
+#publications {
+  padding: 40px 20px;
+  background-color: #f9fafc;
 }
 
-form input:focus, form textarea:focus {
-    outline: none;
-    border-color: #007BFF; /* Highlight border on focus */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+#publications h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
 }
 
-/* Button Styling */
-form button {
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: #007BFF; /* Primary button color */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.section-intro {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #333;
 }
 
-form button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
 
-form button:active {
-    transform: scale(0.98); /* Slight press effect */
-}
-
-/* Status Message */
-#statusMessage {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 1rem;
-}
 
 footer {
     background-color: #000;

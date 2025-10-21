@@ -1,94 +1,99 @@
+/* === GLOBAL RESET === */
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
+/* ==== THEME: PLUM + TEAL ==== */
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #555555;
+
+  --primary: #5b2a86;       /* deep plum – main accent */
+  --primary-strong: #431f63;/* darker hover/focus plum */
+  --secondary-bg: #f3eff7;  /* very pale lilac for boxes */
+  --accent: #128277;        /* teal accent (progress bar) */
+  --border: #e3dff0;
+}
+
+/* === BODY === */
 body {
-    font-family: 'Work Sans', Arial, sans-serif;
-    background-color: #fff;
-    line-height: 1.5;
+  font-family: 'Work Sans', Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
 }
 
-
-p, a {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    line-height: 1.5;
-    text-decoration: none;
-    color: #000;
-}
-
+/* === LINKS === */
 a {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    line-height: 1.5;
-    text-decoration: none;
-    color: #007bff;
-}
-a:hover {
-    color: #0056b3;
-    font-size: 1.4rem;
-    text-decoration: underline;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
+a:hover,
+a:focus {
+  color: var(--primary-strong);
+  text-decoration: underline;
+}
 
+/* === HEADER === */
 header {
-    display: grid;
-    width: 100%;
-    grid-template-rows: auto auto auto;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    background-color: #fff;
-    position: relative;
-    z-index: 10;
-    overflow: hidden;
-    justify-content: space-around;
-}
-
-header p {
-    color: #fff;
+  display: grid;
+  width: 100%;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  background-color: var(--bg);
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  justify-content: space-around;
+  border-bottom: 2px solid var(--primary);
 }
 
 .header_logic {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    background-color: rgba(0, 0, 0, 0.8); 
-    position: absolute;
-    left: 50px; 
-    bottom: 10px;
-    border-radius: 10px; 
-    gap: 25px;
-    padding: 15px 15px 0px 15px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  left: 50px;
+  bottom: 10px;
+  border-radius: 10px;
+  gap: 25px;
+  padding: 15px;
 }
 
 .logic_text {
-    font-size: 1.5rem;
-    color: #fff;
+  font-size: 1.5rem;
+  color: #fff;
 }
 
 header #headshot {
-    grid-area: 1 / 1 / 2 / 2;
-    max-width: 130px;
-    height: auto;
-    border-radius: 20pt;
+  grid-area: 1 / 1 / 2 / 2;
+  max-width: 130px;
+  height: auto;
+  border-radius: 20pt;
 }
 
 #banner {
-    grid-area: 3 / 1 / 4 / 5;
-    width: 100%;   
-    max-height: 500px;
-    display: block; 
-    margin: 0; 
-    padding: 0; 
+  grid-area: 3 / 1 / 4 / 5;
+  width: 100%;
+  max-height: 500px;
+  display: block;
 }
 
-/* ===== Navigation Bar ===== */
+/* === NAVIGATION BAR === */
 #top-nav {
   position: sticky;
   top: 0;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
+  background-color: var(--bg);
+  border-bottom: 2px solid var(--primary);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   z-index: 1000;
   padding: 10px 0;
   width: 100%;
@@ -104,32 +109,29 @@ header #headshot {
   padding: 0;
 }
 
-#top-nav a {
-  text-decoration: none;
-  color: #007BFF;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-#top-nav a:hover,
-#top-nav a:focus {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
 #top-nav li {
   display: inline-block;
 }
 
-/* Scroll Progress Bar */
+#top-nav a {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#top-nav a:hover,
+#top-nav a:focus {
+  color: var(--primary-strong);
+}
+
+/* === SCROLL PROGRESS BAR === */
 #progress-bar {
   position: fixed;
-  top: 0; /* or use top: 80px; if your header height is tall */
+  top: 0;
   left: 0;
   width: 0%;
   height: 5px;
-  background-color: #007BFF;
+  background-color: var(--accent);
   z-index: 2000;
   transition: width 0.25s ease;
 }
@@ -138,155 +140,145 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Main Content */
+/* === MAIN CONTENT === */
 main {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 30px;
-    gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  gap: 20px;
 }
 
-h2{
-    margin-bottom: 25px;
-    font-size: 1.5rem;
+h2 {
+  margin-bottom: 25px;
+  font-size: 1.6rem;
+  color: var(--primary-strong);
+}
+
+p {
+  margin-bottom: 10px;
+  color: var(--text);
 }
 
 #about {
-    padding: 20px;
-    font-size: 1.2rem;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+  padding: 20px;
+  font-size: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
-p{
-    margin-bottom: 10px;
+/* === SECTIONS === */
+#current_project,
+#completed,
+#completed_class,
+#ongoing_class {
+  padding: 20px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
 }
 
-#current_project {
-    padding: 20px;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-#ongoing_class, #completed_class{
-    padding: 20px;
-}
-
+/* === LISTS === */
 ul {
-    padding: 20px;
+  padding: 20px;
 }
 
 li {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    line-height: 1.5;
-    text-decoration: none;
-    color: #000;
-    font-size: 1.1rem;
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-.current_project h2, .completed_class h2, .ongoing_class h2 {
-    padding-bottom: 10px;
+/* === GRID LAYOUTS === */
+.two_by_two,
+.two_column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
-
-.two_by_two {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    justify-content: space-around;
-    margin-bottom: 20px;
+/* === PROJECT BOXES === */
+.inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS,
+.caption_mask, .graduation, .recruitment, .ICERI, .ISTE_646,
+.capstone, .Website {
+  border: 1px solid var(--primary);
+  background-color: var(--secondary-bg);
+  padding: 20px;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
 }
 
-.inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS , .caption_mask, .graduation, .recruitment, .ICERI, .ISTE_646, .capstone, .Website {
-    border: #555 solid 1px;
-    padding: 20px;
-    background-color: lightblue;
-    border-radius: 5px;
+.inspire:hover, .k-12:hover, .a11y:hover, .mll:hover, .hci_web:hover,
+.iSchool_tour:hover, .TTS:hover, .caption_mask:hover, .graduation:hover,
+.recruitment:hover, .ICERI:hover, .ISTE_646:hover, .capstone:hover, .Website:hover {
+  box-shadow: 0 4px 10px rgba(91, 42, 134, 0.2);
 }
 
-.inspire h3, .k-12 h3, .a11y h3, .mll h3, .hci_web h3, .iSchool_tour h3, .TTS h3, .caption_mask h3, .ISTE_646 h3, .ICERI h3, .graduation h3, .recruitment h3, .capstone h3, .Website h3 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+.inspire h3 a, .a11y h3 a, .hci_web h3 a, .iSchool_tour h3 a, .ICERI h3 a, .ISTE_646 h3 a {
+  color: var(--primary);
 }
 
-.ISTE_646 h3 a, .inspire h3 a, .a11y h3 a, .hci_web h3 a, .iSchool_tour h3 a, .TTS h3 a, .caption_mask h3 a, .graduation h3 a, .ICERI h3 a, .recruitment h3 a, .capstone h3 a {
-    color: #000;
-    text-decoration: none;
+.inspire h3 a:hover, .a11y h3 a:hover, .hci_web h3 a:hover,
+.iSchool_tour h3 a:hover, .ICERI h3 a:hover, .ISTE_646 h3 a:hover {
+  text-decoration: underline;
+  transition: ease 0.3s;
 }
 
-.inspire h3 a:hover, .a11y h3 a:hover, .hci_web h3 a:hover, .iSchool_tour h3 a:hover, .ICERI h3 a:hover, .ISTE_646 h3 a:hover {
-    text-decoration: underline;
-    font-size: 1.6rem;
-    transition: ease 0.5s;
-}
-
+/* === MODAL === */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.6); /* Dim background */
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 800px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background-color: var(--bg);
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .close-btn:hover,
 .close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: var(--primary);
 }
 
-.inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img, .ICERI img, .ISTE_646 img, .capstone img, .Website img{
-    width: 100%;
-    border-radius: 5px;
-}
-
-#completed {
-    padding: 20px;
-}
-
-.two_column {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-around;
-    gap: 40px;
-    margin-bottom: 20px;
+/* === IMAGES & IFRAMES === */
+.inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img,
+.recruitment img, .ICERI img, .ISTE_646 img, .capstone img, .Website img {
+  width: 100%;
+  border-radius: 5px;
 }
 
 iframe {
-    max-width: 600px;
-    width: 100%;
-    height: 350px;
-    border-radius: 5px;
+  max-width: 600px;
+  width: 100%;
+  height: 350px;
+  border-radius: 5px;
 }
 
-/* === Accordion by Year === */
+/* === ACCORDION === */
 .accordion-btn {
-  background-color: #007BFF;
+  background-color: var(--primary);
   color: #fff;
   cursor: pointer;
   padding: 15px 20px;
@@ -301,14 +293,14 @@ iframe {
 
 .accordion-btn:hover,
 .accordion-btn.active {
-  background-color: #0056b3;
+  background-color: var(--primary-strong);
 }
 
 .accordion-panel {
   display: none;
   padding: 0 20px 15px 20px;
-  background-color: #fff;
-  border-left: 4px solid #007BFF;
+  background-color: var(--bg);
+  border-left: 4px solid var(--primary);
   border-radius: 5px;
   margin-bottom: 10px;
   max-height: 0;
@@ -318,46 +310,37 @@ iframe {
 
 .accordion-btn.active + .accordion-panel {
   display: block;
-  max-height: 1000px; /* Large enough for content */
+  max-height: 1000px;
 }
 
-.accordion-panel ul {
-  list-style-type: disc;
-  margin-left: 20px;
-  margin-top: 15px;
-}
-
-.accordion-panel li {
-  margin-bottom: 12px;
-  line-height: 1.6;
-}
-
+/* === PUBLICATIONS === */
 #publications {
   padding: 40px 20px;
-  background-color: #f9fafc;
+  background-color: var(--secondary-bg);
 }
 
 #publications h2 {
   font-size: 1.8rem;
-  margin-bottom: 15px;
+  color: var(--primary-strong);
 }
 
 .section-intro {
   font-size: 1.1rem;
   margin-bottom: 25px;
-  color: #333;
+  color: var(--muted);
 }
 
+/* === VISITORS SECTION === */
 #visitors {
   padding: 40px 20px;
   text-align: center;
-  background-color: #f9fafc;
+  background-color: var(--secondary-bg);
 }
 
 #visitors h2 {
   font-size: 1.8rem;
   margin-bottom: 15px;
-  color: #000;
+  color: var(--primary-strong);
 }
 
 #mapmyvisitors-widget {
@@ -370,192 +353,88 @@ iframe {
 
 .visitor-note {
   font-size: 1rem;
-  color: #333;
+  color: var(--muted);
   margin-top: 10px;
 }
 
+/* === FOOTER === */
 footer {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
+  background-color: var(--primary-strong);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
 
-footer p {
-    color: #fff;
-}
-footer ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px 0;
+footer a {
+  color: #fff;
 }
 
-footer a { 
-    color: #fff;
+footer a:hover {
+  color: var(--accent);
+  text-decoration: underline;
 }
 
-footer #email a:hover {
-    text-decoration: underline;
-}
-
+/* === RESPONSIVE BREAKPOINTS === */
 @media (max-width: 1024px) {
-    /* Main Container */
-    main {
-        max-width: 800px;
-        padding: 20px;
-    }
-
-    /* About Section */
-    #about {
-        padding-left: 20px; /* Adjust padding for smaller screens */
-        max-width: 760px;
-    }
-
-    /* Two Column Grids */
-    .two_by_two, .two_column {
-        grid-template-columns: 1fr; /* Stack items */
-        gap: 20px;
-    }
-
-    /* Individual Items in Grids */
-    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask, .ICERI, .ISTE_646, .Website, .capstone {
-        max-width: 820px;
-        padding: 15px; 
-        padding-left: 20px;
-    }
-
-    /* Header Adjustments */
-    .header_logic {
-        left: 10px;
-        bottom: 10px;
-        gap: 15px;
-        padding: 10px;
-    }
+  main {
+    max-width: 800px;
+    padding: 20px;
+  }
+  .two_by_two, .two_column {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 @media (max-width: 768px) {
-    /* Main Container */
-    main {
-        padding: 15px;
-        max-width: 630px;
-    }
-
-    /* Header Adjustments */
-    .header_logic {
-        left: 10px;
-        bottom: 0;
-        width: 500px;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    header #headshot {
-        max-width: 80px; /* Resize headshot */
-    }
-
-    .logic_text {
-        font-size: 1rem;
-        text-align: left;
-    }
-    #about{
-        max-width: 620px;
-    }
-    /* Grid Adjustments */
-    .two_by_two, .two_column {
-        grid-template-columns: 1fr; 
-        gap: 15px;
-    }
-
-    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask, .ICERI, .ISTE_646 , .Website, .capstone{
-        padding: 10px; /* Reduce padding further */
-        max-width: 600px; /* Ensure items fit screen width */
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    iframe {
-        max-width: 100%;
-        height: 350px;
-    }
-
-    form {
-        max-width: 630px;
-    }
-    
-    form p {
-        max-width: 100%;
-    }
-    footer {
-        font-size: 0.8rem;
-        padding: 10px;
-    }
+  main {
+    padding: 15px;
+    max-width: 630px;
+  }
+  .header_logic {
+    left: 10px;
+    bottom: 0;
+    width: 500px;
+    gap: 10px;
+    padding: 10px;
+  }
+  header #headshot {
+    max-width: 80px;
+  }
+  .logic_text {
+    font-size: 1rem;
+    text-align: left;
+  }
 }
 
 @media (max-width: 480px) {
-    /* Main Container */
-    main {
-        padding: 10px;
-        max-width: 400px;
-    }
-
-    /* Header Adjustments */
-    .header_logic {
-        flex-direction: column; /* Stack elements vertically */
-        gap: 8px;
-        padding-left: 10px;
-        max-width: 280px;
-    }
-
-    header #headshot {
-        max-width: 60px;
-    }
-
-    .logic_text {
-        font-size: 0.9rem;
-        text-align: left;
-    }
-
-    /* Section Adjustments */
-    #about, #current_project, #completed {
-        font-size: 1rem;
-    }
-
-    #about {
-        padding-left: 20px;
-        max-width: 330px;
-    }
-
-    #about h2 {
-        padding-top: 10px;
-    }
-    /* Grid Adjustments */
-    .two_by_two, .two_column {
-        grid-template-columns: 1fr; /* Single-column layout */
-        gap: 10px;
-    }
-
-    .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS, .recruitment, .graduation, .caption_mask, .ICERI, .ISTE_646 {
-        max-width: 330px; 
-        padding: 10px;
-    }
-    .inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img, .recruitment img, .ICERI img, .ISTE_646 img{
-        max-width: 100%;
-        height: auto;
-    }
-
-    iframe {
-        max-width: 100%;
-        height: 200px;
-    }
-
-    footer {
-        font-size: 0.7rem;
-        padding: 8px;
-    }
+  main {
+    padding: 10px;
+    max-width: 400px;
+  }
+  .header_logic {
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 10px;
+    max-width: 280px;
+  }
+  header #headshot {
+    max-width: 60px;
+  }
+  .logic_text {
+    font-size: 0.9rem;
+  }
+  .two_by_two, .two_column {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  iframe {
+    height: 200px;
+  }
+  footer {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
 }

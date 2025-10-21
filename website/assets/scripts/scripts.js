@@ -1,8 +1,7 @@
-// === EmailJS Initialization ===
-emailjs.init('feG2tqK-ZVbP0UPDQ');
 
-// === Form Submission ===
+
 document.addEventListener("DOMContentLoaded", () => {
+
     // === Modal Elements ===
     const resumeModal = document.getElementById("resumeModal");
     const capstoneModal = document.getElementById("capstoneModal");
@@ -11,10 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const resumeLink = document.getElementById("openResume");
     const capstoneLink = document.getElementById("openCapstone");
     const proposalLink = document.getElementById("openProposal");
-
     const closeBtns = document.querySelectorAll(".close-btn");
 
-    // === Open Modal Handlers ===
+    // === Open Modals ===
     resumeLink?.addEventListener("click", (e) => {
         e.preventDefault();
         resumeModal.style.display = "block";
@@ -30,40 +28,50 @@ document.addEventListener("DOMContentLoaded", () => {
         proposalModal.style.display = "block";
     });
 
-    // === Close Modal (X button) ===
+    // === Close Modals ===
     closeBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
-            resumeModal.style.display = "none";
-            capstoneModal.style.display = "none";
-            proposalModal.style.display = "none";
+            [resumeModal, capstoneModal, proposalModal].forEach(modal => {
+                if (modal) modal.style.display = "none";
+            });
         });
     });
 
+    // === Accordion grouped by year ===
     const accBtns = document.querySelectorAll(".accordion-btn");
     accBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
-        const expanded = btn.getAttribute("aria-expanded") === "true";
-        btn.setAttribute("aria-expanded", !expanded);
-        btn.classList.toggle("active");
+            const expanded = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", !expanded);
 
-        const panel = btn.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            // Close others (optional)
-            document.querySelectorAll(".accordion-panel").forEach(p => p.style.display = "none");
-            document.querySelectorAll(".accordion-btn").forEach(b => b.classList.remove("active"));
-            // Open current
-            panel.style.display = "block";
-            btn.classList.add("active");
-        }
+            // Close other panels
+            accBtns.forEach((otherBtn) => {
+                if (otherBtn !== btn) {
+                    otherBtn.classList.remove("active");
+                    otherBtn.setAttribute("aria-expanded", "false");
+                    const otherPanel = otherBtn.nextElementSibling;
+                    if (otherPanel) otherPanel.style.display = "none";
+                }
+            });
+
+            // Toggle current panel
+            const panel = btn.nextElementSibling;
+            if (panel) {
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                    btn.classList.remove("active");
+                } else {
+                    panel.style.display = "block";
+                    btn.classList.add("active");
+                }
+            }
         });
     });
 
-    // === Close Modal on outside click ===
+    // === Close Modal when clicking outside ===
     window.addEventListener("click", (e) => {
-        if (e.target === resumeModal) resumeModal.style.display = "none";
-        if (e.target === capstoneModal) capstoneModal.style.display = "none";
-        if (e.target === proposalModal) proposalModal.style.display = "none";
+        [resumeModal, capstoneModal, proposalModal].forEach((modal) => {
+            if (e.target === modal) modal.style.display = "none";
+        });
     });
 });

@@ -87,7 +87,7 @@ header #headshot {
   display: block;
 }
 
-/* === NAVIGATION BAR === */
+/* === NAVIGATION CONTAINER === */
 #top-nav {
   position: sticky;
   top: 0;
@@ -95,36 +95,66 @@ header #headshot {
   border-bottom: 2px solid var(--primary);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   z-index: 1000;
-  padding: 10px 0;
   width: 100%;
 }
 
-#top-nav ul {
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+}
+
+/* === HAMBURGER BUTTON === */
+#nav-toggle {
+  display: none; /* hidden on desktop */
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 1100;
+  transition: color 0.3s ease;
+}
+
+#nav-toggle:hover {
+  color: var(--primary-strong);
+}
+
+/* === NAV LINKS (DESKTOP) === */
+#nav-links {
   list-style: none;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 25px;
   margin: 0;
-  padding: 0;
+  padding: 10px 0;
 }
 
-#top-nav li {
+#nav-links li {
   display: inline-block;
 }
 
-#top-nav a {
+#nav-links a {
+  text-decoration: none;
   color: var(--primary);
   font-weight: 600;
   font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-#top-nav a:hover,
-#top-nav a:focus {
+#nav-links a:hover,
+#nav-links a:focus {
   color: var(--primary-strong);
+  text-decoration: underline;
 }
 
-/* === SCROLL PROGRESS BAR === */
+/* === PROGRESS BAR === */
 #progress-bar {
   position: fixed;
   top: 0;
@@ -406,6 +436,29 @@ footer a:hover {
   .logic_text {
     font-size: 1rem;
     text-align: left;
+  }
+
+  #nav-toggle {
+    display: block;
+  }
+
+  #nav-links {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var(--bg);
+    border-top: 2px solid var(--primary);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+
+  #nav-links.open {
+    max-height: 350px; /* enough for all links */
+    padding: 10px 0;
   }
 }
 

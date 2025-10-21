@@ -82,4 +82,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrolled = (scrollTop / scrollHeight) * 100;
     document.getElementById("progress-bar").style.width = scrolled + "%";
     });
+
+    // === Responsive Navigation Toggle ===
+    const navToggle = document.getElementById("nav-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    if (navToggle && navLinks) {
+    navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+
+        // Switch icon between ☰ and ✖
+        navToggle.textContent = navLinks.classList.contains("open") ? "✖" : "☰";
+    });
+    }
 });

@@ -4,19 +4,18 @@
   padding: 0;
 }
 
-/* ==== THEME: PLUM + TEAL ==== */
+/* ==== THEME: NAVY + ORANGE ==== */
 :root {
   --bg: #ffffff;
   --text: #111111;
   --muted: #555555;
 
-  --primary: #5b2a86;       /* deep plum – main accent */
-  --primary-strong: #431f63;/* darker hover/focus plum */
-  --secondary-bg: #f3eff7;  /* very pale lilac for boxes */
-  --accent: #128277;        /* teal accent (progress bar) */
-  --border: #e3dff0;
+  --primary: #0b3d91;       /* deep navy – links, headings, nav */
+  --primary-strong: #082e6d;/* darker hover/focus navy */
+  --secondary-bg: #eef2f7;  /* light cool gray-blue for boxes */
+  --accent: #f76902;        /* vibrant orange – progress bar, highlights */
+  --border: #d7dde6;
 }
-
 /* === BODY === */
 body {
   font-family: 'Work Sans', Arial, sans-serif;

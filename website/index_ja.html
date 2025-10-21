@@ -34,7 +34,6 @@
                 <li><a href="#completed">プロジェクト</a></li>
                 <li><a href="#blog">ブログ</a></li>
                 <li><a href="#contact">お問い合わせ</a></li>
-                <li><a href="index.html" class="lang-toggle">English</a></li>
             </ul>
             <div id="progress-bar"></div>
         </div>
@@ -77,6 +76,20 @@
                 <a href="https://scholar.google.com/citations?view_op=list_works&hl=ja&user=dTQrohcAAAAJ">Google Scholar</a>
             </div>
         </section>
+
+        <div id="proposalModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <embed src="assets/documents/Capstone_proposal.pdf#toolbar=0&view=Fit" type="application/pdf" width="100%" height="600px" />
+                </div>
+            </div>
+        <!-- Capstone Modal -->
+        <div id="capstoneModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <embed src="assets/documents/YI_capstone_final_report.pdf#toolbar=0&view=Fit" type="application/pdf" width="100%" height="600px" />
+            </div>
+        </div>
 
         <section id="current_project">
             <h2>進行中の研究</h2>
@@ -154,30 +167,69 @@
         <section id="completed">
             <h2>完了したプロジェクト</h2>
             <div class="two_column">
+
                 <div class="hci_web">
-                    <h3><a href="https://www.rit.edu/computing/school-of-information/research-areas/human-computer-interaction">
-                        RIT HCI研究ページのリニューアル
-                    </a></h3>
-                    <p>RIT情報学部（iSchool）のHCI研究ページを再設計し、デザインとコンテンツを更新しました。</p>
+                <h3><a href="https://www.rit.edu/computing/school-of-information/research-areas/human-computer-interaction">RIT HCI研究ウェブサイト</a></h3>
+                <p>RIT情報学部（iSchool）のHCI研究ページを再設計し、コンテンツとデザインを更新しました。広報・学生エンゲージメント担当コーディネーターとしてこのプロジェクトを主導しました。</p>
+                <a href="https://www.rit.edu/computing/school-of-information/research-areas/human-computer-interaction"><img src="assets/images/hci_rit.png" alt="RITのHCI研究ページのスクリーンショット"></a>
+                </div>
+
+                <div class="iSchool_tour">
+                <h3><a href="https://youtu.be/uMxyb0B0B4g?si=MZyjjPjX0tey4Qp0">iSchoolツアー</a></h3>
+                <p>この動画は、パンデミック中に実施されたバーチャルオープンハウスで、学生や保護者がiSchoolについて理解できるように作成されました。Premiere Proを使用して映像編集を行いました。</p>
+                <iframe src="https://www.youtube.com/embed/uMxyb0B0B4g?si=3YMLUiaqG15DhMSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
                 <div class="inspire">
-                    <h3><a href="https://www.rit.edu/computing/inspire/">INSPIREプロジェクト</a></h3>
-                    <p>障害のある教員を支援するRITのプロジェクトです。HTMLとRITのブランドガイドラインを用いて公式ウェブサイトを構築しました。</p>
+                <h3><a href="https://www.rit.edu/computing/inspire/">INSPIREプロジェクト</a></h3>
+                <p>INSPIREは、障害のある教員の研究・教育を支援するRITの取り組みです。RITのブランドガイドラインと提供デザインツールを活用し、HTMLで公式サイトを設計・構築しました。<a href="https://people.rit.edu/ciiics/INSPIRE/inspire.html">INSPIRE体験ページ</a>では、障害のある教員や障害学生を教える教員の体験を紹介しています。</p>
+                <a href="https://www.rit.edu/computing/inspire/"><img src="assets/images/inspire.jpg" alt="白い背景の中央にInspireの文字"></a>
                 </div>
 
                 <div class="k-12">
-                    <h3>K-12教育における生成AI活用</h3>
-                    <p>リソースが限られた学校向けに、生成AIを活用した教育支援ワークショップや教材を設計しています。</p>
+                <h3>K-12教育における生成AI活用</h3>
+                <p>リソースの限られたK-12学校向けに、教師が無料で利用できる生成AI教材やワークショップを設計中です。AIを活用して教育機会の公平性を高めることを目指しています。</p>
+                <img src="assets/images/k12.jpg" alt="学生が学ぶK-12教室をテーマにしたAIデザイン画像">
+                </div>
+
+                <div class="graduation">
+                <h3><a href="https://youtu.be/m9F6NBYQ3Is?si=fGmqGKYJG7ADXS-I">iSchool卒業ビデオ</a></h3>
+                <p>2022年度卒業生を祝うために制作された動画です。卒業式前に撮影した映像と当日の様子を編集し、Premiere Proで仕上げました。現地に参加できなかった国際的な家族にも好評でした。</p>
+                <iframe src="https://www.youtube.com/embed/m9F6NBYQ3Is?si=uhjUjmNfVQRmccm5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>  
+
+                <div class="recruitment">
+                <h3><a href="https://www.rit.edu/computing/school-of-information/recruiting">iSchool採用ページ</a></h3>
+                <p>当時の学部長を含む新規教員採用を目的としたウェブページを設計しました。現職の教員・職員から情報を収集し、RITブランドガイドラインに沿って1ページ構成のデザインを作成しました。</p>
+                <a href="https://www.rit.edu/computing/school-of-information/recruiting"><img src="assets/images/recruit.png" alt="iSchoolの採用ページのバナー、学生がタイピングしている画像"></a>
+                </div>
+
+                <div class="caption_mask">
+                <h3><a href="https://youtu.be/qNEih6LOJI4?si=umTcGzA9d9sheRdt">ImagineRITでのCaption Maskプロモーション動画</a></h3>
+                <p>ImagineRITで紹介された学生プロジェクト「Caption Mask」の紹介映像です。マイクを使用して録音し、Premiere Proで編集しました。このプロジェクトは地元の病院にも招待され、社会的に大きな貢献を果たしました。</p>
+                <iframe src="https://www.youtube.com/embed/qNEih6LOJI4?si=KTJw5_soWrzV5TGE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+                <div class="TTS">
+                <h3><a href="https://drive.google.com/file/d/1OGEAVLeegdvVbNiR7o33JtlwoUe3aWmM/view?usp=sharing">障害学生支援のための音声読み上げ（TTS）ガイド</a></h3>
+                <p>試験における人的リーダー支援を減らし、リソースを効率的に活用することを目的に、自然音声リーダーを利用した音声読み上げ手順書を作成しました。現在ではDSO（障害学生支援オフィス）の主要リソースとして活用されています。</p>
+                <a href="https://drive.google.com/file/d/1OGEAVLeegdvVbNiR7o33JtlwoUe3aWmM/view?usp=sharing"><img src="assets/images/tts.png" alt="音声読み上げ手順書の1ページ目"></a>
+                </div>
+
+                <div class="ISTE_646">
+                <h3><a href="https://people.rit.edu/yi9686/ISTE646/myhome/index.html">ISTE-646 クラスプロジェクトと課題集</a></h3>
+                <p>ISTE-646はWebテクノロジーと基礎IIの科目で、HTML、CSS、JavaScriptに加え、PHP、React、SQLなどを学びました。個人・グループ両方の課題とプロジェクトをウェブサイトで公開しています。</p>
+                <a href="https://people.rit.edu/yi9686/ISTE646/myhome/index.html"><img src="assets/images/web_dev.jpg" alt="中央にMacBookがあり、ダークテーマのIDEが開かれているモダンオフィスの写真"></a>
                 </div>
 
                 <div class="Website">
-                    <h3>学術用ポートフォリオサイト開発支援</h3>
-                    <p>RITの教員向けに個人Webサイトを設計・開発しました（例：<a href="https://people.rit.edu/ciiics/">C. Beaton教授</a>）。</p>
+                <h3>個人・ポートフォリオサイト開発</h3>
+                <p>RITの教員向けに、学術ポートフォリオサイトの設計と開発を支援しました（例：<a href="https://people.rit.edu/nxsvks/NS_web/">Narmala Shenoy博士</a>、<a href="https://people.rit.edu/ciiics/">Catherine Beaton教授</a>）。2024〜2025年度のプロジェクトです。</p>
+                <img src="assets/images/website.png" alt="コードエディターにウェブサイトのコードが表示されたノートパソコンの画面">
                 </div>
+
             </div>
         </section>
-
         <section id="completed_class">
             <h2>主な履修科目</h2>
             <ul>

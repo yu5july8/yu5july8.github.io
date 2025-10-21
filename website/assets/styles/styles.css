@@ -83,31 +83,55 @@ header #headshot {
     padding: 0; 
 }
 
+/* ===== Navigation Bar ===== */
 #top-nav {
   position: sticky;
   top: 0;
-  background-color: #fff;
-  padding: 10px 0;
+  background-color: #ffffff;
   border-bottom: 1px solid #ddd;
-  z-index: 100;
+  z-index: 1000;
+  padding: 10px 0;
+  width: 100%;
 }
 
 #top-nav ul {
+  list-style: none;
   display: flex;
   justify-content: center;
-  list-style: none;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
 }
 
 #top-nav a {
+  text-decoration: none;
   color: #007BFF;
   font-weight: 600;
-  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-#top-nav a:hover {
+#top-nav a:hover,
+#top-nav a:focus {
   color: #0056b3;
   text-decoration: underline;
+}
+
+#top-nav li {
+  display: inline-block;
+}
+
+/* Scroll Progress Bar */
+#progress-bar {
+  position: fixed;
+  top: 0; /* or use top: 80px; if your header height is tall */
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background-color: #007BFF;
+  z-index: 2000;
+  transition: width 0.25s ease;
 }
 
 html {

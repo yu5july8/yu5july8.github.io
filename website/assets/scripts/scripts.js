@@ -95,4 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
         navToggle.textContent = navLinks.classList.contains("open") ? "✖" : "☰";
     });
     }
+
+    const mapDiv = document.getElementById("mapmyvisitors-widget");
+    if (mapDiv) {
+        const script = document.createElement("script");
+        script.src = "https://mapmyvisitors.com/map.js?d=_fBPrO22oCnoJWxbRToRRsO1X3kggYwIzN65RoJ7iB0&cl=ffffff&w=a";
+        script.async = true;
+        mapDiv.appendChild(script);
+    }
 });

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>岩本 優吾 | Yugo Iwamoto</title>
+    <link rel="icon" href="assets/images/icon.ico">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+    <script src="assets/scripts/scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="assets/images/banner.jpeg" id="banner" alt="緑豊かな自然のバナー画像">
+        <div class="header_logic">
+            <img src="assets/images/pic_yugo.jpeg" id="headshot" alt="岩本優吾の顔写真">
+            <div class="logic_text">
+                <h1>岩本 優吾</h1>
+                <p>HCI研究者・Web開発者</p>
+            </div>    
+        </div>
+        <div class="lang-switch">
+            <a href="index.html" class="lang-btn">English</a>
+        </div>
+    </header>
+
+    <nav id="top-nav">
+        <div class="nav-container">
+            <button id="nav-toggle" aria-label="ナビゲーション切り替え">☰</button>
+            <ul id="nav-links">
+                <li><a href="#about">自己紹介</a></li>
+                <li><a href="#current_project">現在の研究</a></li>
+                <li><a href="#publications">論文・発表</a></li>
+                <li><a href="#completed">プロジェクト</a></li>
+                <li><a href="#blog">ブログ</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+                <li><a href="index.html" class="lang-toggle">English</a></li>
+            </ul>
+            <div id="progress-bar"></div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>岩本優吾について</h2>
+            <p>
+                私はロチェスター工科大学（RIT）でHCI（Human-Computer Interaction）の修士号を取得した研究者として、
+                アクセシビリティとイノベーションを結びつけるインクルーシブテクノロジーの研究に取り組んでいます。
+                ユーザー中心設計、ユーザビリティテスト、そして生成AIを活用したデジタル公平性の向上を主な研究テーマとしています。
+                最近のキャップストーンプロジェクトでは、聴者とろう者・難聴者（d/DHH）の間のコミュニケーションギャップを、
+                音声認識とタイピング入力を組み合わせたマルチモーダル設計で橋渡しする研究を行いました。
+                この研究は現在、CHI 2026に投稿中です。<a href="#" id="openCapstone">キャップストーンレポートを見る</a>
+            </p>
+
+            <p>
+                研究、広報・マーケティング、Webデザイン、地域コミュニティ連携、カスタマーサービスなど多様な職務経験を活かし、
+                ユーザー調査、フォーカスグループ、アクセシビリティデザイン、批判的分析などの技術的・研究的スキルを有しています。
+                英語と日本語のバイリンガルとして、国際的な教育・サービス経験を活かしたグローバルな視点を持っています。
+            </p>
+
+            <p>現在、以下の分野で新たな機会を探しています：</p>
+            <ul>
+                <li>人間参加型研究、HCI、アクセシビリティ、Human-Centered AI、およびAI×教育に関する研究（博士課程含む）</li>
+                <li>フロントエンド／バックエンドスキルを活かしたWeb開発・アプリケーション開発</li>
+                <li>マーケティング、コミュニケーション、グラフィックデザイン関連の職務</li>
+                <li>アクセシビリティ監査・インクルーシブデザイン戦略のコンサルティング</li>
+            </ul>
+
+            <p>
+                テクノロジー、包摂性、そして人間体験の交差点で活動し、
+                多様なコミュニティに実際の変化をもたらすプロジェクトを推進しています。
+                アクセシブルで人間中心のテクノロジーに情熱を持つ方は、ぜひつながりましょう。
+            </p>
+
+            <div class="resume">
+                <a href="#" id="openResume">履歴書を見る</a>
+                <a href="https://scholar.google.com/citations?view_op=list_works&hl=ja&user=dTQrohcAAAAJ">Google Scholar</a>
+            </div>
+        </section>
+
+        <section id="current_project">
+            <h2>進行中の研究</h2>
+            <div class="two_by_two">
+                <div class="a11y">
+                    <h3><a href="https://docs.google.com/document/d/1_WSNlpqzUg8NKMjk7p_NsDK5dTjNqIB0Uj93U2zrNKk/edit?usp=sharing">
+                        A11y：生成AIによる科学図版の代替テキスト改善
+                    </a></h3>
+                    <p>
+                        このプロジェクトはNSF支援のAWARE-AIプログラムの一環で、私はリーダーを務めています。
+                        チームでは、生成AIを活用して科学論文の図表により良い代替テキストを生成する方法の有効性を検証しています。
+                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=ja&user=dTQrohcAAAAJ&citation_for_view=dTQrohcAAAAJ:u-x6o8ySG0sC">
+                            WIP／ポスター発表
+                        </a>
+                    </p>
+                </div>
+
+                <div class="capstone">
+                    <h3><a href="#" id="openCapstone">
+                        Bridge Communications：聴者とろう者・難聴者のためのマルチモーダル・コミュニケーションツール
+                    </a></h3>
+                    <p>
+                        このキャップストーン研究では、
+                        <a href="https://backend-new-pmbf.onrender.com/">キオスク型マルチモーダル会話ツール</a>
+                        を設計し、音声入力とタイピング入力を組み合わせた使いやすさとアクセシビリティを調査しました。
+                        この研究はCHI 2026に投稿済みです。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>論文・発表</h2>
+            <p class="section-intro">
+                アクセシビリティ、インクルーシブデザイン、ヒューマンセンタードAIに関する代表的な論文・発表を掲載しています。
+            </p>
+
+            <div class="accordion">
+                <button class="accordion-btn">2025年の論文・発表</button>
+                <div class="accordion-panel">
+                    <ul>
+                        <li><strong>Y. Iwamoto</strong>, M. Raees, J. Heard, and G. Tigwell. 2025.
+                            <em>Exploring Generative AI to Support Disability Service Professionals in Writing Image Descriptions for HCI Science Figures.</em>
+                            <em>ACM SIGACCESS ASSETS '25</em>, ACM, New York.
+                            <a href="https://doi.org/10.1145/3663547.3759763">DOIリンク</a>
+                        </li>
+                        <li><strong>Y. Iwamoto</strong>, C. Beaton, and A. Roberts. 2025.
+                            <em>Digital Literacy and AI in Underfunded Schools.</em>
+                            <em>IEEE STEM Education Conference（ワークショップ）</em>, プリンストン大学.
+                        </li>
+                        <li><strong>Y. Iwamoto</strong>, C. Beaton, and A. Roberts. 2025.
+                            <em>Importance of Diverse Role Models in Education.</em>
+                            <em>IEEE Integrated STEM Education Conference（フルペーパー）</em>, プリンストン大学.
+                        </li>
+                        <li><strong>Y. Iwamoto</strong> and M. Raees. 2025.
+                            <em>A11y: Improving Alt-Text for Science Figures with GenAI.</em>
+                            <em>RIT Graduate Showcase</em>（ポスター・口頭発表）.
+                        </li>
+                    </ul>
+                </div>
+
+                <button class="accordion-btn">2024年の論文・発表</button>
+                <div class="accordion-panel">
+                    <ul>
+                        <li>C. Beaton, E. Weeden, A. Roberts, and <strong>Y. Iwamoto</strong>. 2024.
+                            <em>Being Included: Institute Benefits in Supporting Inclusivity for Disabled Faculty in Higher Education.</em>
+                            <em>ICERI2024 Proceedings</em>, pp. 5648–5654.
+                            <a href="https://library.iated.org/view/BEATON2024BEI">論文を見る</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="completed">
+            <h2>完了したプロジェクト</h2>
+            <div class="two_column">
+                <div class="hci_web">
+                    <h3><a href="https://www.rit.edu/computing/school-of-information/research-areas/human-computer-interaction">
+                        RIT HCI研究ページのリニューアル
+                    </a></h3>
+                    <p>RIT情報学部（iSchool）のHCI研究ページを再設計し、デザインとコンテンツを更新しました。</p>
+                </div>
+
+                <div class="inspire">
+                    <h3><a href="https://www.rit.edu/computing/inspire/">INSPIREプロジェクト</a></h3>
+                    <p>障害のある教員を支援するRITのプロジェクトです。HTMLとRITのブランドガイドラインを用いて公式ウェブサイトを構築しました。</p>
+                </div>
+
+                <div class="k-12">
+                    <h3>K-12教育における生成AI活用</h3>
+                    <p>リソースが限られた学校向けに、生成AIを活用した教育支援ワークショップや教材を設計しています。</p>
+                </div>
+
+                <div class="Website">
+                    <h3>学術用ポートフォリオサイト開発支援</h3>
+                    <p>RITの教員向けに個人Webサイトを設計・開発しました（例：<a href="https://people.rit.edu/ciiics/">C. Beaton教授</a>）。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="completed_class">
+            <h2>主な履修科目</h2>
+            <ul>
+                <li><strong>ISTE646</strong> – Web技術開発II：バックエンド開発を中心に学習</li>
+                <li><strong>HCIN795</strong> – HCI修士キャップストーンプロジェクト：<a href="#" id="openProposal">キャップストーン提案書を見る</a></li>
+                <li><strong>ISTE645</strong> – Web技術開発I：HTML、CSS、JavaScriptなどのフロントエンド技術を習得</li>
+                <li><strong>HCIN610</strong> – HCI基礎：ヒューマンコンピュータインタラクション理論</li>
+                <li><strong>HCIN630</strong> – ユーザビリティテスト：テスト方法と報告書作成</li>
+                <li><strong>HCIN620</strong> – 情報とインタラクションデザイン：情報構造とデータに基づく設計</li>
+                <li><strong>HCIN720</strong> – ウェアラブル・IoTプロトタイピング：ArduinoおよびC++を用いた開発</li>
+                <li><strong>REL430</strong> – 観光マーケティング：観光産業におけるマーケティング戦略</li>
+            </ul>
+        </section>
+
+        <section id="blog">
+            <h2>ブログ</h2>
+            <p class="section-intro">
+                まもなくアクセシビリティ、Human-AIインタラクション、インクルーシブデザインに関する考察を公開予定です。
+            </p>
+            <p>
+                新着記事は <a href="https://medium.com/@yi9686" target="_blank" rel="noopener">Medium</a> でもご覧いただけます。
+            </p>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>&copy; 2025 岩本 優吾</p>
+        <p><a href="mailto:yi9686@rit.edu">yi9686@rit.edu</a></p>
+        <a href="https://www.linkedin.com/in/yugo-iwamoto1/"><img src="assets/images/In-Blue-34.png" alt="LinkedInロゴ"></a>
+    </footer>
+</body>
+</html>

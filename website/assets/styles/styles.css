@@ -74,6 +74,10 @@ header {
   color: #fff;
 }
 
+.logic_text p {
+    color: #fff
+}
+
 header #headshot {
   grid-area: 1 / 1 / 2 / 2;
   max-width: 130px;

@@ -47,11 +47,12 @@ body {
 
 /* Improve link readability and focus parity */
 a {
+  color: var(--primary);
   text-decoration-thickness: .08em;
   text-underline-offset: .15em;
   text-decoration-skip-ink: auto;
 }
-a:focus-visible { text-decoration-line: underline; }
+a:focus-visible { text-decoration-line: underline ; }
 
 
 /* === HEADER === */
@@ -113,6 +114,11 @@ header #headshot {
   z-index: 20;
 }
 
+.lang-btn:hover {
+  background-color: var(--primary);
+  color: #fff;
+  transform: scale(1.05);
+}
 .lang-btn {
   background-color: rgba(0, 0, 0, 0.7);
   color: #ffffff;
@@ -122,12 +128,6 @@ header #headshot {
   text-decoration: none;
   font-size: 0.95rem;
   transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.lang-btn:hover {
-  background-color: #007bff; /* or your theme accent color */
-  color: #fff;
-  transform: scale(1.05);
 }
 
 /* === NAVIGATION CONTAINER === */
@@ -704,4 +704,69 @@ footer img {
   .modal { outline: 2px solid CanvasText; }
   /* Prevent the UA from flattening custom colors where needed */
   .lang-btn, .accordion-btn, .close-btn { forced-color-adjust: none; }
+}
+
+/* === Skip link (matches <a class="skip-link" href="#main">...) === */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  background: #000;
+  color: #fff;
+  padding: .6rem 1rem;
+  border-radius: .5rem;
+  z-index: 3000;
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+/* === Touch target sizing for common controls (2.5.5 AA) === */
+.lang-btn,
+#nav-toggle,
+.accordion-btn,
+.close-btn,
+nav a {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* === Modal focus affordances (pairs with accessible HTML) === */
+.modal-content:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* If your close control is a <button class="close-btn">×</button> */
+.close-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: .5rem;
+  line-height: 1;
+  padding: .25rem .5rem;
+  color: inherit;           /* keep current color */
+  cursor: pointer;
+}
+.close-btn:focus-visible {
+  border-color: var(--focus);
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* === Accordion: honor [hidden] attribute from JS === */
+.accordion-panel[hidden] {
+  display: none !important;
+  max-height: 0 !important;
+}
+
+/* === Reduced motion preference (2.3.3) === */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .lang-btn:hover { transform: none; }
+  #nav-links.open { animation: none; }
 }

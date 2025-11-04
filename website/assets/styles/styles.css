@@ -448,29 +448,60 @@ iframe {
   text-decoration: underline;
 }
 
+/* === FOOTER === */
 footer {
-  background-color: #041e54;       /* deeper navy (~7.2 : 1 vs white) */
+  background-color: #041e54; /* deep navy for high contrast */
   color: #ffffff;
   text-align: center;
-  padding: 20px;
+  padding: 25px 15px;
   font-size: 0.9rem;
+  line-height: 1.5;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
 
+/* Footer links (email + social) */
 footer a {
   color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 footer a:hover {
-  color: var(--accent);            /* vibrant orange pop */
+  color: var(--accent); /* bright orange hover */
   text-decoration: underline;
 }
 
+/* Social icons container */
+footer .social-links {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Icon sizing + alignment */
 footer img {
   width: 24px;
-  height: auto;
-  margin-left: 10px;
+  height: 24px;
+  object-fit: contain;
   vertical-align: middle;
+  border: 0;
+  background: transparent;
+}
+
+/* Optional: make all logos visually cohesive */
+footer img[alt*="LinkedIn"],
+footer img[alt*="ORCID"] {
+  border-radius: 4px;
+}
+
+/* Dark mode variant */
+@media (prefers-color-scheme: dark) {
+  footer {
+    background-color: #010b2a; /* slightly darker navy */
+    color: #f2f2f2;
+  }
 }
 
 /* === RESPONSIVE BREAKPOINTS === */

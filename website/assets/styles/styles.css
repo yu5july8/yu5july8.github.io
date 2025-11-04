@@ -448,10 +448,9 @@ iframe {
   text-decoration: underline;
 }
 
-/* === FOOTER === */
 footer {
-  background-color: var(--primary-strong);
-  color: #fff;
+  background-color: #041e54;       /* deeper navy (~7.2 : 1 vs white) */
+  color: #ffffff;
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
@@ -459,19 +458,12 @@ footer {
 }
 
 footer a {
-  color: #fff;
+  color: #ffffff;
 }
 
 footer a:hover {
-  color: var(--accent);
+  color: var(--accent);            /* vibrant orange pop */
   text-decoration: underline;
-}
-
-footer img {
-  width: 24px;
-  height: auto;
-  margin-left: 10px;
-  vertical-align: middle;
 }
 
 /* === RESPONSIVE BREAKPOINTS === */

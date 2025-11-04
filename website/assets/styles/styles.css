@@ -466,6 +466,13 @@ footer a:hover {
   text-decoration: underline;
 }
 
+footer img {
+  width: 24px;
+  height: auto;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
 /* === RESPONSIVE BREAKPOINTS === */
 @media (max-width: 1024px) {
   main {

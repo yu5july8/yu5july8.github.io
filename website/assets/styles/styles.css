@@ -486,6 +486,16 @@ footer img {
   }
 }
 
+@media (min-width: 769px) {
+  #nav-toggle {
+    display: none !important;
+  }
+  #nav-links {
+    display: flex !important;
+  }
+}
+
+
 /* === TABLET (max-width: 768px) === */
 @media (max-width: 768px) {
 

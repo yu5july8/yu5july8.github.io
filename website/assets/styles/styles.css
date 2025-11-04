@@ -459,6 +459,16 @@ footer {
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
 
+footer p {
+  color: #ffffff;                 /* make all footer text white */
+  margin: 4px 0;
+}
+
+footer p:first-of-type {
+  color: #f2f2f2;                 /* slightly lighter gray-white for © line */
+  font-weight: 500;
+}
+
 /* Footer links (email + social) */
 footer a {
   color: #ffffff;

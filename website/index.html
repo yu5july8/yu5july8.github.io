@@ -1,262 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yugo Iwamoto</title>
-    <link rel="icon" href="assets/images/icon.ico">
-    <link rel="stylesheet" href="assets/styles/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
-    <script src="assets/scripts/scripts.js" defer></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-03L00K9HQ9"></script>
-    <script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yugo Iwamoto</title>
+  <link rel="icon" href="assets/images/icon.ico"/>
+  <link rel="stylesheet" href="assets/styles/styles.css"/>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <script src="assets/scripts/scripts.js" defer></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-03L00K9HQ9"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-03L00K9HQ9');
-    </script>
+    gtag("js", new Date());
+    gtag("config", "G-03L00K9HQ9");
+  </script>
 </head>
 <body>
-    <header>
-        <img src="assets/images/banner.jpeg" id="banner" alt="banner with the green nature">
-        <div class="header_logic">
-            <img src="assets/images/pic_yugo.jpeg" id="headshot" alt="Yugo Iwamoto's headshot">
-            <div class="logic_text">
-                <h1>Yugo Iwamoto</h1>
-                <p>HCI Researcher & Web Developer</p>
-            </div>    
+  <!-- Skip to content (matches CSS .skip-link and main#main) -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Progress bar (fixed by CSS) -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <header>
+    <img src="assets/images/banner.jpeg" id="banner" alt="" />
+    <div class="header_logic">
+      <img src="assets/images/pic_yugo.jpeg" id="headshot" alt="Headshot of Yugo Iwamoto"/>
+      <div class="logic_text">
+        <h1>Yugo Iwamoto</h1>
+        <p>HCI Researcher &amp; Web Developer</p>
+      </div>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="lang-switch">
+      <a href="index_ja.html" class="lang-btn" lang="ja">日本語</a>
+    </div>
+  </header>
+
+  <nav id="top-nav" aria-label="Primary">
+    <div class="nav-container">
+      <!-- Accessible hamburger -->
+      <button id="nav-toggle"
+              aria-label="Toggle navigation"
+              aria-controls="nav-links"
+              aria-expanded="false">☰</button>
+
+      <ul id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#current_project">Current Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#completed">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <!-- FIX: #contant → #contact -->
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section id="about">
+      <h2>About Yugo</h2>
+      <p>
+        As a passionate Human-Computer Interaction (HCI) researcher with an M.S. in HCI from the Rochester Institute of Technology (RIT), I specialize in bridging accessibility and innovation through inclusive technology. My work focuses on user-centered design, usability testing, and emerging tools like generative AI to improve digital equity. My recent capstone project explores bridging communication gaps between hearing and Deaf/Hard-of-Hearing (d/DHH) communities through multimodal speech and typing recognition — combining technical problem-solving with social impact. This work is under review in CHI 2026.
+        <a href="#" id="openCapstone">View capstone report (PDF)</a>
+      </p>
+      <p>
+        With a diverse professional background across research, communications and marketing, web design, community engagement, and customer service roles, I bring technical skills and research expertise, such as user studies, focus groups, accessibility design, and critical analysis. Global Perspective: Multilingual proficiency in English and Japanese, combined with international experience in education and customer service.
+      </p>
+      <p>I am currently seeking new opportunities in the following areas:</p>
+      <ul>
+        <li>Research in HCI, accessibility, human-centered AI, and learning (including PhD roles)</li>
+        <li>Web development roles leveraging front-end and back-end skills</li>
+        <li>Marketing, communications, and graphic design roles</li>
+        <li>Accessibility audits and inclusive design consulting</li>
+      </ul>
+      <p>
+        I thrive at the intersection of technology, inclusivity, and human experience, driving projects that make a tangible impact on diverse communities. Let’s connect if you share a passion for accessible and human-centered technologies.
+      </p>
+
+      <div class="resume">
+        <a href="#" id="openResume">View CV (PDF)</a>
+        <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=dTQrohcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+
+      <!-- Resume Modal (accessible) -->
+      <div id="resumeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="resumeTitle">
+        <div class="modal-content" tabindex="-1">
+          <h2 id="resumeTitle">Yugo’s CV</h2>
+          <button class="close-btn" type="button" aria-label="Close dialog">×</button>
+          <embed src="assets/documents/Yugo_Iwamoto_CV.pdf#toolbar=0&view=Fit"
+                 type="application/pdf" width="100%" height="600px" />
         </div>
-        <!-- Language Toggle -->
-        <div class="lang-switch">
-        <a href="index_ja.html" class="lang-btn">日本語</a>
+      </div>
+    </section>
+
+    <!-- Capstone Proposal Modal (accessible) -->
+    <div id="proposalModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="proposalTitle">
+      <div class="modal-content" tabindex="-1">
+        <h2 id="proposalTitle">Capstone Proposal</h2>
+        <button class="close-btn" type="button" aria-label="Close dialog">×</button>
+        <embed src="assets/documents/Capstone_proposal.pdf#toolbar=0&view=Fit"
+               type="application/pdf" width="100%" height="600px" />
+      </div>
+    </div>
+
+    <!-- Capstone Report Modal (accessible) -->
+    <div id="capstoneModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="capstoneTitle">
+      <div class="modal-content" tabindex="-1">
+        <h2 id="capstoneTitle">Capstone Final Report</h2>
+        <button class="close-btn" type="button" aria-label="Close dialog">×</button>
+        <embed src="assets/documents/YI_capstone_final_report.pdf#toolbar=0&view=Fit"
+               type="application/pdf" width="100%" height="600px" />
+      </div>
+    </div>
+
+    <section id="current_project">
+      <h2>On Going Projects</h2>
+
+      <div class="two_by_two">
+        <div class="a11y">
+          <h3>
+            <a href="https://docs.google.com/document/d/1_WSNlpqzUg8NKMjk7p_NsDK5dTjNqIB0Uj93U2zrNKk/edit?usp=sharing" target="_blank" rel="noopener">
+              A11y: Improving Alternative Texts for Science Figures With Generative AI
+            </a>
+          </h3>
+          <p>
+            This is the AWARE-AI NSF research, and I lead this project. My team is designing studies investigating the effectiveness of utilizing generative AI to generate better alternative texts for science articles.
+            <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dTQrohcAAAAJ&citation_for_view=dTQrohcAAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener">ASSETS WIP/Poster</a>
+          </p>
+          <a href="https://docs.google.com/document/d/1_WSNlpqzUg8NKMjk7p_NsDK5dTjNqIB0Uj93U2zrNKk/edit?usp=sharing" target="_blank" rel="noopener">
+            <img src="assets/images/a11y.jpg" alt="Word 'A11y' centered on a dark background"/>
+          </a>
         </div>
-    </header>
-    <nav id="top-nav">
-        <div class="nav-container">
-            <button id="nav-toggle" aria-label="Toggle navigation">
-            ☰
-            </button>
-        <ul id="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#current_project">Current Projects</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#completed">Projects</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#contant">Contact</a></li>
-        </ul>
-        <div id="progress-bar"></div>
-    </nav>
-    <main>
-        <section id="about">
-            <h2>About Yugo</h2>
-            <p>As a passionate Human-Computer Interaction (HCI) researcher with an M.S. in HCI from the Rochester Institute of Technology (RIT), I specialize in bridging accessibility and innovation through inclusive technology. My work focuses on user-centered design, usability testing, and emerging tools like generative AI to improve digital equity. My recent capstone project explores bridging communication gaps between hearing and Deaf/Hard-of-Hearing (d/DHH) communities through multimodal speech and typing recognition — combining technical problem-solving with social impact. This work is under review in CHI 2026. <a href="#" id="openCapstone">View Yugo’s Capstone report</a></p>
-            <p>With a diverse professional background across research, communications and marketing, web design, community engagement, and customer service roles, I bring technical skills and research expertise, such as user studies, focus groups, accessibility design, and critical analysis. Global Perspective: Multilingual proficiency in English and Japanese, combined with international experience in education and customer service.</p>
-            <p>I am currently seeking new opportunities in the following areas:</p>
-            <ul>
-                <li>Research opportunities in Human-Subject, HCI, accessibility, Human-Centered AI and AI and learning including PhD positions starting soon</li>
-                <li>Web development roles leveraging front-end and back-end skills or Application Developers</li>
-                <li>Marketing, Communications, graphic design roles</li>
-                <li>Consulting on accessibility audits and inclusive design strategies</li>
-            </ul>
-            <p>I thrive at the intersection of technology, inclusivity, and human experience, driving projects that make a tangible impact on diverse communities. Let’s connect if you share a passion for accessible and human-centered technologies. </p>
-            <div class="resume">
-                <a href="#" id="openResume">View Yugo's CV</a>
-                <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=dTQrohcAAAAJ">Google Scholar</a>
-            </div>
-            <div id="resumeModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn">&times;</span>
-                    <embed src="assets/documents/Yugo_Iwamoto_CV.pdf#toolbar=0&view=Fit" type="application/pdf" width="100%" height="600px" />
-                </div>
-            </div>
-        </section>
-        <div id="proposalModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn">&times;</span>
-                    <embed src="assets/documents/Capstone_proposal.pdf#toolbar=0&view=Fit" type="application/pdf" width="100%" height="600px" />
-                </div>
-            </div>
-        <!-- Capstone Modal -->
-        <div id="capstoneModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <embed src="assets/documents/YI_capstone_final_report.pdf#toolbar=0&view=Fit" type="application/pdf" width="100%" height="600px" />
-            </div>
+
+        <div class="capstone">
+          <h3>
+            <a href="#" id="openCapstone2">
+              Bridge Communications: Kiosk Multimodal Communications Tool for d/Deaf and Hard of Hearing and Hearing
+            </a>
+          </h3>
+          <p>
+            The capstone project where I designed a
+            <a href="https://backend-new-pmbf.onrender.com/" target="_blank" rel="noopener">Kiosk Multimodal Communication Tool</a>
+            to investigate the usability and accessibility of multimodal inputs (speaking and typing) for d/DHH and hearing individuals. This work has been submitted to CHI 2026.
+          </p>
+          <a href="#" id="openCapstoneImg">
+            <img src="assets/images/capstone.png" alt="Illustration of one person speaking with sound waves and another reading text"/>
+          </a>
         </div>
-      
-        <section id="current_project">
-            <h2>On Going Projects</h2>
-            <div class="two_by_two">
-                <div class="a11y">
-                    <h3><a href="https://docs.google.com/document/d/1_WSNlpqzUg8NKMjk7p_NsDK5dTjNqIB0Uj93U2zrNKk/edit?usp=sharing">A11y: Improving Alternative Texts for Science Figures With Generative AI</a></h3>
-                    <p>This is the AWARE-AI NSF research, and I lead this project. My team is designing studies investigating the effectiveness of utilizing the generative AI to generate better alternative texts for science articles. <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dTQrohcAAAAJ&citation_for_view=dTQrohcAAAAJ:u-x6o8ySG0sC">WIP/Poster</a></p>
-                    <a href="https://docs.google.com/document/d/1_WSNlpqzUg8NKMjk7p_NsDK5dTjNqIB0Uj93U2zrNKk/edit?usp=sharing"><img src="assets/images/a11y.jpg" alt="A11y is in middle as word with a black background"></a>
-                </div>
-                <div class="capstone">
-                    <h3><a href="#" id="openCapstone">Bridge Communications: Kiosk Multimodal Communications Tool for d/Deaf and Hard of Hearing and Hearing</a></h3>
-                    <p>The capstone project, where I designed <a href="https://backend-new-pmbf.onrender.com/">Kiosk Multimodal Communcation Tool</a> to investigate the usability and accessibility multimodal inputs (speaking and typing) for d/DHH and hearing individuals. This work has submitted to CHI 2026.</p>
-                    <a href="#"><img src="assets/images/capstone.png" alt="an illustration of a person speaking with sound waves and another person reading the text"></a>
-                </div>
-            </div>
-            <div id="capstoneModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn">&times;</span>
-                    <embed src="assets/documents/YI_capstone_final_report.pdf#toolbar=0&view=Fit" type="application/pdf" width="100%" height="600px" />
-                </div>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        
-        <section id="publications">
-            <h2>Publications & Presentations</h2>
-            <p class="section-intro">
-                Selected publications and presentations reflecting ongoing work in accessibility, inclusive design,
-                and human-centered AI. Expand a year to see details.
-            </p>
+    <section id="publications">
+      <h2>Publications &amp; Presentations</h2>
+      <p class="section-intro">
+        Selected publications and presentations reflecting ongoing work in accessibility, inclusive design,
+        and human-centered AI. Expand a year to see details.
+      </p>
 
-            <div class="accordion">
+      <div class="accordion">
+        <!-- 2025 -->
+        <button class="accordion-btn" aria-expanded="false">2025 Publications &amp; Presentations</button>
+        <div class="accordion-panel" hidden>
+          <ul>
+            <li>
+              <strong>Y. Iwamoto</strong>, M. Raees, J. Heard, and G. Tigwell. 2025.
+              <em>Exploring Generative AI to Support Disability Service Professionals in Writing Image Descriptions for HCI Science Figures.</em>
+              In <em>ASSETS ’25</em>. ACM, New York, NY, USA.
+              <a href="https://doi.org/10.1145/3663547.3759763" target="_blank" rel="noopener">DOI</a>
+            </li>
+            <li>
+              <strong>Y. Iwamoto</strong>, C. Beaton, and A. Roberts. 2025.
+              <em>Digital Literacy and AI in Underfunded Schools.</em> In <em>IEEE STEM Education Conference (Workshop)</em>, Princeton University. IEEE.
+              <a href="https://doi.org/10.1109/ISEC64801.2025.11147317" target="_blank" rel="noopener">DOI</a>
+            </li>
+            <li>
+              <strong>Y. Iwamoto</strong>, C. Beaton, and A. Roberts. 2025.
+              <em>Importance of Diverse Role Models in Education.</em> In <em>IEEE Integrated STEM Education Conference (Full Paper)</em>, Princeton University. IEEE.
+            </li>
+            <li>
+              <strong>Y. Iwamoto</strong> and M. Raees. 2025.
+              <em>A11y: Improving Alt-Text for Science Figures with GenAI.</em>
+              Poster &amp; Oral Presentation, <em>RIT Graduate Showcase</em>.
+            </li>
+          </ul>
+        </div>
 
-                <!-- 2025 Section -->
-                <button class="accordion-btn">2025 Publications & Presentations</button>
-                <div class="accordion-panel">
-                <ul>
-                    <li>
-                    <strong>Y. Iwamoto</strong>, M. Raees, J. Heard, and G. Tigwell. 2025.
-                    <em>Exploring Generative AI to Support Disability Service Professionals in Writing Image Descriptions for HCI Science Figures.</em>
-                    In <em>Proceedings of the 28th International ACM SIGACCESS Conference on Computers and Accessibility (ASSETS ’25)</em>.
-                    ACM, New York, NY, USA.
-                    <a href="https://doi.org/10.1145/3663547.3759763" target="_blank" rel="noopener">DOI Link</a>
-                    </li>
-                    <li>
-                    <strong>Y. Iwamoto</strong>, C. Beaton, and A. Roberts. 2025.
-                    <em>Digital Literacy and AI in Underfunded Schools.</em>
-                    In <em>IEEE STEM Education Conference (Workshop)</em>, Princeton University. IEEE.
-                    <a href="https://doi.org/10.1109/ISEC64801.2025.11147317">DOI Link</a>
-                    </li>
-                    <li>
-                    <strong>Y. Iwamoto</strong>, C. Beaton, and A. Roberts. 2025.
-                    <em>Importance of Diverse Role Models in Education.</em>
-                    In <em>IEEE Integrated STEM Education Conference (Full Paper)</em>, Princeton University. IEEE.
-                    </li>
-                    <li>
-                    <strong>Y. Iwamoto</strong> and M. Raees. 2025.
-                    <em>A11y: Improving Alt-Text for Science Figures with GenAI.</em>
-                    Poster &amp; Oral Presentation, <em>RIT Graduate Showcase</em>, Rochester Institute of Technology.
-                    </li>
-                </ul>
-                </div>
+        <!-- 2024 -->
+        <button class="accordion-btn" aria-expanded="false">2024 Publications &amp; Presentations</button>
+        <div class="accordion-panel" hidden>
+          <ul>
+            <li>
+              C. Beaton, E. Weeden, A. Roberts, and <strong>Y. Iwamoto</strong>. 2024.
+              <em>Being Included: Institute Benefits in Supporting Inclusivity for Disabled Faculty in Higher Education.</em>
+              In <em>ICERI2024 Proceedings</em>, pp. 5648–5654.
+              <a href="https://library.iated.org/view/BEATON2024BEI" target="_blank" rel="noopener">View Publication</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-                <!-- 2024 Section -->
-                <button class="accordion-btn">2024 Publications & Presentations</button>
-                <div class="accordion-panel">
-                <ul>
-                    <li>
-                    C. Beaton, E. Weeden, A. Roberts, and <strong>Y. Iwamoto</strong>. 2024.
-                    <em>Being Included: Institute Benefits in Supporting Inclusivity for Disabled Faculty in Higher Education.</em>
-                    In <em>ICERI2024 Proceedings</em>, pp. 5648–5654.
-                    <a href="https://library.iated.org/view/BEATON2024BEI" target="_blank" rel="noopener">View Publication</a>
-                    </li>
-                </ul>
-                </div>
+    <section id="completed">
+      <h2>Completed Projects</h2>
+      <div class="two_column">
+        <div class="hci_web">
+          <h3><a href="https://www.rit.edu/computing/school-of-information/research-areas/human-computer-interaction" target="_blank" rel="noopener">RIT HCI Research Website</a></h3>
+          <p>I revamped and updated the design and contents of the HCI research page for the School of Information (the iSchool).</p>
+          <a href="https://www.rit.edu/computing/school-of-information/research-areas/human-computer-interaction" target="_blank" rel="noopener">
+            <img src="assets/images/hci_rit.png" alt="Screenshot of the RIT HCI research page"/>
+          </a>
+        </div>
 
-            </div>
-        </section>
-        <section id="completed">
-            <h2>Completed Projects</h2>
-            <div class="two_column">
-                <div class="hci_web">
-                    <h3><a href="https://www.rit.edu/computing/school-of-information/research-areas/human-computer-interaction">RIT HCI Research Website</a></h3>
-                    <p>I revamped and updated the design and contents of HCI research page for the School of Information (the iSchool) while I was a Coordinator of Communications and Student Expeirence.</p>
-                    <a href="https://www.rit.edu/computing/school-of-information/research-areas/human-computer-interaction"><img src="assets/images/hci_rit.png" alt="screenshot of RIT HCI research page"></a>
-                </div>
-                <div class="iSchool_tour">
-                    <h3><a href="https://youtu.be/uMxyb0B0B4g?si=MZyjjPjX0tey4Qp0">The iSchool Tour</a></h3>
-                    <p>This video was published for perspective students and families to have an idea about the iSchool while they participated in the virtual open house during pandemic. I used Premiure Pro to edit the recordings.</p>
-                    <iframe src="https://www.youtube.com/embed/uMxyb0B0B4g?si=3YMLUiaqG15DhMSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="inspire">
-                    <h3><a href="https://www.rit.edu/computing/inspire/">INSPIRE</a></h3>
-                    <p>INSPIRE aims to support faculty with disability in research and teaching at RIT. I designed and built a website using HTML and the design tool RIT offers, along with the branding guidelines. You can learn about the experience as faculty with disability or teaching students with disability at <a href="https://people.rit.edu/ciiics/INSPIRE/inspire.html">Experience Page of INSPIRE</a></p>
-                    <a href="https://www.rit.edu/computing/inspire/"><img src="assets/images/inspire.jpg" alt="Inspire is in the middle as a word with a white background"></a>
-                </div>
-                <div class="k-12">
-                    <h3>Generative AI in K-12</h3>
-                    <p>Currently building the workshop and poster plans for K-12 teachers, specifically underfunded schools to have free resources, plus generative AI to improve the educational opportunities for students.</p>
-                    <img src="assets/images/k12.jpg" alt="AL themed design of K-12 classroom with students">
-                </div>
-                <div class="graduation">
-                    <h3><a href="https://youtu.be/m9F6NBYQ3Is?si=fGmqGKYJG7ADXS-I">The iSchool Graduation Video</a></h3>
-                    <p>This video was published to celebrate class of 2022. Recorded half of the clips prior to the commencement and students are shared thier story on the day walking the stage. Many international families who could not be in person watched this video as well.</p>
-                    <iframe src="https://www.youtube.com/embed/m9F6NBYQ3Is?si=uhjUjmNfVQRmccm5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>  
-                <div class="recruitment">
-                    <h3><a href="https://www.rit.edu/computing/school-of-information/recruiting">The iSchool Recruitment Page</a></h3>
-                    <p>This web project aimed to recruit faculty, including the director of the department at the time. Information was collected from current faculty and staff, and then I designed a single page following the RIT branding guideline.</p>
-                    <a href="https://www.rit.edu/computing/school-of-information/recruiting"><img src="assets/images/recruit.png" alt="the main recruitment page of the iSchool, the banner is students typing"></a>
-                </div>
-                <div class="caption_mask">
-                    <h3><a href="https://youtu.be/qNEih6LOJI4?si=umTcGzA9d9sheRdt">Caption Mask Promotion video from ImagineRIT</a></h3>
-                    <p>This was recorded during ImagineRIT featuring the student project in the iSchool. Using a microphone to record and then Premiere Pro to edit. They were invited to some local hospitals for a presentation and made an amazing contribution to the world.</p>
-                    <iframe src="https://www.youtube.com/embed/qNEih6LOJI4?si=KTJw5_soWrzV5TGE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="TTS">
-                    <h3><a href="https://drive.google.com/file/d/1OGEAVLeegdvVbNiR7o33JtlwoUe3aWmM/view?usp=sharing">Text-To-Speech Instruction for Disability Services</a></h3>
-                    <p>The goal of this project was reducing the number of human readers needs to save resources for others as testing accommodation needs were increasing dramatically. Text-to-speech with natural reader became the common resource for students in Disability Services Office (DSO)</p>
-                    <a href="https://drive.google.com/file/d/1OGEAVLeegdvVbNiR7o33JtlwoUe3aWmM/view?usp=sharing"><img src="assets/images/tts.png" alt="the first page of text to speech instruction"></a>
-                </div>
-                <div class="ISTE_646">
-                    <h3><a href="https://people.rit.edu/yi9686/ISTE646/myhome/index.html">ISTE-646 Class Project & Homeworks</a></h3>
-                    <p>ISTE-646 is web technology and foundation II course where I learn JavaScript, PHP, React and SQL on top of HTML, CSS and basic JavaScript. You can visit the website for ISTE 646 where I showcase all assignments and projects, both individual and group, from the class.</p>
-                    <a href="https://people.rit.edu/yi9686/ISTE646/myhome/index.html"><img src="assets/images/web_dev.jpg" alt="modern office with MacBook in the middle with dark-themed IDE opened"></a>
-                </div>
-                <div class="Website">
-                    <h3>Personal (Portfolio) Website Developmemt</h3>
-                    <p>Developed and tutored some of the peronal websites in acadmia such as for <a href="https://people.rit.edu/nxsvks/NS_web/">Dr. Narmala Shenoy</a> and <a href="https://people.rit.edu/ciiics/">Professor Catherine Beaton</a> at Rochester Institute of Technology in 2024-2025 academic year.</p>
-                    <img src="assets/images/website.png" alt="laptop screen showing the code editor with website code opened">
-                </div>
-            </div>
-        </section>
-        <section id="completed_class">
-            <h2>Major Classes I have completed</h2>
-            <ul>
-                <li><strong>ISTE646</strong>– Foundation of Web Technology Development II: Studying about the web back end mainly</li>
-                <li><strong>HCIN795</strong>– MS-HCI Capstone Project: Working on my <a href="#" id="openProposal">View Yugo's Capstone Proposal</a>.</li>
-                <li><strong>ISTE645</strong>– Foundation of Web Technology Development I: Learned about the front-end web technologies, including <a href="https://www.figma.com/design/Vs1JhzuWZ22USyg9eMxERl/final-practical?node-id=0-1&t=30MOGZTpBClADc1P-1">wireframes</a> and basic front-end including HTML, CSS, and JavaScript in Fall 2024.</li>
-                <li><strong>HCIN610</strong>– Foundation of Human-Computer Interaction: Learned theories of HCI in Spring 2022</li>
-                <li><strong>HCIN630</strong>– Usability Testing: Learned about usability testing and how to report in Spring 2024</li>
-                <li><strong>HCIN620</strong>– Information and Interaction Design: Learned about managing information and converting collected data to an improved design in Spring 2024. Group Project website is <a href="https://sites.google.com/g.rit.edu/us-health-support/home">here</a></li>
-                <li><strong>HCIN720</strong>– Prototyping Wearable & IoT  Devices: Learned about wearable and IoT devices prototypes mainly using Adrino and C++ in fall 2023. Final Group Project is <a href="https://sites.google.com/g.rit.edu/crowd-detection-system-hcin720/home">here</a></li>
-                <li><strong>REL430</strong>– Tourism Marketing: Learned about the marketing strategies forthe  tourism industry in Spring 2020.</li>
-            </ul>
-        </section>
-        <section id="blog">
-            <h2>Blog</h2>
-            <p class="section-intro">
-                Insights on accessibility, bilingual UX, and inclusive HCI design.
-            </p>
+        <div class="iSchool_tour">
+          <h3><a href="https://youtu.be/uMxyb0B0B4g?si=MZyjjPjX0tey4Qp0" target="_blank" rel="noopener">The iSchool Tour</a></h3>
+          <p>Video for prospective students and families to learn about the iSchool during the virtual open house.</p>
+          <iframe src="https://www.youtube.com/embed/uMxyb0B0B4g?si=3YMLUiaqG15DhMSi" title="The iSchool Tour (YouTube)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
 
-            <article class="blog-card">
-                <img src="assets/images/medium1.png" alt="Illustration representing accessibility and bilingual design">
-                <div class="blog-content">
-                <h3><a href="https://medium.com/@yi9686/building-an-accessible-bilingual-website-english-japanese-9cf9f130c080" target="_blank" rel="noopener">
-                    Building an Accessible, Bilingual Website (English & Japanese)
-                </a></h3>
-                <p>
-                    Reflecting on the importance of accessible design, localization, and the process of creating a bilingual portfolio site for Japan’s professional landscape.
-                </p>
-                <a class="read-more" href="https://medium.com/@yi9686/building-an-accessible-bilingual-website-english-japanese-9cf9f130c080" target="_blank" rel="noopener">Read on Medium →</a>
-                </div>
-            </article>
-        </section>
-    </main>
-    <footer id="contact">
-        <p>&copy; Yugo Iwamoto</p>
-        <p><a href="mailto:yi9686@rit.edu">yi9686@rit.edu</a></p>
-        <a href="https://www.linkedin.com/in/yugo-iwamoto1/"><img src="assets/images/In-Blue-34.png" alt="LinkedIn logo"></a>
-        <a href="https://orcid.org/0009-0009-5383-7836"><img src="assets/images/orcid_logo.png" alt="logo of orcid which is light green circle background with white font ID">ORCID</a>
-    </footer>
+        <div class="inspire">
+          <h3><a href="https://www.rit.edu/computing/inspire/" target="_blank" rel="noopener">INSPIRE</a></h3>
+          <p>
+            INSPIRE supports faculty with disabilities in research and teaching at RIT.
+            Explore experiences at the <a href="https://people.rit.edu/ciiics/INSPIRE/inspire.html" target="_blank" rel="noopener">Experience page</a>.
+          </p>
+          <a href="https://www.rit.edu/computing/inspire/" target="_blank" rel="noopener">
+            <img src="assets/images/inspire.jpg" alt="Word 'Inspire' centered on a white background"/>
+          </a>
+        </div>
 
+        <div class="k-12">
+          <h3>Generative AI in K-12</h3>
+          <p>Designing workshop resources for teachers in underfunded schools, using GenAI to broaden access.</p>
+          <img src="assets/images/k12.jpg" alt="AI-themed classroom illustration with students"/>
+        </div>
+
+        <div class="graduation">
+          <h3><a href="https://youtu.be/m9F6NBYQ3Is?si=fGmqGKYJG7ADXS-I" target="_blank" rel="noopener">The iSchool Graduation Video</a></h3>
+          <p>Celebrating the class of 2022 with student stories recorded before and on commencement day.</p>
+          <iframe src="https://www.youtube.com/embed/m9F6NBYQ3Is?si=uhjUjmNfVQRmccm5" title="The iSchool Graduation (YouTube)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="recruitment">
+          <h3><a href="https://www.rit.edu/computing/school-of-information/recruiting" target="_blank" rel="noopener">The iSchool Recruitment Page</a></h3>
+          <p>Single-page design created to recruit faculty, following RIT branding guidelines.</p>
+          <a href="https://www.rit.edu/computing/school-of-information/recruiting" target="_blank" rel="noopener">
+            <img src="assets/images/recruit.png" alt="Screenshot of iSchool recruitment page with students typing on laptops"/>
+          </a>
+        </div>
+
+        <div class="caption_mask">
+          <h3><a href="https://youtu.be/qNEih6LOJI4?si=umTcGzA9d9sheRdt" target="_blank" rel="noopener">Caption Mask Promotion (ImagineRIT)</a></h3>
+          <p>Recorded and edited a demo featuring a student project showcased at ImagineRIT.</p>
+          <iframe src="https://www.youtube.com/embed/qNEih6LOJI4?si=KTJw5_soWrzV5TGE" title="Caption Mask promotion (YouTube)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="TTS">
+          <h3><a href="https://drive.google.com/file/d/1OGEAVLeegdvVbNiR7o33JtlwoUe3aWmM/view?usp=sharing" target="_blank" rel="noopener">Text-To-Speech Instruction for Disability Services</a></h3>
+          <p>Guidance for adopting natural-voice TTS to reduce reliance on human readers as accommodation demand grew.</p>
+          <a href="https://drive.google.com/file/d/1OGEAVLeegdvVbNiR7o33JtlwoUe3aWmM/view?usp=sharing" target="_blank" rel="noopener">
+            <img src="assets/images/tts.png" alt="First page of the Text-to-Speech instruction document"/>
+          </a>
+        </div>
+
+        <div class="ISTE_646">
+          <h3><a href="https://people.rit.edu/yi9686/ISTE646/myhome/index.html" target="_blank" rel="noopener">ISTE-646 Class Project &amp; Homework</a></h3>
+          <p>Coursework in JS, PHP, React, SQL, and front-end fundamentals (Fall 2024).</p>
+          <a href="https://people.rit.edu/yi9686/ISTE646/myhome/index.html" target="_blank" rel="noopener">
+            <img src="assets/images/web_dev.jpg" alt="Dark-themed IDE open on a MacBook in a modern office"/>
+          </a>
+        </div>
+
+        <div class="Website">
+          <h3>Personal (Portfolio) Website Development</h3>
+          <p>
+            Developed and tutored several academic personal sites, including
+            <a href="https://people.rit.edu/nxsvks/NS_web/" target="_blank" rel="noopener">Dr. Narmala Shenoy</a> and
+            <a href="https://people.rit.edu/ciiics/" target="_blank" rel="noopener">Professor Catherine Beaton</a>.
+          </p>
+          <img src="assets/images/website.png" alt="Laptop displaying a code editor with a website project open"/>
+        </div>
+      </div>
+    </section>
+
+    <section id="completed_class">
+      <h2>Major Classes I Have Completed</h2>
+      <ul>
+        <li><strong>ISTE646</strong> — Foundation of Web Technology Development II (backend focus)</li>
+        <li><strong>HCIN795</strong> — MS-HCI Capstone Project:
+          <a href="#" id="openProposal">View capstone proposal (PDF)</a>
+        </li>
+        <li><strong>ISTE645</strong> — Foundation of Web Technology Development I: front-end, plus
+          <a href="https://www.figma.com/design/Vs1JhzuWZ22USyg9eMxERl/final-practical?node-id=0-1" target="_blank" rel="noopener">wireframes</a>
+        </li>
+        <li><strong>HCIN610</strong> — Foundations of HCI (Spring 2022)</li>
+        <li><strong>HCIN630</strong> — Usability Testing (Spring 2024)</li>
+        <li><strong>HCIN620</strong> — Information &amp; Interaction Design (Spring 2024). Group site:
+          <a href="https://sites.google.com/g.rit.edu/us-health-support/home" target="_blank" rel="noopener">project link</a>
+        </li>
+        <li><strong>HCIN720</strong> — Prototyping Wearable &amp; IoT Devices (Fall 2023). Final:
+          <a href="https://sites.google.com/g.rit.edu/crowd-detection-system-hcin720/home" target="_blank" rel="noopener">Crowd Detection System</a>
+        </li>
+        <li><strong>REL430</strong> — Tourism Marketing (Spring 2020)</li>
+      </ul>
+    </section>
+
+    <section id="blog">
+      <h2>Blog</h2>
+      <p class="section-intro">Insights on accessibility, bilingual UX, and inclusive HCI design.</p>
+
+      <article class="blog-card">
+        <img src="assets/images/medium1.png" alt="Illustration representing accessibility and bilingual design"/>
+        <div class="blog-content">
+          <h3>
+            <a href="https://medium.com/@yi9686/building-an-accessible-bilingual-website-english-japanese-9cf9f130c080" target="_blank" rel="noopener">
+              Building an Accessible, Bilingual Website (English &amp; Japanese)
+            </a>
+          </h3>
+          <p>Reflections on accessibility, localization, and building a bilingual portfolio for Japan’s professional landscape.</p>
+          <a class="read-more" href="https://medium.com/@yi9686/building-an-accessible-bilingual-website-english-japanese-9cf9f130c080" target="_blank" rel="noopener">Read on Medium →</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>&copy; <span aria-hidden="true">©</span> Yugo Iwamoto</p>
+    <p><a href="mailto:yi9686@rit.edu">yi9686@rit.edu</a></p>
+    <a href="https://www.linkedin.com/in/yugo-iwamoto1/" target="_blank" rel="noopener">
+      <img src="assets/images/In-Blue-34.png" alt="LinkedIn"/>
+    </a>
+    <a href="https://orcid.org/0009-0009-5383-7836" target="_blank" rel="noopener">
+      <img src="assets/images/orcid_logo.png" alt="ORCID logo (green circle with “iD”)"/>ORCID
+    </a>
+  </footer>
 </body>
 </html>

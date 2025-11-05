@@ -1,205 +1,167 @@
+// scripts.js
 document.addEventListener("DOMContentLoaded", () => {
-  // =========================
-  // Helpers
-  // =========================
-  const $ = (sel, root = document) => root.querySelector(sel);
+  // ---------- tiny helpers ----------
+  const $  = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-
   const FOCUSABLE =
     'a[href], area[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-  const main = $("#main") || document.body;
-
-  // Progressive enhancement for inert
-  const setInert = (isInert) => {
-    if ("inert" in HTMLElement.prototype) {
-      main.inert = isInert;
-    } else {
-      // Fallback: hide from AT while modal is open
-      main.setAttribute("aria-hidden", isInert ? "true" : "false");
-    }
-    document.body.style.overflow = isInert ? "hidden" : "";
+  // ======================================================
+  // 1) ACCESSIBLE MODALS (CV / Capstone / Proposal)
+  // ======================================================
+  const modalMap = {
+    resume:   { modal: $("#resumeModal"),   triggers: [$("#openResume")] },
+    capstone: { modal: $("#capstoneModal"), triggers: [$("#openCapstone"), $("#openCapstone2"), $("#openCapstoneImg")] },
+    proposal: { modal: $("#proposalModal"), triggers: [$("#openProposal")] }
   };
 
-  // Focus trap utility
-  function trapFocus(container, e) {
-    const focusables = $$(FOCUSABLE, container).filter(el => el.offsetParent !== null || el === document.activeElement);
-    if (!focusables.length) return;
-    const first = focusables[0];
-    const last  = focusables[focusables.length - 1];
+  let activeModal = null;
+  let lastOpener  = null;
 
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault(); last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault(); first.focus();
-    }
+  function lockBody(locked) {
+    document.body.style.overflow = locked ? "hidden" : "";
   }
 
-  // =========================
-  // Modals (resume / capstone / proposal)
-  // =========================
-  const modals = {
-    resume: { modal: $("#resumeModal"), openers: [$("#openResume")] },
-    capstone: { modal: $("#capstoneModal"), openers: [$("#openCapstone"), $("#openCapstone2"), $("#openCapstoneImg")] },
-    proposal: { modal: $("#proposalModal"), openers: [$("#openProposal")] }
-  };
+  function trapFocus(e, container) {
+    const nodes = $$(FOCUSABLE, container).filter(el =>
+      el.offsetParent !== null || el === document.activeElement
+    );
+    if (!nodes.length) return;
+    const first = nodes[0];
+    const last  = nodes[nodes.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
 
-  let lastOpener = null;
-
-  function openModal(modalEl, openerBtn) {
+  function openModal(modalEl, opener) {
     if (!modalEl) return;
-    lastOpener = openerBtn || document.activeElement;
-    modalEl.style.display = "block";
-    setInert(true);
+    // show + lock
+    modalEl.classList.add("open");
+    lockBody(true);
+    activeModal = modalEl;
+    lastOpener  = opener || document.activeElement;
 
-    // Move focus into dialog content
-    const dialog = modalEl.querySelector(".modal-content");
-    if (dialog) {
-      dialog.setAttribute("tabindex", "-1");
-      dialog.focus();
+    // focus into dialog
+    const box = modalEl.querySelector(".modal-content");
+    if (box) { box.setAttribute("tabindex", "-1"); box.focus(); }
+
+    // prevent clicks inside box from closing (we close only on backdrop)
+    if (box && !box._hasStopper) {
+      box.addEventListener("click", e => e.stopPropagation());
+      box._hasStopper = true;
     }
 
-    // Mark expanded if opener has aria-expanded (optional)
-    if (openerBtn && openerBtn.hasAttribute("aria-expanded")) {
-      openerBtn.setAttribute("aria-expanded", "true");
-    }
-
-    // Key handling: Esc + focus trap
-    function onKey(e) {
-      if (e.key === "Escape") {
-        closeModal(modalEl);
-      } else if (e.key === "Tab") {
-        trapFocus(dialog || modalEl, e);
-      }
-    }
-    modalEl._onKey = onKey; // store to remove later
-    document.addEventListener("keydown", onKey);
-
-    // Click outside to close
-    function onOutside(e) {
-      if (e.target === modalEl) closeModal(modalEl);
-    }
-    modalEl._onOutside = onOutside;
-    window.addEventListener("click", onOutside);
+    // close handlers
+    modalEl.addEventListener("click", backdropClose); // overlay click
+    document.addEventListener("keydown", escClose);   // Esc + focus trap
+    document.addEventListener("keydown", tabTrap);    // Tab trap
   }
 
-  function closeModal(modalEl) {
-    if (!modalEl) return;
-    modalEl.style.display = "none";
-    setInert(false);
+  function closeModal() {
+    if (!activeModal) return;
+    activeModal.classList.remove("open");
+    lockBody(false);
 
-    // Restore focus to whichever opener launched it
-    if (lastOpener && typeof lastOpener.focus === "function") {
-      lastOpener.focus();
-    }
+    activeModal.removeEventListener("click", backdropClose);
+    document.removeEventListener("keydown", escClose);
+    document.removeEventListener("keydown", tabTrap);
 
-    // If opener had aria-expanded, reset
-    if (lastOpener && lastOpener.hasAttribute("aria-expanded")) {
-      lastOpener.setAttribute("aria-expanded", "false");
-    }
-
-    // Remove listeners
-    document.removeEventListener("keydown", modalEl._onKey || (()=>{}));
-    window.removeEventListener("click", modalEl._onOutside || (()=>{}));
-    delete modalEl._onKey;
-    delete modalEl._onOutside;
+    // return focus
+    if (lastOpener && typeof lastOpener.focus === "function") lastOpener.focus();
+    activeModal = null;
   }
 
-  // Wire openers
-  Object.values(modals).forEach(({ modal, openers }) => {
-    openers.filter(Boolean).forEach(opener => {
-      opener.addEventListener("click", (e) => {
-        e.preventDefault();
-        openModal(modal, opener);
-      });
+  function backdropClose(e) {
+    if (e.currentTarget === activeModal) closeModal();
+  }
+  function escClose(e) {
+    if (e.key === "Escape") closeModal();
+  }
+  function tabTrap(e) {
+    if (e.key !== "Tab" || !activeModal) return;
+    const box = activeModal.querySelector(".modal-content") || activeModal;
+    trapFocus(e, box);
+  }
+
+  // wire triggers
+  Object.values(modalMap).forEach(({ modal, triggers }) => {
+    (triggers || []).filter(Boolean).forEach(btn => {
+      btn.addEventListener("click", (e) => { e.preventDefault(); openModal(modal, btn); });
     });
   });
 
-  // Wire close buttons
-  $$(".close-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const modal = btn.closest(".modal");
-      closeModal(modal);
-    });
-  });
+  // wire close buttons
+  $$(".modal .close-btn").forEach(btn => btn.addEventListener("click", closeModal));
 
-  // =========================
-  // Accordion (years)
-  // =========================
+  // ======================================================
+  // 2) ACCORDION (years) — single-open with ARIA + hidden
+  // ======================================================
   const accBtns = $$(".accordion-btn");
   accBtns.forEach((btn, i) => {
-    // Ensure each button controls the next panel with an ID
-    let panel = btn.nextElementSibling;
+    const panel = btn.nextElementSibling;
     if (!panel) return;
 
+    // ensure IDs/attributes
+    if (!btn.id) btn.id = `accordion-btn-${i+1}`;
     if (!panel.id) panel.id = `accordion-panel-${i+1}`;
     btn.setAttribute("aria-controls", panel.id);
     btn.setAttribute("aria-expanded", "false");
     panel.setAttribute("role", "region");
-    panel.setAttribute("aria-labelledby", btn.id || `accordion-btn-${i+1}`);
-    if (!btn.id) btn.id = `accordion-btn-${i+1}`;
-
-    // Start collapsed
+    panel.setAttribute("aria-labelledby", btn.id);
     panel.hidden = true;
 
     btn.addEventListener("click", () => {
-      const expanded = btn.getAttribute("aria-expanded") === "true";
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
 
-      // Close others
-      accBtns.forEach(otherBtn => {
-        if (otherBtn !== btn) {
-          otherBtn.classList.remove("active");
-          otherBtn.setAttribute("aria-expanded", "false");
-          const p = otherBtn.nextElementSibling;
-          if (p) p.hidden = true;
-        }
+      // close others
+      accBtns.forEach(other => {
+        if (other === btn) return;
+        other.setAttribute("aria-expanded", "false");
+        other.classList.remove("active");
+        const p = other.nextElementSibling;
+        if (p) p.hidden = true;
       });
 
-      // Toggle current
-      btn.setAttribute("aria-expanded", String(!expanded));
-      btn.classList.toggle("active", !expanded);
-      panel.hidden = expanded;
+      // toggle current
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      btn.classList.toggle("active", !isOpen);
+      panel.hidden = isOpen;
     });
   });
 
-  // =========================
-  // Scroll Progress Bar (hide from AT)
-  // =========================
+  // ======================================================
+  // 3) PROGRESS BAR (decorative)
+  // ======================================================
   const progressBar = $("#progress-bar");
   if (progressBar) {
-    progressBar.setAttribute("aria-hidden", "true"); // decorative
+    progressBar.setAttribute("aria-hidden", "true");
     window.addEventListener("scroll", () => {
-      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-      progressBar.style.width = scrolled + "%";
+      const top = document.documentElement.scrollTop || document.body.scrollTop;
+      const max = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progressBar.style.width = (max > 0 ? (top / max) * 100 : 0) + "%";
     });
   }
 
-  // =========================
-  // Responsive Navigation
-  // =========================
+  // ======================================================
+  // 4) RESPONSIVE NAV (hamburger) with ARIA
+  // ======================================================
   const navToggle = $("#nav-toggle");
   const navLinks  = $("#nav-links");
 
+  function openNav() {
+    navLinks.classList.add("open");
+    navToggle.setAttribute("aria-expanded", "true");
+    navToggle.setAttribute("aria-label", "Close navigation");
+    navToggle.textContent = "✖";
+  }
   function closeNav() {
-    if (!navToggle || !navLinks) return;
     navLinks.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
     navToggle.setAttribute("aria-label", "Open navigation");
     navToggle.textContent = "☰";
   }
 
-  function openNav() {
-    if (!navToggle || !navLinks) return;
-    navLinks.classList.add("open");
-    navToggle.setAttribute("aria-expanded", "true");
-    navToggle.setAttribute("aria-label", "Close navigation");
-    navToggle.textContent = "✖";
-  }
-
   if (navToggle && navLinks) {
-    // Initialize ARIA
     navToggle.setAttribute("aria-expanded", "false");
     navToggle.setAttribute("aria-label", "Open navigation");
 
@@ -208,11 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
       isOpen ? closeNav() : openNav();
     });
 
-    // Close the mobile menu if viewport jumps to desktop
+    // if viewport jumps to desktop, reset mobile menu
     const MQ = window.matchMedia("(min-width: 769px)");
-    const onChange = () => {
-      if (MQ.matches) closeNav();
-    };
-    MQ.addEventListener ? MQ.addEventListener("change", onChange) : MQ.addListener(onChange);
+    const mqHandler = () => { if (MQ.matches) closeNav(); };
+    MQ.addEventListener ? MQ.addEventListener("change", mqHandler) : MQ.addListener(mqHandler);
   }
 });

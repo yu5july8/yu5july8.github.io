@@ -302,42 +302,61 @@ li {
   transition: ease 0.3s;
 }
 
-/* === MODAL === */
+/* Overlay */
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  z-index: 3000;                  /* above progress bar */
+  background: rgba(0,0,0,.6);
+  align-items: center;            /* center when open */
+  justify-content: center;
+  padding: 5vh 2vw;               /* gutter for small screens */
 }
+.modal.open { display: flex; }    /* toggled by JS */
 
+/* Dialog */
 .modal-content {
-  background-color: var(--bg);
-  margin: 15% auto;
-  padding: 20px;
+  position: relative;
+  width: min(92vw, 800px);
+  max-height: 90vh;               /* allow scrolling */
+  overflow: auto;                 /* internal scroll */
+  -webkit-overflow-scrolling: touch;
+  background: var(--bg);
   border-radius: 8px;
-  width: 80%;
-  max-width: 800px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0,0,0,.35);
+  padding: 20px;
 }
 
+/* PDF/iframe area gets its own viewport */
+.modal-content embed,
+.modal-content iframe {
+  display: block;
+  width: 100%;
+  height: 80vh;                   /* big, but still inside 90vh box */
+  border: 0;
+}
 
+/* Close button */
 .close-btn {
-  color: #aaa;
-  float: right;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 40px; height: 40px;
+  background: transparent;
+  border: none;
+  color: #666;
   font-size: 28px;
-  font-weight: bold;
+  line-height: 1;
   cursor: pointer;
+  border-radius: 6px;
+  z-index: 1;                     /* above embed */
 }
+.close-btn:hover { color: var(--primary); }
+.close-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
-.close-btn:hover,
-.close-btn:focus {
-  color: var(--primary);
-}
+/* Keep the progress bar below the modal */
+#progress-bar { z-index: 1990; }
 
 /* === IMAGES & IFRAMES === */
 .inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img,

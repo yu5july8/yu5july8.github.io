@@ -757,80 +757,91 @@ footer img[alt*="ORCID"] {
   .lang-btn, .accordion-btn, .close-btn { forced-color-adjust: none; }
 }
 
-/*dark mode*/
+/* ==== Dark mode: accessible navy + orange ==== */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0e0f12;
-    --text: #f2f2f2;
-    --muted: #c9c9c9;
-    --secondary-bg: #161a1f;
-    /* keep your navies/oranges; they remain high-contrast on dark */
+    /* Neutrals */
+    --bg: #0b0f14;            /* page background (very dark blue) */
+    --surface: #121826;       /* cards, modals, header chips */
+    --surface-2: #162033;     /* elevated surfaces */
+    --border: #2b3548;        /* dividers */
+    --text: #e8edf6;          /* primary text */
+    --muted: #c0c9d8;         /* secondary text */
+
+    /* Brand on dark (lighter blues for accessible contrast) */
+    --primary: #9cc2ff;       /* link / interactive */
+    --primary-strong: #cfe0ff;/* hover/focus state (brighter) */
+
+    /* Accent stays orange but slightly lighter for legibility */
+    --accent: #ff8f3d;        /* progress bar, hovers, chips */
+    --focus: #ffd166;         /* warm focus ring that pops on dark */
+
+    /* Keep your existing semantic names in sync */
+    --secondary-bg: var(--surface);
   }
-  body, .modal-content { background: var(--bg); color: var(--text); }
-  .blog-card { background: #11151a; border-color: #2a2f36; }
-  footer { box-shadow: none; }
-}
 
-@media (forced-colors: active) {
-  /* Preserve link affordance and visible boundaries */
-  a { text-decoration: underline; }
-  .accordion-btn { border: 2px solid CanvasText; }
-  .modal { outline: 2px solid CanvasText; }
-  /* Prevent the UA from flattening custom colors where needed */
-  .lang-btn, .accordion-btn, .close-btn { forced-color-adjust: none; }
-}
+  /* Base */
+  body { background: var(--bg); color: var(--text); }
 
-/* === Skip link (matches <a class="skip-link" href="#main">...) === */
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  background: #000;
-  color: #fff;
-  padding: .6rem 1rem;
-  border-radius: .5rem;
-  z-index: 3000;
-}
-.skip-link:focus { left: 1rem; top: 1rem; }
+  /* Cards / blocks */
+  .blog-card,
+  .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS,
+  .caption_mask, .graduation, .recruitment, .ISTE_646, .capstone, .Website {
+    background: var(--surface);
+    border-color: var(--border);
+  }
 
-/* === Touch target sizing for common controls (2.5.5 AA) === */
-.lang-btn,
-#nav-toggle,
-.accordion-btn,
-.close-btn,
-nav a {
-  min-height: 44px;
-  min-width: 44px;
-  display: inline-flex;
-  align-items: center;
-}
+  /* Header overlay chip */
+  .header_logic {
+    background: rgba(0, 0, 0, 0.7); /* still OK on dark images */
+  }
 
-/* === Modal focus affordances (pairs with accessible HTML) === */
-.modal-content:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
+  /* Links: brighter blues on dark */
+  a { color: var(--primary); }
+  a:hover, a:focus-visible {
+    color: var(--primary-strong);
+    text-decoration: underline;
+  }
 
-/* If your close control is a <button class="close-btn">×</button> */
-.close-btn {
-  background: transparent;
-  border: 2px solid transparent;
-  border-radius: .5rem;
-  line-height: 1;
-  padding: .25rem .5rem;
-  color: inherit;           /* keep current color */
-  cursor: pointer;
-}
-.close-btn:focus-visible {
-  border-color: var(--focus);
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
+  /* Accordion */
+  .accordion-btn {
+    background: #1a2340;            /* deep navy block with enough contrast */
+    color: var(--text);
+  }
+  .accordion-btn:hover,
+  .accordion-btn.active { background: #223064; }
 
-/* === Accordion: honor [hidden] attribute from JS === */
-.accordion-panel[hidden] {
-  display: none !important;
-  max-height: 0 !important;
+  /* Modals */
+  .modal-content {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 24px rgba(0,0,0,.55);
+  }
+
+  /* Progress bar */
+  #progress-bar { background: var(--accent); }
+
+  /* Footer */
+  footer {
+    background: #0d1422;   /* dark navy that keeps 7+:1 vs white text */
+    color: #ffffff;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: #ffffff; }
+  footer a:hover { color: var(--accent); }
+
+  /* Muted copy */
+  p, li { color: var(--text); }
+  .section-intro, small, .muted { color: var(--muted); }
+
+  /* Focus ring stays bold on dark */
+  :where(a, button, [role="button"], input, textarea, select, summary,
+         [tabindex]:not([tabindex="-1"])):focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
 }
 
 /* === Reduced motion preference (2.3.3) === */

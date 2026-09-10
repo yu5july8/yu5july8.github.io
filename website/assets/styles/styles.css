@@ -525,6 +525,192 @@ footer img[alt*="ORCID"] {
   border-radius: 4px;
 }
 
+/* =====================================================
+   PHOTO GALLERY
+   ===================================================== */
+
+.photos-page {
+  box-sizing: border-box;
+}
+
+.photos-introduction {
+  margin-bottom: 30px;
+}
+
+.photos-introduction h2 {
+  margin-bottom: 10px;
+}
+
+.photos-introduction p {
+  max-width: 70ch;
+  color: var(--muted);
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.photo-card {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.photo-card:hover {
+  box-shadow: 0 6px 18px rgba(11, 61, 145, 0.18);
+  transform: translateY(-2px);
+}
+
+.photo-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  cursor: zoom-in;
+}
+
+.photo-button img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.photo-button:hover img {
+  transform: scale(1.025);
+}
+
+.photo-card figcaption {
+  padding: 14px 16px;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Enlarged photo viewer */
+
+.photo-lightbox {
+  width: min(94vw, 1100px);
+  max-width: 1100px;
+  max-height: 94vh;
+  padding: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+
+.photo-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.photo-lightbox-content {
+  position: relative;
+  max-height: 94vh;
+  padding: 20px;
+  overflow: auto;
+}
+
+.photo-lightbox img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 78vh;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.photo-lightbox p {
+  max-width: 75ch;
+  margin: 14px auto 0;
+  color: var(--text);
+  text-align: center;
+}
+
+.photo-lightbox-close {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin: 0 0 10px auto;
+  color: var(--text);
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.photo-lightbox-close:hover {
+  color: #fff;
+  background: var(--primary);
+}
+
+/* Highlight the current navigation page */
+
+#nav-links a[aria-current="page"] {
+  color: var(--primary-strong);
+  text-decoration: underline;
+  text-decoration-thickness: 0.14em;
+}
+
+/* Gallery tablet layout */
+
+@media (max-width: 1024px) {
+  .photo-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+
+/* Gallery dark mode */
+
+@media (prefers-color-scheme: dark) {
+  .photo-card,
+  .photo-lightbox {
+    background: var(--surface);
+    border-color: var(--border);
+  }
+
+  .photo-lightbox-close {
+    color: var(--text);
+    background: var(--surface-2);
+    border-color: var(--border);
+  }
+}
+
+/* Respect reduced-motion settings */
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-card,
+  .photo-button img {
+    transition: none;
+  }
+
+  .photo-card:hover,
+  .photo-button:hover img {
+    transform: none;
+  }
+}
+
 /* Dark mode variant */
 @media (prefers-color-scheme: dark) {
   footer {
@@ -675,6 +861,21 @@ footer img[alt*="ORCID"] {
     font-size: 0.85rem;
     padding: 15px;
     text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .photo-gallery {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .photo-card:hover {
+    transform: none;
+  }
+
+  .photo-lightbox-content {
+    padding: 12px;
   }
 }
 

@@ -175,4 +175,59 @@ document.addEventListener("DOMContentLoaded", () => {
     const mqHandler = () => { if (MQ.matches) closeNav(); };
     MQ.addEventListener ? MQ.addEventListener("change", mqHandler) : MQ.addListener(mqHandler);
   }
+
+    // ======================================================
+  // 5) ACCESSIBLE PHOTO LIGHTBOX
+  // ======================================================
+  const photoDialog = $("#photo-lightbox");
+  const photoDialogImage = $("#photo-lightbox-image");
+  const photoDialogCaption = $("#photo-lightbox-caption");
+  const photoDialogClose = $("#photo-lightbox-close");
+  const photoButtons = $$(".photo-button");
+
+  if (
+    photoDialog &&
+    photoDialogImage &&
+    photoDialogCaption &&
+    photoDialogClose
+  ) {
+    let lastPhotoButton = null;
+
+    photoButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const thumbnail = $("img", button);
+        const fullImage = button.dataset.full || thumbnail?.src;
+        const caption = button.dataset.caption || "";
+        const alternativeText = thumbnail?.alt || caption || "Enlarged photo";
+
+        lastPhotoButton = button;
+        photoDialogImage.src = fullImage;
+        photoDialogImage.alt = alternativeText;
+        photoDialogCaption.textContent = caption;
+
+        photoDialog.showModal();
+        photoDialogClose.focus();
+      });
+    });
+
+    photoDialogClose.addEventListener("click", () => {
+      photoDialog.close();
+    });
+
+    photoDialog.addEventListener("click", event => {
+      if (event.target === photoDialog) {
+        photoDialog.close();
+      }
+    });
+
+    photoDialog.addEventListener("close", () => {
+      photoDialogImage.src = "";
+      photoDialogImage.alt = "";
+      photoDialogCaption.textContent = "";
+
+      if (lastPhotoButton) {
+        lastPhotoButton.focus();
+      }
+    });
+  }
 });

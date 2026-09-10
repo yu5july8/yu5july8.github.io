@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Photos | Yugo Iwamoto</title>
+
+  <link rel="icon" href="assets/images/icon.ico" />
+  <link rel="stylesheet" href="assets/styles/styles.css" />
+  <script src="assets/scripts/scripts.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <header>
+    <img
+      src="assets/images/banner.jpeg"
+      id="banner"
+      alt="Sunlight passing through a green forest"
+    />
+
+    <div class="header_logic">
+      <img
+        src="assets/images/pic_yugo.jpeg"
+        id="headshot"
+        alt="Headshot of Yugo Iwamoto"
+      />
+
+      <div class="logic_text">
+        <h1>Yugo Iwamoto</h1>
+        <p>HCI Researcher &amp; PhD Student</p>
+      </div>
+    </div>
+
+    <div class="lang-switch">
+      <!-- Change this when you create a Japanese photo page -->
+      <a href="index_ja.html" class="lang-btn" lang="ja">日本語</a>
+    </div>
+  </header>
+
+  <nav id="top-nav" aria-label="Primary">
+    <div class="nav-container">
+      <button
+        id="nav-toggle"
+        aria-label="Open navigation"
+        aria-controls="nav-links"
+        aria-expanded="false"
+        type="button"
+      >
+        ☰
+      </button>
+
+      <ul id="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#current_project">Current Projects</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#completed">Projects</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="photos.html" aria-current="page">Photos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main" class="photos-page">
+    <section class="photos-introduction" aria-labelledby="photos-title">
+      <h2 id="photos-title">Photos</h2>
+
+      <p>
+        A collection of moments from research, conferences, travel, and
+        community activities.
+      </p>
+    </section>
+
+    <section aria-label="Photo collection">
+      <div class="photo-gallery">
+
+        <!-- PHOTO TEMPLATE: copy this entire <figure> for each photo -->
+        <figure class="photo-card">
+          <button
+            class="photo-button"
+            type="button"
+            data-full="assets/images/photos/photo-01.jpg"
+            data-caption="Description or caption for the first photo."
+            aria-label="Enlarge: Description or caption for the first photo"
+          >
+            <img
+              src="assets/images/photos/photo-01.jpg"
+              alt="Describe the people, activity, and location shown in this photo"
+              loading="lazy"
+              width="1200"
+              height="900"
+            />
+          </button>
+
+          <figcaption>
+            Description or caption for the first photo.
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <button
+            class="photo-button"
+            type="button"
+            data-full="assets/images/photos/photo-02.jpg"
+            data-caption="Description or caption for the second photo."
+            aria-label="Enlarge: Description or caption for the second photo"
+          >
+            <img
+              src="assets/images/photos/photo-02.jpg"
+              alt="Describe the people, activity, and location shown in this photo"
+              loading="lazy"
+              width="1200"
+              height="900"
+            />
+          </button>
+
+          <figcaption>
+            Description or caption for the second photo.
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <button
+            class="photo-button"
+            type="button"
+            data-full="assets/images/photos/photo-03.jpg"
+            data-caption="Description or caption for the third photo."
+            aria-label="Enlarge: Description or caption for the third photo"
+          >
+            <img
+              src="assets/images/photos/photo-03.jpg"
+              alt="Describe the people, activity, and location shown in this photo"
+              loading="lazy"
+              width="1200"
+              height="900"
+            />
+          </button>
+
+          <figcaption>
+            Description or caption for the third photo.
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Enlarged photo viewer -->
+  <dialog id="photo-lightbox" class="photo-lightbox">
+    <div class="photo-lightbox-content">
+      <button
+        id="photo-lightbox-close"
+        class="photo-lightbox-close"
+        type="button"
+        aria-label="Close enlarged photo"
+      >
+        ×
+      </button>
+
+      <img id="photo-lightbox-image" src="" alt="" />
+      <p id="photo-lightbox-caption"></p>
+    </div>
+  </dialog>
+
+  <footer id="contact">
+    <p>&copy; 2026 Yugo Iwamoto. All rights reserved.</p>
+    <p><a href="mailto:yiwamoto@gmu.edu">yiwamoto@gmu.edu</a></p>
+
+    <div class="social-links">
+      <!-- Copy your existing social-media links here -->
+    </div>
+  </footer>
+</body>
+</html>

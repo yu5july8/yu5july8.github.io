@@ -278,7 +278,7 @@ li {
 /* === PROJECT BOXES === */
 .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS,
 .caption_mask, .graduation, .recruitment, .ISTE_646,
-.capstone, .Website, .marketing {
+.capstone, .Website, .marketing, .youth_ai, .autism_ai {
   border: 1px solid var(--primary);
   background-color: var(--secondary-bg);
   padding: 20px;
@@ -288,7 +288,7 @@ li {
 
 .inspire:hover, .k-12:hover, .a11y:hover, .mll:hover, .hci_web:hover,
 .iSchool_tour:hover, .TTS:hover, .caption_mask:hover, .graduation:hover,
-.recruitment:hover, .ISTE_646:hover, .capstone:hover, .Website:hover, .marketing:hover {
+.recruitment:hover, .ISTE_646:hover, .capstone:hover, .Website:hover, .marketing:hover, .youth_ai:hover, .autism_ai.hover {
   box-shadow: 0 4px 10px rgba(91, 42, 134, 0.2);
 }
 
@@ -360,7 +360,7 @@ li {
 
 /* === IMAGES & IFRAMES === */
 .inspire img, .k-12 img, .a11y img, .mll img, .hci_web img, .TTS img,
-.recruitment img, .ISTE_646 img, .capstone img, .Website img, .marketing img {
+.recruitment img, .ISTE_646 img, .capstone img, .Website img, .marketing img, .youth_ai img, .autism_ai img {
   width: 100%;
   border-radius: 5px;
 }
@@ -987,7 +987,7 @@ footer img[alt*="ORCID"] {
   /* Cards / blocks */
   .blog-card,
   .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS,
-  .caption_mask, .graduation, .recruitment, .ISTE_646, .capstone, .Website {
+  .caption_mask, .graduation, .recruitment, .ISTE_646, .capstone, .Website, .autism_ai, .youth_ai {
     background: var(--surface);
     border-color: var(--border);
   }

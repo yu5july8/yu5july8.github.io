@@ -498,7 +498,7 @@ footer a {
 footer a:hover {
   color: var(--accent); /* bright orange hover */
   text-decoration: underline;
-}
+} 
 
 /* Social icons container */
 footer .social-links {

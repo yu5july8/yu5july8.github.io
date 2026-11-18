@@ -97,44 +97,64 @@
     </div>
   </nav>
 
-  <!-- アクセシビリティツール -->
-  <div
-    class="accessibility-tools"
-    role="region"
-    aria-label="アクセシビリティツール"
-  >
-    <button
-      id="increase-text"
-      type="button"
-      aria-label="文字を大きくする"
-    >
-      A+
-    </button>
+  <details class="accessibility-panel">
+  <summary>
+    <span aria-hidden="true">⚙</span>
+    アクセシビリティツール
+  </summary>
 
-    <button
-      id="reset-text"
-      type="button"
-      aria-label="文字サイズを元に戻す"
-    >
-      文字サイズをリセット
-    </button>
+  <div class="accessibility-panel-content">
+    <fieldset class="accessibility-group">
+      <legend>文字サイズ</legend>
 
-    <button
-      id="read-page"
-      type="button"
-      aria-pressed="false"
-    >
-      <span aria-hidden="true">🔊</span>
-      ページを読み上げる
-    </button>
+      <div class="accessibility-actions">
+        <button
+          id="increase-text"
+          type="button"
+          aria-label="文字を大きくする"
+        >
+          <span aria-hidden="true">A+</span>
+          <span>拡大</span>
+        </button>
 
-    <button
-      id="stop-reading"
-      type="button"
-      disabled
-    >
-      読み上げを停止
-    </button>
+        <button
+          id="reset-text"
+          type="button"
+          aria-label="文字サイズを元に戻す"
+        >
+          リセット
+        </button>
+      </div>
+    </fieldset>
+
+    <fieldset class="accessibility-group">
+      <legend>読み上げ</legend>
+
+      <div class="accessibility-actions">
+        <button
+          id="read-page"
+          type="button"
+          aria-pressed="false"
+          aria-controls="main"
+        >
+          <span aria-hidden="true">🔊</span>
+          <span>ページを読む</span>
+        </button>
+
+        <button
+          id="stop-reading"
+          type="button"
+          disabled
+        >
+          <span aria-hidden="true">■</span>
+          <span>停止</span>
+        </button>
+      </div>
+    </fieldset>
+
+    <p class="accessibility-help">
+      読み上げ中は、約10語ずつ強調表示されます。
+    </p>
 
     <span
       id="accessibility-status"
@@ -143,6 +163,9 @@
       aria-atomic="true"
     ></span>
   </div>
+</details>
+
+<main id="main" tabindex="-1">
 
   <main id="main" tabindex="-1">
     <section id="about">

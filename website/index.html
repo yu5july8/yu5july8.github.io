@@ -65,45 +65,75 @@
     </div>
   </nav>
 
-  <!-- Accessibility tools -->
-  <div
-    class="accessibility-tools"
-    role="region"
-    aria-label="Accessibility tools"
-  >
-    <button
-      id="increase-text"
-      type="button"
-      aria-label="Increase text size"
-    >
-      A+
-    </button>
+  <details class="accessibility-panel">
+  <summary>
+    <span aria-hidden="true">⚙</span>
+    Accessibility tools
+  </summary>
 
-    <button
-      id="reset-text"
-      type="button"
-      aria-label="Reset text size"
-    >
-      Reset text
-    </button>
+  <div class="accessibility-panel-content">
+    <fieldset class="accessibility-group">
+      <legend>Text size</legend>
 
-    <button
-      id="read-page"
-      type="button"
-      aria-pressed="false"
-    >
-      <span aria-hidden="true">🔊</span>
-      Read page aloud
-    </button>
+      <div class="accessibility-actions">
+        <button
+          id="increase-text"
+          type="button"
+          aria-label="Increase text size"
+        >
+          <span aria-hidden="true">A+</span>
+          <span>Enlarge</span>
+        </button>
 
-    <button
-      id="stop-reading"
-      type="button"
-      disabled
-    >
-      Stop reading
-    </button>
+        <button
+          id="reset-text"
+          type="button"
+          aria-label="Reset text size"
+        >
+          Reset
+        </button>
+      </div>
+    </fieldset>
+
+    <fieldset class="accessibility-group">
+      <legend>Read aloud</legend>
+
+      <div class="accessibility-actions">
+        <button
+          id="read-page"
+          type="button"
+          aria-pressed="false"
+          aria-controls="main"
+        >
+          <span aria-hidden="true">🔊</span>
+          <span>Read page</span>
+        </button>
+
+        <button
+          id="stop-reading"
+          type="button"
+          disabled
+        >
+          <span aria-hidden="true">■</span>
+          <span>Stop</span>
+        </button>
+      </div>
+    </fieldset>
+
+    <p class="accessibility-help">
+      Read Aloud highlights approximately 10 words at a time.
+    </p>
+
+    <span
+      id="accessibility-status"
+      class="visually-hidden"
+      aria-live="polite"
+      aria-atomic="true"
+    ></span>
   </div>
+</details>
+
+<main id="main" tabindex="-1">
 
   <main id="main" tabindex="-1">
     <section id="about">

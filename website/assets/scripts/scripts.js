@@ -232,7 +232,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
     // ======================================================
-  // 6) ACCESSIBILITY TOOLS: TEXT SIZE AND READ ALOUD
+  // 6) ACCESSIBILITY TOOLS
+  // Text enlargement and chunked read-aloud highlighting
   // ======================================================
   const increaseTextButton = $("#increase-text");
   const resetTextButton = $("#reset-text");
@@ -242,8 +243,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainContent = $("#main");
 
   const textSizes = ["100%", "125%", "150%", "175%", "200%"];
+  const wordsPerChunk = 10;
+
   let textSizeIndex = 0;
   let currentSpeech = null;
+  let currentChunks = [];
+  let currentChunkIndex = 0;
+  let speechRunId = 0;
+
+  const isJapanese =
+    document.documentElement.lang.toLowerCase().startsWith("ja");
+
+  const messages = isJapanese
+    ? {
+        increaseText: "文字を大きくする",
+        maximumText: "最大の文字サイズです",
+        textSize: size => `文字サイズを${size}に設定しました。`,
+        readingStarted: "ページの読み上げを開始しました。",
+        readingStopped: "読み上げを停止しました。",
+        readingFinished: "ページの読み上げが終了しました。",
+        noContent: "読み上げるコンテンツがありません。",
+        speechError: "ページを読み上げることができませんでした。"
+      }
+    : {
+        increaseText: "Increase text size",
+        maximumText: "Maximum text size reached",
+        textSize: size => `Text size set to ${size}.`,
+        readingStarted: "Reading the page aloud.",
+        readingStopped: "Reading stopped.",
+        readingFinished: "Finished reading the page.",
+        noContent: "No page content is available to read.",
+        speechError: "The page could not be read aloud."
+      };
 
   function announceStatus(message) {
     if (!accessibilityStatus) return;
@@ -275,8 +306,8 @@ document.addEventListener("DOMContentLoaded", () => {
       increaseTextButton.setAttribute(
         "aria-label",
         maximumReached
-          ? "Maximum text size reached"
-          : "Increase text size"
+          ? messages.maximumText
+          : messages.increaseText
       );
     }
 
@@ -286,15 +317,14 @@ document.addEventListener("DOMContentLoaded", () => {
         String(textSizeIndex)
       );
     } catch (error) {
-      // The preference still works for the current page.
+      // Text enlargement still works for the current page.
     }
 
     if (announce) {
-      announceStatus(`Text size set to ${size}.`);
+      announceStatus(messages.textSize(size));
     }
   }
 
-  // Restore the selected size when visitors change pages.
   try {
     const savedTextSize = Number.parseInt(
       localStorage.getItem("preferredTextSizeIndex"),
@@ -309,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
       textSizeIndex = savedTextSize;
     }
   } catch (error) {
-    // Use the default size when storage is unavailable.
+    // Use the default text size.
   }
 
   if (increaseTextButton && resetTextButton) {
@@ -329,6 +359,173 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ------------------------------------------------------
+  // Prepare words for highlighting
+  // ------------------------------------------------------
+  function shouldSkipTextNode(node) {
+    const parent = node.parentElement;
+
+    if (!parent || !node.textContent.trim()) {
+      return true;
+    }
+
+    return Boolean(
+      parent.closest(
+        [
+          "script",
+          "style",
+          "noscript",
+          "iframe",
+          "embed",
+          "button",
+          "svg",
+          "[hidden]",
+          "[aria-hidden='true']",
+          ".visually-hidden"
+        ].join(",")
+      )
+    );
+  }
+
+  function wrapReadableText() {
+    if (!mainContent || mainContent.dataset.speechPrepared === "true") {
+      return;
+    }
+
+    const locale = document.documentElement.lang || "en";
+    const segmenter =
+      "Segmenter" in Intl
+        ? new Intl.Segmenter(locale, { granularity: "word" })
+        : null;
+
+    const walker = document.createTreeWalker(
+      mainContent,
+      NodeFilter.SHOW_TEXT
+    );
+
+    const textNodes = [];
+
+    while (walker.nextNode()) {
+      if (!shouldSkipTextNode(walker.currentNode)) {
+        textNodes.push(walker.currentNode);
+      }
+    }
+
+    textNodes.forEach(node => {
+      const text = node.textContent;
+      const fragment = document.createDocumentFragment();
+      let previousWord = null;
+
+      if (segmenter) {
+        const segments = Array.from(segmenter.segment(text));
+
+        segments.forEach(segment => {
+          if (segment.isWordLike) {
+            const word = document.createElement("span");
+
+            word.className = "speech-word";
+            word.textContent = segment.segment;
+
+            fragment.appendChild(word);
+            previousWord = word;
+          } else if (previousWord) {
+            /*
+             * Attach punctuation and spaces to the preceding
+             * word so that speech retains natural punctuation.
+             */
+            previousWord.textContent += segment.segment;
+          } else {
+            fragment.appendChild(
+              document.createTextNode(segment.segment)
+            );
+          }
+        });
+      } else {
+        const parts = text.match(/\S+\s*|\s+/g) || [];
+
+        parts.forEach(part => {
+          if (/\S/.test(part)) {
+            const word = document.createElement("span");
+
+            word.className = "speech-word";
+            word.textContent = part;
+
+            fragment.appendChild(word);
+          } else {
+            fragment.appendChild(
+              document.createTextNode(part)
+            );
+          }
+        });
+      }
+
+      node.replaceWith(fragment);
+    });
+
+    mainContent.dataset.speechPrepared = "true";
+  }
+
+  function getVisibleWords() {
+    wrapReadableText();
+
+    return $$(".speech-word", mainContent).filter(word => {
+      const style = window.getComputedStyle(word);
+
+      return (
+        style.display !== "none" &&
+        style.visibility !== "hidden" &&
+        word.getClientRects().length > 0
+      );
+    });
+  }
+
+  function createSpeechChunks(words) {
+    const chunks = [];
+
+    for (let index = 0; index < words.length; index += wordsPerChunk) {
+      chunks.push(words.slice(index, index + wordsPerChunk));
+    }
+
+    return chunks;
+  }
+
+  // ------------------------------------------------------
+  // Highlight management
+  // ------------------------------------------------------
+  function clearSpeechHighlight() {
+    $$(".speech-highlight", mainContent).forEach(word => {
+      word.classList.remove("speech-highlight");
+    });
+  }
+
+  function highlightChunk(chunk) {
+    clearSpeechHighlight();
+
+    chunk.forEach(word => {
+      word.classList.add("speech-highlight");
+    });
+
+    const firstWord = chunk[0];
+
+    if (!firstWord) return;
+
+    const rectangle = firstWord.getBoundingClientRect();
+    const outsideViewport =
+      rectangle.top < 80 ||
+      rectangle.bottom > window.innerHeight - 40;
+
+    if (outsideViewport) {
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      firstWord.scrollIntoView({
+        behavior: reducedMotion ? "auto" : "smooth",
+        block: "center"
+      });
+    }
+  }
+
+  // ------------------------------------------------------
   // Read-aloud controls
   // ------------------------------------------------------
   function updateSpeechControls(isReading) {
@@ -345,17 +542,77 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function finishReading(message) {
+    currentSpeech = null;
+    currentChunks = [];
+    currentChunkIndex = 0;
+
+    clearSpeechHighlight();
+    updateSpeechControls(false);
+
+    if (message) {
+      announceStatus(message);
+    }
+  }
+
   function stopReading(announce = true) {
+    speechRunId += 1;
+
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
 
-    currentSpeech = null;
-    updateSpeechControls(false);
+    finishReading(
+      announce ? messages.readingStopped : ""
+    );
+  }
 
-    if (announce) {
-      announceStatus("Reading stopped.");
+  function speakNextChunk(runId) {
+    if (runId !== speechRunId) {
+      return;
     }
+
+    if (currentChunkIndex >= currentChunks.length) {
+      finishReading(messages.readingFinished);
+      return;
+    }
+
+    const chunk = currentChunks[currentChunkIndex];
+    const chunkText = chunk
+      .map(word => word.textContent)
+      .join("")
+      .trim();
+
+    if (!chunkText) {
+      currentChunkIndex += 1;
+      speakNextChunk(runId);
+      return;
+    }
+
+    highlightChunk(chunk);
+
+    currentSpeech = new SpeechSynthesisUtterance(chunkText);
+    currentSpeech.lang =
+      document.documentElement.lang || "en";
+    currentSpeech.rate = 1;
+    currentSpeech.pitch = 1;
+
+    currentSpeech.addEventListener("end", () => {
+      if (runId !== speechRunId) return;
+
+      currentChunkIndex += 1;
+      speakNextChunk(runId);
+    });
+
+    currentSpeech.addEventListener("error", event => {
+      if (runId !== speechRunId) return;
+
+      if (event.error !== "canceled") {
+        finishReading(messages.speechError);
+      }
+    });
+
+    window.speechSynthesis.speak(currentSpeech);
   }
 
   if (
@@ -367,43 +624,23 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSpeechControls(false);
 
     readPageButton.addEventListener("click", () => {
-      // Stop an existing utterance without announcing it.
       stopReading(false);
 
-      const pageText = mainContent.innerText
-        .replace(/\s+/g, " ")
-        .trim();
+      const words = getVisibleWords();
 
-      if (!pageText) {
-        announceStatus("No page content is available to read.");
+      if (!words.length) {
+        announceStatus(messages.noContent);
         return;
       }
 
-      currentSpeech = new SpeechSynthesisUtterance(pageText);
-      currentSpeech.lang =
-        document.documentElement.lang || "en";
-      currentSpeech.rate = 1;
-      currentSpeech.pitch = 1;
+      currentChunks = createSpeechChunks(words);
+      currentChunkIndex = 0;
 
-      currentSpeech.addEventListener("end", () => {
-        currentSpeech = null;
-        updateSpeechControls(false);
-        announceStatus("Reading finished.");
-      });
-
-      currentSpeech.addEventListener("error", event => {
-        currentSpeech = null;
-        updateSpeechControls(false);
-
-        if (event.error !== "canceled") {
-          announceStatus("The page could not be read aloud.");
-        }
-      });
+      const runId = ++speechRunId;
 
       updateSpeechControls(true);
-      announceStatus("Reading the page aloud.");
-
-      window.speechSynthesis.speak(currentSpeech);
+      announceStatus(messages.readingStarted);
+      speakNextChunk(runId);
     });
 
     stopReadingButton.addEventListener("click", () => {
@@ -415,7 +652,6 @@ document.addEventListener("DOMContentLoaded", () => {
       stopReading(false);
     });
   } else {
-    // Hide speech controls if the browser lacks speech synthesis.
     readPageButton?.setAttribute("hidden", "");
     stopReadingButton?.setAttribute("hidden", "");
   }

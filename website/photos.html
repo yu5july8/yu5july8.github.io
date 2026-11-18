@@ -66,7 +66,47 @@
     </div>
   </nav>
 
-  <main id="main" class="photos-page">
+  <!-- Accessibility tools -->
+  <div
+    class="accessibility-tools"
+    role="region"
+    aria-label="Accessibility tools"
+  >
+    <button
+      id="increase-text"
+      type="button"
+      aria-label="Increase text size"
+    >
+      A+
+    </button>
+
+    <button
+      id="reset-text"
+      type="button"
+      aria-label="Reset text size"
+    >
+      Reset text
+    </button>
+
+    <button
+      id="read-page"
+      type="button"
+      aria-pressed="false"
+    >
+      <span aria-hidden="true">🔊</span>
+      Read page aloud
+    </button>
+
+    <button
+      id="stop-reading"
+      type="button"
+      disabled
+    >
+      Stop reading
+    </button>
+  </div>
+
+  <main id="main" class="photos-page" tabindex="-1">
     <section class="photos-introduction" aria-labelledby="photos-title">
       <h2 id="photos-title">Photos</h2>
 
@@ -86,7 +126,7 @@
             type="button"
             data-full="assets/images/photos/wedding.jpeg"
             data-caption="Description or caption for the first photo."
-            aria-label="Enlarge: At Laura and Jude wedding reception in August 2026"
+            data-caption="At Laura and Jude's wedding reception in August 2026."
           >
             <img
               src="assets/images/photos/wedding.jpeg"
@@ -106,7 +146,7 @@
             type="button"
             data-full="assets/images/photos/send_off_Party.jpeg"
             data-caption="Last week of Yugo in Rochester, Brenden planned the gathering to see everyone from the RocVenture"
-            aria-label="Enlarge: Description or caption for the second photo"
+            aria-label="Enlarge: Yugo's last climbing session at RocVenture before moving to Virginia"
           >
             <img
               src="assets/images/photos/send_off_Party.jpeg"
@@ -125,7 +165,7 @@
             class="photo-button"
             type="button"
             data-full="assets/images/photos/RocVenture.jpeg"
-            data-caption="Yugo's last climbing session at RocVenture before moving to Virginia for PhD.\"
+            data-caption="Yugo's last climbing session at RocVenture before moving to Virginia for PhD."
             aria-label="Enlarge: Description or caption for the third photo"
           >
             <img
@@ -140,26 +180,55 @@
           </figcaption>
         </figure>
 
+        <figure class="photo-card">
+          <button
+            class="photo-button"
+            type="button"
+            data-full="assets/images/photos/wedding.jpeg"
+            data-caption="Description or caption for the first photo."
+            data-caption="chapel pond slab"
+          >
+            <img
+              src="assets/images/Chapel_pond.jepg"
+              alt="group picture on top of the cliff after climbing chapel pond slab in adirondack NY. from left male female, male and male climbers wearing helmet and smiling. "
+              loading="lazy"
+            />
+          </button>
+
+          <figcaption>
+            Yugo went to adirondack area for climbing. This picture is from the completion of chapel pond slab. 
+          </figcaption>
+        </figure>
+
       </div>
     </section>
   </main>
 
   <!-- Enlarged photo viewer -->
-  <dialog id="photo-lightbox" class="photo-lightbox">
-    <div class="photo-lightbox-content">
-      <button
-        id="photo-lightbox-close"
-        class="photo-lightbox-close"
-        type="button"
-        aria-label="Close enlarged photo"
-      >
-        ×
-      </button>
+  <dialog
+  id="photo-lightbox"
+  class="photo-lightbox"
+  aria-labelledby="photo-lightbox-title"
+  aria-describedby="photo-lightbox-caption"
+>
+  <div class="photo-lightbox-content">
+    <h2 id="photo-lightbox-title" class="visually-hidden">
+      Enlarged photo
+    </h2>
 
-      <img id="photo-lightbox-image" src="" alt="" />
-      <p id="photo-lightbox-caption"></p>
-    </div>
-  </dialog>
+    <button
+      id="photo-lightbox-close"
+      class="photo-lightbox-close"
+      type="button"
+      aria-label="Close enlarged photo"
+    >
+      ×
+    </button>
+
+    <img id="photo-lightbox-image" src="" alt="" />
+    <p id="photo-lightbox-caption"></p>
+  </div>
+</dialog>
 
   <footer id="contact">
     <p>&copy; 2026 Yugo Iwamoto. All rights reserved.</p>

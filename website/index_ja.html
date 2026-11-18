@@ -39,6 +39,45 @@
         </div>
     </nav>
 
+    <div
+        class="accessibility-tools"
+        role="region"
+        aria-label="アクセシビリティツール"
+        >
+        <button
+            id="increase-text"
+            type="button"
+            aria-label="文字を大きくする"
+        >
+            A+
+        </button>
+
+        <button
+            id="reset-text"
+            type="button"
+            aria-label="文字サイズを元に戻す"
+        >
+            文字サイズをリセット
+        </button>
+
+        <button
+            id="read-page"
+            type="button"
+            aria-pressed="false"
+        >
+            <span aria-hidden="true">🔊</span>
+            ページを読み上げる
+        </button>
+
+        <button
+            id="stop-reading"
+            type="button"
+            disabled
+        >
+            読み上げを停止
+        </button>
+    </div>
+
     <main>
         <section id="about">
             <h2>岩本優吾について</h2>

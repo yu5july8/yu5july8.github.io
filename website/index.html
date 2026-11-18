@@ -65,7 +65,49 @@
     </div>
   </nav>
 
-  <main id="main">
+    </nav>
+
+  <!-- Accessibility tools -->
+  <div
+    class="accessibility-tools"
+    role="region"
+    aria-label="Accessibility tools"
+  >
+    <button
+      id="increase-text"
+      type="button"
+      aria-label="Increase text size"
+    >
+      A+
+    </button>
+
+    <button
+      id="reset-text"
+      type="button"
+      aria-label="Reset text size"
+    >
+      Reset text
+    </button>
+
+    <button
+      id="read-page"
+      type="button"
+      aria-pressed="false"
+    >
+      <span aria-hidden="true">🔊</span>
+      Read page aloud
+    </button>
+
+    <button
+      id="stop-reading"
+      type="button"
+      disabled
+    >
+      Stop reading
+    </button>
+  </div>
+
+  <main id="main" tabindex="-1">
     <section id="about">
       <h2>About Yugo</h2>
       <p>

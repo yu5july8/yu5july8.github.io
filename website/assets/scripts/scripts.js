@@ -230,4 +230,193 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+    // ======================================================
+  // 6) ACCESSIBILITY TOOLS: TEXT SIZE AND READ ALOUD
+  // ======================================================
+  const increaseTextButton = $("#increase-text");
+  const resetTextButton = $("#reset-text");
+  const readPageButton = $("#read-page");
+  const stopReadingButton = $("#stop-reading");
+  const accessibilityStatus = $("#accessibility-status");
+  const mainContent = $("#main");
+
+  const textSizes = ["100%", "125%", "150%", "175%", "200%"];
+  let textSizeIndex = 0;
+  let currentSpeech = null;
+
+  function announceStatus(message) {
+    if (!accessibilityStatus) return;
+
+    accessibilityStatus.textContent = "";
+
+    window.setTimeout(() => {
+      accessibilityStatus.textContent = message;
+    }, 50);
+  }
+
+  // ------------------------------------------------------
+  // Text-size controls
+  // ------------------------------------------------------
+  function applyTextSize(announce = true) {
+    const size = textSizes[textSizeIndex];
+
+    document.documentElement.style.setProperty(
+      "--user-font-size",
+      size
+    );
+
+    if (increaseTextButton) {
+      const maximumReached =
+        textSizeIndex === textSizes.length - 1;
+
+      increaseTextButton.disabled = maximumReached;
+
+      increaseTextButton.setAttribute(
+        "aria-label",
+        maximumReached
+          ? "Maximum text size reached"
+          : "Increase text size"
+      );
+    }
+
+    try {
+      localStorage.setItem(
+        "preferredTextSizeIndex",
+        String(textSizeIndex)
+      );
+    } catch (error) {
+      // The preference still works for the current page.
+    }
+
+    if (announce) {
+      announceStatus(`Text size set to ${size}.`);
+    }
+  }
+
+  // Restore the selected size when visitors change pages.
+  try {
+    const savedTextSize = Number.parseInt(
+      localStorage.getItem("preferredTextSizeIndex"),
+      10
+    );
+
+    if (
+      Number.isInteger(savedTextSize) &&
+      savedTextSize >= 0 &&
+      savedTextSize < textSizes.length
+    ) {
+      textSizeIndex = savedTextSize;
+    }
+  } catch (error) {
+    // Use the default size when storage is unavailable.
+  }
+
+  if (increaseTextButton && resetTextButton) {
+    applyTextSize(false);
+
+    increaseTextButton.addEventListener("click", () => {
+      if (textSizeIndex < textSizes.length - 1) {
+        textSizeIndex += 1;
+        applyTextSize();
+      }
+    });
+
+    resetTextButton.addEventListener("click", () => {
+      textSizeIndex = 0;
+      applyTextSize();
+    });
+  }
+
+  // ------------------------------------------------------
+  // Read-aloud controls
+  // ------------------------------------------------------
+  function updateSpeechControls(isReading) {
+    if (readPageButton) {
+      readPageButton.disabled = isReading;
+      readPageButton.setAttribute(
+        "aria-pressed",
+        String(isReading)
+      );
+    }
+
+    if (stopReadingButton) {
+      stopReadingButton.disabled = !isReading;
+    }
+  }
+
+  function stopReading(announce = true) {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+
+    currentSpeech = null;
+    updateSpeechControls(false);
+
+    if (announce) {
+      announceStatus("Reading stopped.");
+    }
+  }
+
+  if (
+    "speechSynthesis" in window &&
+    readPageButton &&
+    stopReadingButton &&
+    mainContent
+  ) {
+    updateSpeechControls(false);
+
+    readPageButton.addEventListener("click", () => {
+      // Stop an existing utterance without announcing it.
+      stopReading(false);
+
+      const pageText = mainContent.innerText
+        .replace(/\s+/g, " ")
+        .trim();
+
+      if (!pageText) {
+        announceStatus("No page content is available to read.");
+        return;
+      }
+
+      currentSpeech = new SpeechSynthesisUtterance(pageText);
+      currentSpeech.lang =
+        document.documentElement.lang || "en";
+      currentSpeech.rate = 1;
+      currentSpeech.pitch = 1;
+
+      currentSpeech.addEventListener("end", () => {
+        currentSpeech = null;
+        updateSpeechControls(false);
+        announceStatus("Reading finished.");
+      });
+
+      currentSpeech.addEventListener("error", event => {
+        currentSpeech = null;
+        updateSpeechControls(false);
+
+        if (event.error !== "canceled") {
+          announceStatus("The page could not be read aloud.");
+        }
+      });
+
+      updateSpeechControls(true);
+      announceStatus("Reading the page aloud.");
+
+      window.speechSynthesis.speak(currentSpeech);
+    });
+
+    stopReadingButton.addEventListener("click", () => {
+      stopReading(true);
+      readPageButton.focus();
+    });
+
+    window.addEventListener("pagehide", () => {
+      stopReading(false);
+    });
+  } else {
+    // Hide speech controls if the browser lacks speech synthesis.
+    readPageButton?.setAttribute("hidden", "");
+    stopReadingButton?.setAttribute("hidden", "");
+  }
 });

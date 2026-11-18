@@ -671,6 +671,165 @@ footer img[alt*="ORCID"] {
   text-decoration-thickness: 0.14em;
 }
 
+/* =====================================================
+   ACCESSIBILITY TOOLS
+   ===================================================== */
+
+:root {
+  --user-font-size: 100%;
+}
+
+/* Controls text sized with rem units */
+html {
+  font-size: var(--user-font-size);
+}
+
+.accessibility-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: var(--secondary-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.accessibility-tools button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 14px;
+
+  color: var(--primary);
+  background-color: var(--bg);
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.accessibility-tools button:hover {
+  color: #ffffff;
+  background-color: var(--primary);
+}
+
+.accessibility-tools button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.accessibility-tools button[aria-pressed="true"] {
+  color: #ffffff;
+  background-color: var(--primary);
+}
+
+.accessibility-tools button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.accessibility-tools button:disabled:hover {
+  color: var(--primary);
+  background-color: var(--bg);
+}
+
+/* =====================================================
+   ACCESSIBILITY TOOLS: TABLET AND MOBILE
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .accessibility-tools {
+    gap: 8px;
+    padding: 10px 15px;
+  }
+
+  .accessibility-tools button {
+    flex: 1 1 auto;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .accessibility-tools {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .accessibility-tools button {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   ACCESSIBILITY TOOLS: DARK MODE
+   ===================================================== */
+
+@media (prefers-color-scheme: dark) {
+  .accessibility-tools {
+    background-color: var(--surface);
+    border-color: var(--border);
+  }
+
+  .accessibility-tools button {
+    color: var(--primary);
+    background-color: var(--surface-2);
+    border-color: var(--primary);
+  }
+
+  .accessibility-tools button:hover,
+  .accessibility-tools button[aria-pressed="true"] {
+    color: #0b0f14;
+    background-color: var(--primary);
+  }
+
+  .accessibility-tools button:disabled:hover {
+    color: var(--primary);
+    background-color: var(--surface-2);
+  }
+}
+
+/* =====================================================
+   ACCESSIBILITY TOOLS: FORCED COLORS
+   ===================================================== */
+
+@media (forced-colors: active) {
+  .accessibility-tools {
+    border-bottom: 1px solid CanvasText;
+  }
+
+  .accessibility-tools button {
+    color: ButtonText;
+    background-color: ButtonFace;
+    border: 2px solid ButtonText;
+    forced-color-adjust: auto;
+  }
+}
+
+/* =====================================================
+   ACCESSIBILITY TOOLS: REDUCED MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .accessibility-tools button {
+    transition: none;
+  }
+}
+
 /* Gallery tablet layout */
 
 @media (max-width: 1024px) {

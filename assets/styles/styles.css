@@ -525,10 +525,6 @@ footer img[alt*="ORCID"] {
   border-radius: 4px;
 }
 
-/* =====================================================
-   PHOTO GALLERY
-   ===================================================== */
-
 .photos-page {
   box-sizing: border-box;
 }
@@ -819,9 +815,6 @@ html {
   line-height: 1.4;
 }
 
-/* =====================================================
-   READ-ALOUD HIGHLIGHT
-   ===================================================== */
 
 .speech-word {
   border-radius: 3px;
@@ -842,19 +835,7 @@ html {
    ===================================================== */
 
 @media (max-width: 700px) {
-  .accessibility-panel {
-    width: calc(100% - 30px);
-  }
-
-  .accessibility-panel-content {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .accessibility-help {
-    max-width: none;
-  }
+ 
 }
 
 @media (max-width: 480px) {
@@ -1128,6 +1109,20 @@ html {
     font-size: 0.85rem;
     padding: 15px;
     text-align: center;
+  }
+
+   .accessibility-panel {
+    width: calc(100% - 30px);
+  }
+
+  .accessibility-panel-content {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .accessibility-help {
+    max-width: none;
   }
 }
 

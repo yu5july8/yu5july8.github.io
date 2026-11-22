@@ -65,13 +65,32 @@
     </div>
   </nav>
 
-  <details class="accessibility-panel">
+<details class="accessibility-panel">
   <summary>
     <span aria-hidden="true">⚙</span>
     Accessibility tools
   </summary>
 
   <div class="accessibility-panel-content">
+    <fieldset class="accessibility-group">
+      <legend>Display</legend>
+
+      <div class="accessibility-actions">
+        <button
+          id="dark-mode-toggle"
+          class="switch-button"
+          type="button"
+          role="switch"
+          aria-checked="false"
+        >
+          <span class="switch-track" aria-hidden="true">
+            <span class="switch-thumb"></span>
+          </span>
+          <span>Dark mode</span>
+        </button>
+      </div>
+    </fieldset>
+
     <fieldset class="accessibility-group">
       <legend>Text size</legend>
 
@@ -95,8 +114,24 @@
       </div>
     </fieldset>
 
-    <fieldset class="accessibility-group">
-      <legend>Read aloud</legend>
+    <fieldset class="accessibility-group read-aloud-group">
+      <legend>Text to speech</legend>
+
+      <div class="speech-speed-control">
+        <label for="speech-rate">
+          Reading speed:
+          <output id="speech-rate-value" for="speech-rate">1×</output>
+        </label>
+
+        <input
+          id="speech-rate"
+          type="range"
+          min="0.5"
+          max="2"
+          step="0.25"
+          value="1"
+        >
+      </div>
 
       <div class="accessibility-actions">
         <button
@@ -109,11 +144,17 @@
           <span>Read page</span>
         </button>
 
-        <button
-          id="stop-reading"
-          type="button"
-          disabled
-        >
+        <button id="previous-sentence" type="button" disabled>
+          <span aria-hidden="true">◀</span>
+          <span>Previous sentence</span>
+        </button>
+
+        <button id="next-sentence" type="button" disabled>
+          <span>Next sentence</span>
+          <span aria-hidden="true">▶</span>
+        </button>
+
+        <button id="stop-reading" type="button" disabled>
           <span aria-hidden="true">■</span>
           <span>Stop</span>
         </button>
@@ -122,6 +163,7 @@
 
     <p class="accessibility-help">
       Read Aloud highlights approximately 10 words at a time.
+      Use the sentence buttons to move through the page.
     </p>
 
     <span
@@ -134,27 +176,19 @@
 </details>
 
 <main id="main" tabindex="-1">
-
-  <main id="main" tabindex="-1">
-    <section id="about">
-      <h2>About Yugo</h2>
-      <p>
-        <a href="https://ist.gmu.edu/profiles/yiwamoto">Doctoral student</a> in the Department of Information Sciences and Technology at George Mason University and a Human–Computer Interaction (HCI) researcher studying teens’ experiences with AI-mediated and personalized digital technologies. Working for <a href="https://www.thedailab.com/">the DAI lab</a> under <a href="https://www.noramcdonald.net/">Dr. Nora McDonald</a>, I investigate how these technologies shape adolescents’ trust, identity, privacy, social relationships, autonomy, and agency, with the goal of supporting safer, more reflective, and more human-centered engagement with AI. My research includes both broader studies of adolescents’ interactions with emerging technologies and accessibility-focused work examining how interactive and AI-mediated systems can better support autistic and other neurodivergent young people in educational and social settings.
-      </p>
-      <p>
-        A complementary strand of my research focuses on accessibility and human-centered generative AI, particularly how generative systems can support creating and evaluating accessible descriptions of complex scientific figures. Across these projects, I use participatory design, iterative prototyping, qualitative inquiry, and mixed-methods research to develop evidence-based guidance for more responsible, inclusive, accessible, and trustworthy technologies.
-      <p>
-        My interdisciplinary professional background spans academic research, communications and marketing, web design, community engagement, and customer service. I bring experience in user studies, focus groups, accessibility research, qualitative and quantitative analysis, and the design and evaluation of interactive systems. My multilingual proficiency in English and Japanese, together with my international experience in education and public-facing roles, informs my approach to inclusive and culturally responsive research.
-      </p>
-      <p>I am currently seeking new opportunities in the following areas:</p>
-      <ul>
-        <li>Research collaboration in HCI, accessibility, human-centered AI, and learning</li>
-        <li>Web development roles leveraging front-end and back-end skills</li>
-        <li>Accessibility audits and inclusive design consulting</li>
-      </ul>
-      <p>
-        I work at the intersection of technology, inclusion, and human experience, with the goal of developing systems that are safer, more accessible, and responsive to the needs of the people who use them.
-      </p>
+  <section id="about">
+    <h2>About Yugo</h2>
+    <p><a href="https://ist.gmu.edu/profiles/yiwamoto">Doctoral student</a> in the Department of Information Sciences and Technology at George Mason University and a Human–Computer Interaction (HCI) researcher studying teens’ experiences with AI-mediated and personalized digital technologies. Working for <a href="https://www.thedailab.com/">the DAI lab</a> under <a href="https://www.noramcdonald.net/">Dr. Nora McDonald</a>, I investigate how these technologies shape adolescents’ trust, identity, privacy, social relationships, autonomy, and agency, with the goal of supporting safer, more reflective, and more human-centered engagement with AI. My research includes both broader studies of adolescents’ interactions with emerging technologies and accessibility-focused work examining how interactive and AI-mediated systems can better support autistic and other neurodivergent young people in educational and social settings.</p>
+    <p>A complementary strand of my research focuses on accessibility and human-centered generative AI, particularly how generative systems can support creating and evaluating accessible descriptions of complex scientific figures. Across these projects, I use participatory design, iterative prototyping, qualitative inquiry, and mixed-methods research to develop evidence-based guidance for more responsible, inclusive, accessible, and trustworthy technologies.
+    <p>
+      My interdisciplinary professional background spans academic research, communications and marketing, web design, community engagement, and customer service. I bring experience in user studies, focus groups, accessibility research, qualitative and quantitative analysis, and the design and evaluation of interactive systems. My multilingual proficiency in English and Japanese, together with my international experience in education and public-facing roles, informs my approach to inclusive and culturally responsive research.</p>
+    <p>I am currently seeking new opportunities in the following areas:</p>
+    <ul>
+      <li>Research collaboration in HCI, accessibility, human-centered AI, and learning</li>
+      <li>Web development roles leveraging front-end and back-end skills</li>
+      <li>Accessibility audits and inclusive design consulting</li>
+    </ul>
+    <p>I work at the intersection of technology, inclusion, and human experience, with the goal of developing systems that are safer, more accessible, and responsive to the needs of the people who use them.</p>
 
       <div class="resume">
         <a href="#" id="openResume">View CV (PDF)</a>
@@ -170,7 +204,7 @@
                  type="application/pdf" width="100%" height="600px" />
         </div>
       </div>
-    </section>
+  </section>
 
     <!-- Capstone Proposal Modal (accessible) -->
     <div id="proposalModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="proposalTitle">

@@ -694,7 +694,7 @@ footer img[alt*="ORCID"] {
 /* Match the main section only when expanded */
 .accessibility-panel[open] {
   width: calc(100% - 40px);
-  max-width: 1200px;
+  max-width: 1140px;
 }
 
 .accessibility-panel summary {

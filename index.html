@@ -68,33 +68,33 @@
 <details class="accessibility-panel">
   <summary>
     <span aria-hidden="true">⚙</span>
-    Accessibility tools
+    <span>Accessibility tools</span>
   </summary>
 
   <div class="accessibility-panel-content">
+    <!-- Display settings -->
     <fieldset class="accessibility-group">
       <legend>Display</legend>
 
-      <div class="accessibility-actions">
-        <button
-          id="dark-mode-toggle"
-          class="switch-button"
-          type="button"
-          role="switch"
-          aria-checked="false"
-        >
-          <span class="switch-track" aria-hidden="true">
-            <span class="switch-thumb"></span>
-          </span>
-          <span>Dark mode</span>
-        </button>
-      </div>
+      <button
+        id="dark-mode-toggle"
+        class="switch-button"
+        type="button"
+        role="switch"
+        aria-checked="false"
+      >
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-thumb"></span>
+        </span>
+        <span>Dark mode</span>
+      </button>
     </fieldset>
 
+    <!-- Text-size settings -->
     <fieldset class="accessibility-group">
       <legend>Text size</legend>
 
-      <div class="accessibility-actions">
+      <div class="accessibility-actions text-size-actions">
         <button
           id="increase-text"
           type="button"
@@ -104,24 +104,21 @@
           <span>Enlarge</span>
         </button>
 
-        <button
-          id="reset-text"
-          type="button"
-          aria-label="Reset text size"
-        >
+        <button id="reset-text" type="button">
           Reset
         </button>
       </div>
     </fieldset>
 
+    <!-- Text-to-speech settings -->
     <fieldset class="accessibility-group read-aloud-group">
       <legend>Text to speech</legend>
 
       <div class="speech-speed-control">
-        <label for="speech-rate">
-          Reading speed:
+        <div class="speech-speed-heading">
+          <label for="speech-rate">Reading speed</label>
           <output id="speech-rate-value" for="speech-rate">1×</output>
-        </label>
+        </div>
 
         <input
           id="speech-rate"
@@ -130,41 +127,62 @@
           max="2"
           step="0.25"
           value="1"
+          aria-describedby="speech-speed-description"
         >
+
+        <div class="speech-rate-labels" aria-hidden="true">
+          <span>Slower</span>
+          <span>Faster</span>
+        </div>
+
+        <span
+          id="speech-speed-description"
+          class="visually-hidden"
+        >
+          Adjust the reading speed from one-half to two times
+          normal speed.
+        </span>
       </div>
 
-      <div class="accessibility-actions">
-        <button
-          id="read-page"
-          type="button"
-          aria-pressed="false"
-          aria-controls="main"
+      <div class="speech-control-rows">
+        <div class="accessibility-actions speech-main-actions">
+          <button
+            id="read-page"
+            type="button"
+            aria-pressed="false"
+            aria-controls="main"
+          >
+            <span aria-hidden="true">🔊</span>
+            <span>Read page</span>
+          </button>
+
+          <button id="stop-reading" type="button" disabled>
+            <span aria-hidden="true">■</span>
+            <span>Stop</span>
+          </button>
+        </div>
+
+        <div
+          class="accessibility-actions sentence-actions"
+          aria-label="Sentence navigation"
         >
-          <span aria-hidden="true">🔊</span>
-          <span>Read page</span>
-        </button>
+          <button id="previous-sentence" type="button" disabled>
+            <span aria-hidden="true">◀</span>
+            <span>Previous</span>
+          </button>
 
-        <button id="previous-sentence" type="button" disabled>
-          <span aria-hidden="true">◀</span>
-          <span>Previous sentence</span>
-        </button>
-
-        <button id="next-sentence" type="button" disabled>
-          <span>Next sentence</span>
-          <span aria-hidden="true">▶</span>
-        </button>
-
-        <button id="stop-reading" type="button" disabled>
-          <span aria-hidden="true">■</span>
-          <span>Stop</span>
-        </button>
+          <button id="next-sentence" type="button" disabled>
+            <span>Next</span>
+            <span aria-hidden="true">▶</span>
+          </button>
+        </div>
       </div>
+
+      <p class="accessibility-help">
+        Highlights approximately 10 words at a time. Use Previous
+        and Next to move between sentences.
+      </p>
     </fieldset>
-
-    <p class="accessibility-help">
-      Read Aloud highlights approximately 10 words at a time.
-      Use the sentence buttons to move through the page.
-    </p>
 
     <span
       id="accessibility-status"

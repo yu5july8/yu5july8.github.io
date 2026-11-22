@@ -678,17 +678,23 @@ footer img[alt*="ORCID"] {
    ===================================================== */
 
 .accessibility-panel {
-  width: calc(100% - 40px);
-  max-width: var(--content-width);
+  /* Compact while closed */
+  width: fit-content;
+  max-width: calc(100% - 30px);
   margin: 12px auto;
+
   color: var(--text);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(11, 61, 145, 0.1);
-
-  /* Keep the controls stable when page text is enlarged. */
   font-size: 16px;
+}
+
+/* Match the main section only when expanded */
+.accessibility-panel[open] {
+  width: calc(100% - 40px);
+  max-width: 1200px;
 }
 
 .accessibility-panel summary {

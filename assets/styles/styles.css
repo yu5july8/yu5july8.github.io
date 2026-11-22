@@ -21,6 +21,7 @@
   --user-font-size: 100%;
   --reading-highlight: #ffe08a;
   --reading-highlight-text: #111111;
+  --content-width: 1200px;
 }
 
 
@@ -225,7 +226,7 @@ html {
 /* === MAIN CONTENT === */
 main {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 30px;
   gap: 20px;
@@ -677,7 +678,8 @@ footer img[alt*="ORCID"] {
    ===================================================== */
 
 .accessibility-panel {
-  width: min(1100px, calc(100% - 30px));
+  width: calc(100% - 40px);
+  max-width: var(--content-width);
   margin: 12px auto;
   color: var(--text);
   background: var(--bg);
@@ -1178,6 +1180,11 @@ html.dark-mode footer {
     padding: 0 0 12px;
     border-right: 0;
     border-bottom: 1px solid var(--border);
+  }
+  .speech-rate-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   }
 
   .speech-main-actions,

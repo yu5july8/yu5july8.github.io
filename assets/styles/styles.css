@@ -668,7 +668,144 @@ footer img[alt*="ORCID"] {
   text-decoration: underline;
   text-decoration-thickness: 0.14em;
 }
+/* =====================================================
+   ACCESSIBILITY PANEL BASE
+   ===================================================== */
 
+:root {
+  --user-font-size: 100%;
+  --reading-highlight: #ffe08a;
+  --reading-highlight-text: #111;
+}
+
+html {
+  font-size: var(--user-font-size);
+}
+
+.accessibility-panel {
+  width: fit-content;
+  max-width: calc(100% - 30px);
+  margin: 12px auto;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(11, 61, 145, 0.1);
+}
+
+.accessibility-panel summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.accessibility-panel summary::-webkit-details-marker {
+  display: none;
+}
+
+.accessibility-panel summary::marker {
+  content: "";
+}
+
+.accessibility-panel summary::after {
+  content: "+";
+  margin-left: auto;
+  padding-left: 12px;
+  font-size: 1.25rem;
+}
+
+.accessibility-panel[open] summary::after {
+  content: "−";
+}
+
+.accessibility-panel summary:hover {
+  color: var(--primary-strong);
+  background: var(--secondary-bg);
+}
+
+.accessibility-panel-content {
+  display: flex;
+  gap: 18px;
+  padding: 12px 14px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.accessibility-group {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+.accessibility-group legend {
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.accessibility-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.accessibility-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 7px 12px;
+  color: var(--primary);
+  background: var(--bg);
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.accessibility-actions button:hover:not(:disabled),
+.accessibility-actions button[aria-pressed="true"] {
+  color: #fff;
+  background: var(--primary);
+}
+
+.accessibility-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.accessibility-help {
+  max-width: 220px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.speech-word {
+  border-radius: 3px;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.speech-highlight {
+  color: var(--reading-highlight-text);
+  background: var(--reading-highlight);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
 /* =====================================================
    ACCESSIBILITY TOOL ADDITIONS
    ===================================================== */

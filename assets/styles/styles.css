@@ -1,5 +1,7 @@
-/* === GLOBAL RESET === */
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -288,7 +290,7 @@ li {
 
 .inspire:hover, .k-12:hover, .a11y:hover, .mll:hover, .hci_web:hover,
 .iSchool_tour:hover, .TTS:hover, .caption_mask:hover, .graduation:hover,
-.recruitment:hover, .ISTE_646:hover, .capstone:hover, .Website:hover, .marketing:hover, .youth_ai:hover, .autism_ai.hover {
+.recruitment:hover, .ISTE_646:hover, .capstone:hover, .Website:hover, .marketing:hover, .youth_ai:hover, .autism_ai:hover {
   box-shadow: 0 4px 10px rgba(91, 42, 134, 0.2);
 }
 
@@ -668,342 +670,223 @@ footer img[alt*="ORCID"] {
 }
 
 /* =====================================================
-   COMPACT ACCESSIBILITY PANEL
+   ACCESSIBILITY TOOL ADDITIONS
    ===================================================== */
 
-:root {
-  --user-font-size: 100%;
-  --reading-highlight: #ffe08a;
-  --reading-highlight-text: #111111;
-}
-
-html {
-  font-size: var(--user-font-size);
-}
-
-.accessibility-panel {
-  width: fit-content;
-  max-width: calc(100% - 30px);
-  margin: 12px auto;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(11, 61, 145, 0.1);
-}
-
-.accessibility-panel summary {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 8px 14px;
-  color: var(--primary);
-  font-size: 1rem;
-  font-weight: 700;
-  list-style: none;
-  cursor: pointer;
-  user-select: none;
-}
-
-.accessibility-panel summary::-webkit-details-marker {
-  display: none;
-}
-
-.accessibility-panel summary::after {
-  content: "+";
-  margin-left: auto;
-  padding-left: 12px;
-  font-size: 1.25rem;
-  line-height: 1;
-}
-
-.accessibility-panel[open] summary::after {
-  content: "−";
-}
-
-.accessibility-panel summary:hover {
-  color: var(--primary-strong);
-  background: var(--secondary-bg);
-  border-radius: 8px;
-}
-
-.accessibility-panel summary:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
-
 .accessibility-panel-content {
-  display: flex;
-  align-items: flex-end;
-  gap: 18px;
-  padding: 12px 14px 14px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: min(960px, calc(100vw - 30px));
+}
+
+.read-aloud-group {
+  flex: 1 1 440px;
+}
+
+.switch-button {
+  white-space: nowrap;
+}
+
+.switch-track {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  background: var(--muted);
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  transition: background-color 0.2s ease;
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: var(--bg);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.switch-button[aria-checked="true"] .switch-track {
+  background: var(--primary);
+}
+
+.switch-button[aria-checked="true"] .switch-thumb {
+  transform: translateX(18px);
+}
+
+.speech-speed-control {
+  margin-bottom: 10px;
+}
+
+.speech-speed-control label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+#speech-rate {
+  width: min(260px, 100%);
+  min-height: 44px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+#speech-rate-value {
+  display: inline-block;
+  min-width: 2.5em;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* =====================================================
+   USER-CONTROLLED DARK MODE
+   ===================================================== */
+
+html.dark-mode {
+  color-scheme: dark;
+
+  --bg: #0b0f14;
+  --surface: #121826;
+  --surface-2: #162033;
+  --text: #e8edf6;
+  --muted: #c0c9d8;
+  --primary: #9cc2ff;
+  --primary-strong: #cfe0ff;
+  --secondary-bg: var(--surface);
+  --accent: #ff8f3d;
+  --border: #526173;
+  --focus: #ffd166;
+  --reading-highlight: #ffd166;
+  --reading-highlight-text: #101318;
+}
+
+html.dark-mode body,
+html.dark-mode header,
+html.dark-mode #top-nav,
+html.dark-mode main,
+html.dark-mode section,
+html.dark-mode .accordion-panel {
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+html.dark-mode .blog-card,
+html.dark-mode .photo-card,
+html.dark-mode .photo-lightbox,
+html.dark-mode .modal-content,
+html.dark-mode .accessibility-panel,
+html.dark-mode .inspire,
+html.dark-mode .k-12,
+html.dark-mode .a11y,
+html.dark-mode .mll,
+html.dark-mode .hci_web,
+html.dark-mode .iSchool_tour,
+html.dark-mode .TTS,
+html.dark-mode .caption_mask,
+html.dark-mode .graduation,
+html.dark-mode .recruitment,
+html.dark-mode .ISTE_646,
+html.dark-mode .capstone,
+html.dark-mode .Website,
+html.dark-mode .marketing,
+html.dark-mode .youth_ai,
+html.dark-mode .autism_ai {
+  color: var(--text);
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+
+html.dark-mode .accessibility-actions button,
+html.dark-mode .photo-lightbox-close {
+  color: var(--primary);
+  background-color: var(--surface-2);
+  border-color: var(--primary);
+}
+
+html.dark-mode .accessibility-actions button:hover,
+html.dark-mode .accessibility-actions button[aria-pressed="true"] {
+  color: #101318;
+  background-color: var(--primary);
+}
+
+html.dark-mode .accessibility-actions button:disabled:hover {
+  color: var(--primary);
+  background-color: var(--surface-2);
+}
+
+html.dark-mode .accordion-btn {
+  color: var(--text);
+  background-color: #1a2340;
+}
+
+html.dark-mode .accordion-btn:hover,
+html.dark-mode .accordion-btn.active {
+  background-color: #223064;
+}
+
+html.dark-mode footer {
+  color: #fff;
+  background-color: #0d1422;
   border-top: 1px solid var(--border);
 }
 
-.accessibility-group {
-  min-width: 0;
-  padding: 0;
-  border: 0;
-}
-
-.accessibility-group legend {
-  margin-bottom: 6px;
-  color: var(--text);
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-
-.accessibility-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.accessibility-actions button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  min-height: 44px;
-  padding: 7px 12px;
-
-  color: var(--primary);
-  background: var(--bg);
-  border: 2px solid var(--primary);
-  border-radius: 6px;
-
-  font: inherit;
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.2;
-
-  cursor: pointer;
-}
-
-.accessibility-actions button:hover {
-  color: #ffffff;
-  background: var(--primary);
-}
-
-.accessibility-actions button:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
-
-.accessibility-actions button[aria-pressed="true"] {
-  color: #ffffff;
-  background: var(--primary);
-}
-
-.accessibility-actions button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.accessibility-actions button:disabled:hover {
-  color: var(--primary);
-  background: var(--bg);
-}
-
-.accessibility-help {
-  max-width: 210px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-
-.speech-word {
-  border-radius: 3px;
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
-}
-
-.speech-highlight {
-  color: var(--reading-highlight-text);
-  background-color: var(--reading-highlight);
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
 /* =====================================================
-   RESPONSIVE PANEL
+   RESPONSIVE LAYOUT
+   Four intentional breakpoints:
+   1024px: compact desktop/tablet
+   768px: mobile navigation
+   600px: single-column gallery
+   480px: small phones
    ===================================================== */
 
-@media (max-width: 700px) {
- 
-}
-
-@media (max-width: 480px) {
-  .accessibility-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .accessibility-actions button {
-    width: 100%;
-  }
-}
-
-/* =====================================================
-   DARK MODE
-   ===================================================== */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --reading-highlight: #ffd166;
-    --reading-highlight-text: #101318;
-  }
-
-  .accessibility-panel {
-    background: var(--surface);
-    border-color: var(--border);
-  }
-
-  .accessibility-panel summary:hover {
-    background: var(--surface-2);
-  }
-
-  .accessibility-panel-content {
-    border-color: var(--border);
-  }
-
-  .accessibility-actions button {
-    color: var(--primary);
-    background: var(--surface-2);
-    border-color: var(--primary);
-  }
-
-  .accessibility-actions button:hover,
-  .accessibility-actions button[aria-pressed="true"] {
-    color: #101318;
-    background: var(--primary);
-  }
-
-  .accessibility-actions button:disabled:hover {
-    color: var(--primary);
-    background: var(--surface-2);
-  }
-}
-
-/* =====================================================
-   REDUCED MOTION AND FORCED COLORS
-   ===================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  .speech-word,
-  .accessibility-actions button {
-    transition: none;
-  }
-}
-
-@media (forced-colors: active) {
-  .accessibility-panel,
-  .accessibility-panel-content {
-    border-color: CanvasText;
-  }
-
-  .accessibility-actions button {
-    color: ButtonText;
-    background: ButtonFace;
-    border-color: ButtonText;
-  }
-
-  .speech-highlight {
-    color: HighlightText;
-    background: Highlight;
-  }
-}
-
-/* Gallery tablet layout */
-
+/* Compact desktop and tablet */
 @media (max-width: 1024px) {
+  main {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  .two_by_two,
+  .two_column {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
   .photo-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
   }
 }
 
-
-/* Gallery dark mode */
-
-@media (prefers-color-scheme: dark) {
-  .photo-card,
-  .photo-lightbox {
-    background: var(--surface);
-    border-color: var(--border);
-  }
-
-  .photo-lightbox-close {
-    color: var(--text);
-    background: var(--surface-2);
-    border-color: var(--border);
-  }
-}
-
-/* Respect reduced-motion settings */
-
-@media (prefers-reduced-motion: reduce) {
-  .photo-card,
-  .photo-button img {
-    transition: none;
-  }
-
-  .photo-card:hover,
-  .photo-button:hover img {
-    transform: none;
-  }
-}
-
-/* Dark mode variant */
-@media (prefers-color-scheme: dark) {
-  footer {
-    background-color: #010b2a; /* slightly darker navy */
-    color: #f2f2f2;
-  }
-}
-
-/* === RESPONSIVE BREAKPOINTS === */
-@media (max-width: 1024px) {
-  main {
-    max-width: 800px;
-    padding: 20px;
-  }
-  .two_by_two, .two_column {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
+/* Desktop navigation */
 @media (min-width: 769px) {
   #nav-toggle {
     display: none !important;
   }
+
   #nav-links {
     display: flex !important;
   }
 }
 
-
-/* === TABLET (max-width: 768px) === */
+/* Tablets and mobile navigation */
 @media (max-width: 768px) {
-
-  /* Header */
   .header_logic {
     left: 10px;
     bottom: 15px;
+    width: 85%;
     gap: 10px;
     padding: 12px;
-    width: 85%;
   }
 
   header #headshot {
     max-width: 90px;
-    height: auto;
   }
 
   .logic_text {
@@ -1011,27 +894,26 @@ html {
     line-height: 1.3;
   }
 
-  /* === NAVIGATION === */
   #nav-toggle {
     display: block;
   }
 
   #nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
     display: none;
+    width: 100%;
+    padding: 0;
     flex-direction: column;
     align-items: center;
     background-color: var(--bg);
     border-top: 2px solid var(--primary);
-    width: 100%;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding: 0;
   }
 
   #nav-links.open {
     display: flex;
-    animation: fadeIn 0.3s ease;
+    animation: nav-fade-in 0.3s ease;
   }
 
   #nav-links li {
@@ -1043,89 +925,78 @@ html {
     display: block;
     padding: 12px;
     font-size: 1.1rem;
-    color: var(--primary);
   }
 
   #nav-links a:hover {
-    background-color: var(--secondary-bg);
     color: var(--primary-strong);
+    background-color: var(--secondary-bg);
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* === MAIN CONTENT === */
   main {
+    width: 100%;
+    max-width: 100%;
     padding: 20px;
-    max-width: 95%;
   }
 
   h2 {
-    text-align: center;
     font-size: 1.4rem;
-  }
-
-  .two_by_two,
-  .two_column {
-    grid-template-columns: 1fr;
-    gap: 25px;
+    text-align: center;
   }
 
   iframe {
     width: 100%;
     height: 260px;
-    border-radius: 6px;
   }
 
-  /* === BLOG SECTION === */
   .blog-card {
-    flex-direction: column;
-    text-align: left;
-    background-color: #fff;
     padding: 16px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
   }
 
   .blog-card img {
     width: 100%;
-    border-radius: 8px;
     margin-bottom: 10px;
   }
 
-  .blog-card h3 {
-    font-size: 1.2rem;
-  }
-
-  .blog-card p {
-    font-size: 1rem;
-    margin-bottom: 8px;
-  }
-
-  /* === FOOTER === */
   footer {
-    font-size: 0.85rem;
     padding: 15px;
-    text-align: center;
+    font-size: 0.85rem;
   }
 
-   .accessibility-panel {
+  .accessibility-panel {
     width: calc(100% - 30px);
   }
 
   .accessibility-panel-content {
-    align-items: stretch;
     flex-direction: column;
+    align-items: stretch;
     gap: 12px;
+  }
+
+  .read-aloud-group {
+    width: 100%;
   }
 
   .accessibility-help {
     max-width: none;
   }
+
+  @keyframes nav-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
+/* Narrow screens and single-column photo gallery */
 @media (max-width: 600px) {
   .photo-gallery {
     grid-template-columns: 1fr;
@@ -1141,37 +1012,31 @@ html {
   }
 }
 
-/* === MOBILE (max-width: 480px) === */
+/* Small phones */
 @media (max-width: 480px) {
-
-  /* General layout */
   main {
     padding: 15px;
-    max-width: 100%;
   }
 
   h2 {
     font-size: 1.25rem;
-    text-align: center;
   }
 
-  p, li {
+  p,
+  li {
     font-size: 1rem;
     line-height: 1.6;
   }
 
-  /* Header card */
   .header_logic {
-    display: flex;       /* add this */
-    flex-direction: column;
-    align-items: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px;
+    display: flex;
+    width: 85%;
     left: 10px;
     bottom: 10px;
-    width: 85%;
+    padding: 10px;
+    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   header #headshot {
@@ -1182,13 +1047,24 @@ html {
     font-size: 1rem;
   }
 
-  /* Nav */
   #nav-links a {
     padding: 10px;
     font-size: 1rem;
   }
 
-  /* Blog section */
+  .accessibility-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .accessibility-actions button {
+    width: 100%;
+  }
+
+  #speech-rate {
+    width: 100%;
+  }
+
   .blog-card {
     padding: 12px;
   }
@@ -1203,118 +1079,69 @@ html {
     font-size: 0.95rem;
   }
 
-  /* Footer */
   footer {
-    font-size: 0.8rem;
     padding: 10px;
+    font-size: 0.8rem;
   }
 }
 
-/*high contrast support */
-@media (forced-colors: active) {
-  /* Preserve link affordance and visible boundaries */
-  a { text-decoration: underline; }
-  .accordion-btn { border: 2px solid CanvasText; }
-  .modal { outline: 2px solid CanvasText; }
-  /* Prevent the UA from flattening custom colors where needed */
-  .lang-btn, .accordion-btn, .close-btn { forced-color-adjust: none; }
-}
+/* =====================================================
+   ACCESSIBILITY PREFERENCES
+   ===================================================== */
 
-/* ==== Dark mode: accessible navy + orange ==== */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Neutrals */
-    --bg: #0b0f14;            /* page background (very dark blue) */
-    --surface: #121826;       /* cards, modals, header chips */
-    --surface-2: #162033;     /* elevated surfaces */
-    --border: #2b3548;        /* dividers */
-    --text: #e8edf6;          /* primary text */
-    --muted: #c0c9d8;         /* secondary text */
-
-    /* Brand on dark (lighter blues for accessible contrast) */
-    --primary: #9cc2ff;       /* link / interactive */
-    --primary-strong: #cfe0ff;/* hover/focus state (brighter) */
-
-    /* Accent stays orange but slightly lighter for legibility */
-    --accent: #ff8f3d;        /* progress bar, hovers, chips */
-    --focus: #ffd166;         /* warm focus ring that pops on dark */
-
-    /* Keep your existing semantic names in sync */
-    --secondary-bg: var(--surface);
-  }
-
-  /* Base */
-  body { background: var(--bg); color: var(--text); }
-
-  /* Cards / blocks */
-  .blog-card,
-  .inspire, .k-12, .a11y, .mll, .hci_web, .iSchool_tour, .TTS,
-  .caption_mask, .graduation, .recruitment, .ISTE_646, .capstone, .Website, .autism_ai, .youth_ai {
-    background: var(--surface);
-    border-color: var(--border);
-  }
-
-  /* Header overlay chip */
-  .header_logic {
-    background: rgba(0, 0, 0, 0.7); /* still OK on dark images */
-  }
-
-  /* Links: brighter blues on dark */
-  a { color: var(--primary); }
-  a:hover, a:focus-visible {
-    color: var(--primary-strong);
-    text-decoration: underline;
-  }
-
-  /* Accordion */
-  .accordion-btn {
-    background: #1a2340;            /* deep navy block with enough contrast */
-    color: var(--text);
-  }
-  .accordion-btn:hover,
-  .accordion-btn.active { background: #223064; }
-
-  /* Modals */
-  .modal-content {
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 24px rgba(0,0,0,.55);
-  }
-
-  /* Progress bar */
-  #progress-bar { background: var(--accent); }
-
-  /* Footer */
-  footer {
-    background: #0d1422;   /* dark navy that keeps 7+:1 vs white text */
-    color: #ffffff;
-    border-top: 1px solid var(--border);
-  }
-  footer a { color: #ffffff; }
-  footer a:hover { color: var(--accent); }
-
-  /* Muted copy */
-  p, li { color: var(--text); }
-  .section-intro, small, .muted { color: var(--muted); }
-
-  /* Focus ring stays bold on dark */
-  :where(a, button, [role="button"], input, textarea, select, summary,
-         [tabindex]:not([tabindex="-1"])):focus-visible {
-    outline: 3px solid var(--focus);
-    outline-offset: 2px;
-    border-radius: 6px;
-  }
-}
-
-/* === Reduced motion preference (2.3.3) === */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
-  .lang-btn:hover { transform: none; }
-  #nav-links.open { animation: none; }
+
+  .lang-btn:hover,
+  .photo-card:hover,
+  .photo-button:hover img {
+    transform: none;
+  }
+
+  #nav-links.open {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  a {
+    text-decoration: underline;
+  }
+
+  .accessibility-panel,
+  .accessibility-panel-content,
+  .accordion-btn {
+    border-color: CanvasText;
+  }
+
+  .accessibility-actions button {
+    color: ButtonText;
+    background: ButtonFace;
+    border-color: ButtonText;
+  }
+
+  .speech-highlight {
+    color: HighlightText;
+    background: Highlight;
+  }
+
+  .modal {
+    outline: 2px solid CanvasText;
+  }
+
+  .lang-btn,
+  .accordion-btn,
+  .close-btn {
+    forced-color-adjust: none;
+  }
 }
